@@ -1,9 +1,7 @@
 package com.barrios_irabedra.obligatorio.dominio;
 
-import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -41,13 +39,14 @@ public class Sistema {
     public void recibirArchivos(List<File> files) {
         filtroTXT(files);
         cargoArchivos(files);
-
     }
 
     /**
-     * Este metodo elimina de la lista de archivos recibidos los que no son txt
+     * Este metodo elimina de la lista de archivos recibidos los
+     * que no son txt
      *
-     * @param lista es la lista de archivos cargados por dragAndDrop
+     * @param lista es la lista de archivos cargados por
+     * dragAndDrop
      */
     private void filtroTXT(List<File> lista) {
         Iterator<File> it = lista.iterator();
@@ -70,9 +69,11 @@ public class Sistema {
     }
 
     /**
-     * Metodo que prepara los archivos para ser procesadas sus preguntas
+     * Metodo que prepara los archivos para ser procesadas sus
+     * preguntas
      *
-     * @param lista es la lista de archivos txt que sera cargada al sistema
+     * @param lista es la lista de archivos txt que sera cargada
+     * al sistema
      */
     private void cargoArchivos(List<File> lista) {
         Iterator<File> it = lista.iterator();
@@ -98,60 +99,6 @@ public class Sistema {
             ex.printStackTrace();
         }
         return ret;
-    }
-
-    /**
-     * abre el archivo indicado por el d&d y lo delega otro metodo para procesar
-     *
-     * @param unArchivo es el archivo con las preguntas
-     */
-    public void cargarPreguntas(ArrayList<String> textoFiltrado) {
-        Iterator<String> it = textoFiltrado.iterator();
-        Boolean comienzoPreguntaMultipleOpcion = false;
-        ArrayList<String> lineasPreguntaMultipleOpcion = new ArrayList<>();
-        while (it.hasNext()) {
-            procesarLinea(it.next(), comienzoPreguntaMultipleOpcion, lineasPreguntaMultipleOpcion);
-        }
-    }
-
-    public void procesarLinea(String unaLinea, Boolean comienzoPreguntaMultipleOpcion, ArrayList<String> lineasPreguntaMultipleOpcion) {
-
-        if (!comienzoPreguntaMultipleOpcion) {
-            switch (ocurrenciasSubtring(unaLinea, "::")) {
-                case 0:
-                    procesarLineaCortaRespuesta(unaLinea);
-                    break;
-                case 1:
-                    comienzoPreguntaMultipleOpcion = true;
-
-                    break;
-                case 2:
-                    procesarLineaVF(unaLinea);
-                    break;
-                default:
-                    System.err.println("Algo salio muy mal");
-                    break;
-            }
-        }
-        if (unaLinea.equals("}")) {
-            comienzoPreguntaMultipleOpcion = false;
-            procesarLineaMultipleOpcion(lineasPreguntaMultipleOpcion);
-            lineasPreguntaMultipleOpcion.clear();
-        }
-        if (comienzoPreguntaMultipleOpcion) {
-            lineasPreguntaMultipleOpcion.add(unaLinea);
-        }
-
-    }
-
-    public int ocurrenciasSubtring(String unString, String unSubstring) {
-        int contador = 0;
-        String copia = unString;
-        while (copia.contains(unSubstring)) {
-            copia = copia.replaceFirst(unSubstring, "");
-            contador++;
-        }
-        return contador;
     }
 
     /**
@@ -186,13 +133,58 @@ public class Sistema {
         }
     }
 
-    private void guardoRespuestasCortas(Pregunta unaPregunta, String respuestasTotales) {
-        StringTokenizer tk = new StringTokenizer(respuestasTotales, "=");
-        while (tk.hasMoreTokens()) {
-            String respuesta = tk.nextToken().trim();
-            unaPregunta.agregarRespuesta(respuesta, true);
+    /**
+     * abre el archivo indicado por el d&d y lo delega otro
+     * metodo para procesar
+     *
+     * @param unArchivo es el archivo con las preguntas
+     */
+    public void cargarPreguntas(ArrayList<String> textoFiltrado) {
+        Iterator<String> it = textoFiltrado.iterator();
+        Boolean[] comienzoPreguntaMultipleOpcion = {false};
+        ArrayList<String> lineasPreguntaMultipleOpcion = new ArrayList<>();
+        while (it.hasNext()) {
+            procesarLinea(it.next(), comienzoPreguntaMultipleOpcion, lineasPreguntaMultipleOpcion);
+        }
+    }
+
+    public void procesarLinea(String unaLinea, Boolean[] comienzoPreguntaMultipleOpcion, ArrayList<String> lineasPreguntaMultipleOpcion) {
+        if (!comienzoPreguntaMultipleOpcion[0]) {
+            switch (ocurrenciasSubtring(unaLinea, "::")) {
+                case 0:
+                    procesarLineaCortaRespuesta(unaLinea);
+                    break;
+                case 1:
+                    comienzoPreguntaMultipleOpcion[0] = true;
+
+                    break;
+                case 2:
+                    procesarLineaVF(unaLinea);
+                    break;
+                default:
+                    System.err.println("Algo salio muy mal");
+                    break;
+            }
+        }
+        if (unaLinea.equals("}")) {
+            comienzoPreguntaMultipleOpcion[0] = false;
+            procesarLineaMultipleOpcion(lineasPreguntaMultipleOpcion);
+            lineasPreguntaMultipleOpcion.clear();
+        }
+        if (comienzoPreguntaMultipleOpcion[0]) {
+            lineasPreguntaMultipleOpcion.add(unaLinea);
         }
 
+    }
+
+    public int ocurrenciasSubtring(String unString, String unSubstring) {
+        int contador = 0;
+        String copia = unString;
+        while (copia.contains(unSubstring)) {
+            copia = copia.replaceFirst(unSubstring, "");
+            contador++;
+        }
+        return contador;
     }
 
     private void procesarLineaCortaRespuesta(String unaLinea) {
@@ -203,6 +195,15 @@ public class Sistema {
         segundoToken.replaceAll("}", "");
         guardoRespuestasCortas(p, segundoToken);
         this.listaPreguntasCortaRespuesta.add((PreguntaCortaRespuesta) p);
+    }
+
+    private void guardoRespuestasCortas(Pregunta unaPregunta, String respuestasTotales) {
+        StringTokenizer tk = new StringTokenizer(respuestasTotales, "=");
+        while (tk.hasMoreTokens()) {
+            String respuesta = tk.nextToken().trim();
+            unaPregunta.agregarRespuesta(respuesta, true);
+        }
+
     }
 
     private void guardoRespuestasVF(Pregunta unaPregunta, String respuesta) {
