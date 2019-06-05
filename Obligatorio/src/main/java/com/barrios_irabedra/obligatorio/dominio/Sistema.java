@@ -142,23 +142,22 @@ public class Sistema {
      */
     public void cargarPreguntas(ArrayList<String> textoFiltrado) {
         Iterator<String> it = textoFiltrado.iterator();
-        Boolean[] comienzoPreguntaMultipleOpcion = {false};
+        boolean comienzoPreguntaMultipleOpcion = false;
         ArrayList<String> lineasPreguntaMultipleOpcion = new ArrayList<>();
         while (it.hasNext()) {
-            procesarLinea(it.next(), comienzoPreguntaMultipleOpcion, lineasPreguntaMultipleOpcion);
+            comienzoPreguntaMultipleOpcion = procesarLinea(it.next(), comienzoPreguntaMultipleOpcion, lineasPreguntaMultipleOpcion);
         }
 
     }
 
-    public void procesarLinea(String unaLinea, Boolean[] comienzoPreguntaMultipleOpcion, ArrayList<String> lineasPreguntaMultipleOpcion) {
-        if (!comienzoPreguntaMultipleOpcion[0]) {
+    public boolean procesarLinea(String unaLinea, boolean comienzoPreguntaMultipleOpcion, ArrayList<String> lineasPreguntaMultipleOpcion) {
+        if (!comienzoPreguntaMultipleOpcion) {
             switch (ocurrenciasSubtring(unaLinea, "::")) {
                 case 0:
                     procesarLineaCortaRespuesta(unaLinea);
                     break;
                 case 1:
-                    comienzoPreguntaMultipleOpcion[0] = true;
-
+                    comienzoPreguntaMultipleOpcion = true;
                     break;
                 case 2:
                     procesarLineaVF(unaLinea);
@@ -168,15 +167,23 @@ public class Sistema {
                     break;
             }
         }
+
         if (unaLinea.equals("}")) {
-            comienzoPreguntaMultipleOpcion[0] = false;
-            procesarLineaMultipleOpcion(lineasPreguntaMultipleOpcion);
-            lineasPreguntaMultipleOpcion.clear();
+           // try {
+                comienzoPreguntaMultipleOpcion = false;
+                procesarLineaMultipleOpcion(lineasPreguntaMultipleOpcion);
+                lineasPreguntaMultipleOpcion.clear();
+        //    } catch (InvocationTargetException e) {
+                
+          //  }
+
         }
-        if (comienzoPreguntaMultipleOpcion[0]) {
+
+        if (comienzoPreguntaMultipleOpcion) {
             lineasPreguntaMultipleOpcion.add(unaLinea);
         }
 
+        return comienzoPreguntaMultipleOpcion;
     }
 
     public int ocurrenciasSubtring(String unString, String unSubstring) {
