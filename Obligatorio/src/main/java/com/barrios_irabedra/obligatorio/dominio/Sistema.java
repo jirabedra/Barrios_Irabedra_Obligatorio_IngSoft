@@ -80,6 +80,7 @@ public class Sistema {
         while (it.hasNext()) {
             cargarPreguntas(filtrarArchivo(it.next()));
         }
+
     }
 
     public ArrayList<String> filtrarArchivo(File unArchivo) {
@@ -146,6 +147,7 @@ public class Sistema {
         while (it.hasNext()) {
             procesarLinea(it.next(), comienzoPreguntaMultipleOpcion, lineasPreguntaMultipleOpcion);
         }
+
     }
 
     public void procesarLinea(String unaLinea, Boolean[] comienzoPreguntaMultipleOpcion, ArrayList<String> lineasPreguntaMultipleOpcion) {
