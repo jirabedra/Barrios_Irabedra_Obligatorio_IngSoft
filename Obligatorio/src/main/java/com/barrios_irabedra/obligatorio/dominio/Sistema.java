@@ -14,8 +14,6 @@ import java.util.StringTokenizer;
  */
 public class Sistema {
 
-    boolean comienzoPreguntaMultipleOpcion = false;
-
     public static Sistema getInstanciaSistema() {
         return instanciaSistema;
     }
@@ -38,6 +36,11 @@ public class Sistema {
         return instanciaSistema;
     }
 
+    /**
+     * 
+     * @param files son los archivos que se arrastran y dejan 
+     * en la venta
+     */
     public void recibirArchivos(List<File> files) {
         filtroTXT(files);
         cargoArchivos(files);
@@ -85,10 +88,14 @@ public class Sistema {
 
     }
 
+    /**
+     * 
+     * @param unArchivo Archivo sobre el que se van a sacar las preguntas y respuestas
+     * @return Las lineas a cargar
+     */
     public ArrayList<String> filtrarArchivo(File unArchivo) {
         ArrayList<String> ret = new ArrayList<>();
         try {
-            //BufferedReader lector = new BufferedReader(new FileReader(unArchivo.getName()));
             Scanner sc = new Scanner(unArchivo);
             String linea = "";
             while (sc.hasNext()) {
@@ -137,22 +144,22 @@ public class Sistema {
     }
 
     /**
-     * abre el archivo indicado por el d&d y lo delega otro
+     * abre el archivo indicado por el d&d (que es d&d?) y lo delega otro
      * metodo para procesar
      *
-     * @param unArchivo es el archivo con las preguntas
+     * @param textoFiltrado es el array con las pregunts ya filtradas
      */
     public void cargarPreguntas(ArrayList<String> textoFiltrado) {
         Iterator<String> it = textoFiltrado.iterator();
-        //  boolean comienzoPreguntaMultipleOpcion = false;
+        boolean comienzoPreguntaMultipleOpcion = false;
         ArrayList<String> lineasPreguntaMultipleOpcion = new ArrayList<>();
         while (it.hasNext()) {
-            procesarLinea(it.next(), lineasPreguntaMultipleOpcion);
+           comienzoPreguntaMultipleOpcion = procesarLinea(it.next(), lineasPreguntaMultipleOpcion, comienzoPreguntaMultipleOpcion);
         }
 
     }
 
-    public boolean procesarLinea(String unaLinea, ArrayList<String> lineasPreguntaMultipleOpcion) {
+    public boolean procesarLinea(String unaLinea, ArrayList<String> lineasPreguntaMultipleOpcion, boolean comienzoPreguntaMultipleOpcion) {
         if (!comienzoPreguntaMultipleOpcion) {
             switch (ocurrenciasSubtring(unaLinea, "::")) {
                 case 0:
