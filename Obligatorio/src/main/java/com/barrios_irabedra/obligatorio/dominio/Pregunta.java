@@ -44,6 +44,7 @@ public abstract class Pregunta {
 
     //Constructor sin params.
     public Pregunta() {
+        this.respuestas = new HashMap<>();  
     }
 
     @Override

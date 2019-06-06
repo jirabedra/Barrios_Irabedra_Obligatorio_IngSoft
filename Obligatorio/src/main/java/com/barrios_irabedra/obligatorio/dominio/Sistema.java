@@ -14,6 +14,8 @@ import java.util.StringTokenizer;
  */
 public class Sistema {
 
+    boolean comienzoPreguntaMultipleOpcion = false;
+
     public static Sistema getInstanciaSistema() {
         return instanciaSistema;
     }
@@ -142,15 +144,15 @@ public class Sistema {
      */
     public void cargarPreguntas(ArrayList<String> textoFiltrado) {
         Iterator<String> it = textoFiltrado.iterator();
-        boolean comienzoPreguntaMultipleOpcion = false;
+        //  boolean comienzoPreguntaMultipleOpcion = false;
         ArrayList<String> lineasPreguntaMultipleOpcion = new ArrayList<>();
         while (it.hasNext()) {
-            comienzoPreguntaMultipleOpcion = procesarLinea(it.next(), comienzoPreguntaMultipleOpcion, lineasPreguntaMultipleOpcion);
+            procesarLinea(it.next(), lineasPreguntaMultipleOpcion);
         }
 
     }
 
-    public boolean procesarLinea(String unaLinea, boolean comienzoPreguntaMultipleOpcion, ArrayList<String> lineasPreguntaMultipleOpcion) {
+    public boolean procesarLinea(String unaLinea, ArrayList<String> lineasPreguntaMultipleOpcion) {
         if (!comienzoPreguntaMultipleOpcion) {
             switch (ocurrenciasSubtring(unaLinea, "::")) {
                 case 0:
@@ -169,14 +171,9 @@ public class Sistema {
         }
 
         if (unaLinea.equals("}")) {
-           // try {
-                comienzoPreguntaMultipleOpcion = false;
-                procesarLineaMultipleOpcion(lineasPreguntaMultipleOpcion);
-                lineasPreguntaMultipleOpcion.clear();
-        //    } catch (InvocationTargetException e) {
-                
-          //  }
-
+            comienzoPreguntaMultipleOpcion = false;
+            procesarLineaMultipleOpcion(lineasPreguntaMultipleOpcion);
+            lineasPreguntaMultipleOpcion.clear();
         }
 
         if (comienzoPreguntaMultipleOpcion) {
@@ -243,9 +240,9 @@ public class Sistema {
         Iterator<String> it = lineasPreguntaMultipleOpcion.iterator();
         it.next();//El primero es el titulo de la pregunta no se usa).
         String pregunta = it.next();//La segunda linea es la pregunta.
-        limpiarToken(pregunta, "::");
+        limpiarToken(pregunta);
         p.setPregunta(pregunta);
-        String respuesta = it.next();
+        String respuesta = "";
         while (it.hasNext()) {
             respuesta = it.next();
             switch (respuesta.charAt(0)) {
@@ -266,9 +263,10 @@ public class Sistema {
         this.listaPreguntasMultipleOpcion.add(p);
     }
 
-    private void limpiarToken(String respuestas, String basura) {
-        respuestas = respuestas.replaceFirst(respuestas, basura);
-        respuestas.trim();
+    private void limpiarToken(String respuestas) {
+        respuestas = respuestas.replaceFirst("::", "");
+        //respuestas = respuestas.replaceFirst("{", "");
+        respuestas = respuestas.trim();
     }
 
     public List<PreguntaCortaRespuesta> getListaPreguntasCortaRespuesta() {

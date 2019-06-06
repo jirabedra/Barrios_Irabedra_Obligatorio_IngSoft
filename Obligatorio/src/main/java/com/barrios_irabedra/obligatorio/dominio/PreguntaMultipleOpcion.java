@@ -14,6 +14,7 @@ public class PreguntaMultipleOpcion extends Pregunta {
     }
 
     public PreguntaMultipleOpcion() {
+        this.comentarioRespuesta = new HashMap<>();
     }
 
     public void agregarComentarioRespuesta(String unaRespuesta, String unComentario){
