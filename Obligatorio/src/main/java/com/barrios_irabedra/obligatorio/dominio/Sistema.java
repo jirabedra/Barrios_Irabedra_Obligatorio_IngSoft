@@ -37,9 +37,9 @@ public class Sistema {
     }
 
     /**
-     * 
-     * @param files son los archivos que se arrastran y dejan 
-     * en la venta
+     *
+     * @param files son los archivos que se arrastran y dejan en
+     * la venta
      */
     public void recibirArchivos(List<File> files) {
         filtroTXT(files);
@@ -89,8 +89,9 @@ public class Sistema {
     }
 
     /**
-     * 
-     * @param unArchivo Archivo sobre el que se van a sacar las preguntas y respuestas
+     *
+     * @param unArchivo Archivo sobre el que se van a sacar las
+     * preguntas y respuestas
      * @return Las lineas a cargar
      */
     public ArrayList<String> filtrarArchivo(File unArchivo) {
@@ -144,17 +145,18 @@ public class Sistema {
     }
 
     /**
-     * abre el archivo indicado por el d&d (que es d&d?) y lo delega otro
-     * metodo para procesar
+     * Abre el archivo indicado por el drag and drop y lo delega
+     * otro metodo para procesar
      *
-     * @param textoFiltrado es el array con las pregunts ya filtradas
+     * @param textoFiltrado es el array con las pregunts ya
+     * filtradas
      */
     public void cargarPreguntas(ArrayList<String> textoFiltrado) {
         Iterator<String> it = textoFiltrado.iterator();
         boolean comienzoPreguntaMultipleOpcion = false;
         ArrayList<String> lineasPreguntaMultipleOpcion = new ArrayList<>();
         while (it.hasNext()) {
-           comienzoPreguntaMultipleOpcion = procesarLinea(it.next(), lineasPreguntaMultipleOpcion, comienzoPreguntaMultipleOpcion);
+            comienzoPreguntaMultipleOpcion = procesarLinea(it.next(), lineasPreguntaMultipleOpcion, comienzoPreguntaMultipleOpcion);
         }
 
     }
@@ -166,8 +168,7 @@ public class Sistema {
                     procesarLineaCortaRespuesta(unaLinea);
                     break;
                 case 1:
-                    comienzoPreguntaMultipleOpcion = true;
-                    break;
+                    return true;
                 case 2:
                     procesarLineaVF(unaLinea);
                     break;
@@ -245,11 +246,11 @@ public class Sistema {
     private void procesarLineaMultipleOpcion(ArrayList<String> lineasPreguntaMultipleOpcion) {
         PreguntaMultipleOpcion p = new PreguntaMultipleOpcion();
         Iterator<String> it = lineasPreguntaMultipleOpcion.iterator();
-        it.next();//El primero es el titulo de la pregunta no se usa).
-        String pregunta = it.next();//La segunda linea es la pregunta.
-        limpiarToken(pregunta);
+        String pregunta = it.next();//La primera linea es la pregunta.
+        limpiarTokenPregunta(pregunta);
         p.setPregunta(pregunta);
         String respuesta = "";
+        String respuestaAnterior = "";
         while (it.hasNext()) {
             respuesta = it.next();
             switch (respuesta.charAt(0)) {
@@ -263,17 +264,23 @@ public class Sistema {
                     break;
                 case '#':
                     respuesta = respuesta.replaceFirst("#", "");
-                    p.agregarComentarioRespuesta(respuesta, "");
+                    p.agregarComentarioRespuesta(respuestaAnterior, respuesta);
+                    break;
+                default:
+                    System.err.println("Algo salio muy mal");
                     break;
             }
+            respuestaAnterior = respuesta;
         }
         this.listaPreguntasMultipleOpcion.add(p);
     }
 
-    private void limpiarToken(String respuestas) {
-        respuestas = respuestas.replaceFirst("::", "");
-        //respuestas = respuestas.replaceFirst("{", "");
-        respuestas = respuestas.trim();
+    private void limpiarTokenPregunta(String pregunta) {
+        pregunta = pregunta.replaceFirst("::", "");
+        char[] preguntaFiltrada = pregunta.toCharArray();
+        int posicion = preguntaFiltrada.length - 1;
+        preguntaFiltrada[posicion] = '\0';
+        pregunta = new String(preguntaFiltrada).trim();
     }
 
     public List<PreguntaCortaRespuesta> getListaPreguntasCortaRespuesta() {
