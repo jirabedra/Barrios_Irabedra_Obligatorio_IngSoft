@@ -22,7 +22,8 @@ public class PreguntaCortaRespuesta extends Pregunta{
 
     @Override
     public String toString() {
-        return super.toString(); //FALTA IMPLEMENTAR
+        return this.getPregunta() + ". \n" + "Tienes " + this.getTiempo() + " segundos para responder. \n"
+                + "Y sus respuesta correcta era " + this.getRespuestas();
     }
 
     

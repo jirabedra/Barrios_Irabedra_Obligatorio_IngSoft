@@ -39,7 +39,7 @@ public abstract class Pregunta {
     public Pregunta(String nombre, int tiempo, HashMap<String, Boolean> respuestas) {
         this.pregunta = nombre;
         this.tiempo = tiempo;
-        this.respuestas = new HashMap<>();
+        this.respuestas = respuestas;
     }
 
     //Constructor sin params.
@@ -49,7 +49,7 @@ public abstract class Pregunta {
 
     @Override
     public String toString() {
-        return pregunta + ". \n" + "Tienes " + tiempo + " segundos para responder. \n"
-                + "Y sus respuestas eran " + respuestas;
+        return this.getPregunta() + ". \n" + "Tienes " + this.getTiempo() + " segundos para responder. \n"
+                + "Y sus respuestas eran " + this.getRespuestas();
     }
 }
