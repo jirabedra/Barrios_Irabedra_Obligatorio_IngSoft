@@ -206,7 +206,7 @@ public class Sistema {
         StringTokenizer tk = new StringTokenizer(unaLinea, "{");
         p.setPregunta(tk.nextToken());
         String segundoToken = tk.nextToken();
-        segundoToken.replaceAll("}", "");
+        segundoToken = segundoToken.replaceAll("}", "");
         guardoRespuestasCortas(p, segundoToken);
         this.listaPreguntasCortaRespuesta.add((PreguntaCortaRespuesta) p);
     }
