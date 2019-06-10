@@ -37,7 +37,7 @@ public class Sistema {
     }
 
     /**
-     *
+     * Procesa los archivos
      * @param files son los archivos que se arrastran y dejan en
      * la venta
      */
@@ -297,35 +297,20 @@ public class Sistema {
         return listaPreguntasVF;
     }
 
+    /**
+     * Devuelve si la respuesta dada por el usuario esta bien o mal
+     * @param p Pregunta en la que se esta evaluando
+     * @param respuesta Respuesta dada por el usuario
+     * @param valorDeVerdad valor de verdad de la respuesta dada
+     * @return 
+     */
     public boolean veracidadRespuesta(Pregunta p, String respuesta, boolean valorDeVerdad) {
-        if (p instanceof PreguntaVF) {
-            return veracidadVF((PreguntaVF) p, respuesta, valorDeVerdad);
-        } else if (p instanceof PreguntaMultipleOpcion) {
-            return veracidadMultipleOpcion((PreguntaMultipleOpcion) p, respuesta, valorDeVerdad);
-        } else if (p instanceof PreguntaCortaRespuesta) {
-            return veracidadCortaRespuesta((PreguntaCortaRespuesta) p, respuesta, valorDeVerdad);
+        if (p.getMapaRespuestas().get(respuesta) != null) {
+            return (p.getMapaRespuestas().get(respuesta) == valorDeVerdad);
         } else {
-            System.err.print("No se pasó una pregunta valida");
-            System.exit(1000101);
+            return false;
         }
-        System.err.print("No se pasó una pregunta valida");
-        System.exit(1000101);
-        return false;
     }
-
-    private boolean veracidadVF(PreguntaVF p, String respuesta, boolean valorDeVerdad) {
-        
-        return false;
-    }
-
-    private boolean veracidadMultipleOpcion(PreguntaMultipleOpcion p, String respuesta, boolean valorDeVerdad) {
-
-        return false;
-    }
-
-    private boolean veracidadCortaRespuesta(PreguntaCortaRespuesta p, String respuesta, boolean valorDeVerdad) {
-
-        return false;
-    }
-
+    
+    
 }
