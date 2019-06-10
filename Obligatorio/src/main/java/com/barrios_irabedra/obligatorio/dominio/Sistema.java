@@ -249,7 +249,7 @@ public class Sistema {
         PreguntaMultipleOpcion p = new PreguntaMultipleOpcion();
         Iterator<String> it = lineasPreguntaMultipleOpcion.iterator();
         String pregunta = it.next();//La primera linea es la pregunta.
-        limpiarTokenPregunta(pregunta);
+        pregunta = limpiarTokenPregunta(pregunta);
         p.setPregunta(pregunta);
         String respuesta = "";
         String respuestaAnterior = "";
@@ -277,12 +277,13 @@ public class Sistema {
         this.listaPreguntasMultipleOpcion.add(p);
     }
 
-    private void limpiarTokenPregunta(String pregunta) {
+    private String limpiarTokenPregunta(String pregunta) {
         pregunta = pregunta.replaceFirst("::", "");
         char[] preguntaFiltrada = pregunta.toCharArray();
         int posicion = preguntaFiltrada.length - 1;
         preguntaFiltrada[posicion] = '\0';
         pregunta = new String(preguntaFiltrada).trim();
+        return pregunta;
     }
 
     public List<PreguntaCortaRespuesta> getListaPreguntasCortaRespuesta() {
