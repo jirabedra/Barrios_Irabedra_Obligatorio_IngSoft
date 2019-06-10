@@ -297,4 +297,32 @@ public class Sistema {
         return listaPreguntasVF;
     }
 
+    public boolean veracidadRespuesta(Pregunta p, String respuesta, boolean valorDeVerdad) {
+        if (p instanceof PreguntaVF) {
+            return veracidadVF(p, valorDeVerdad);
+        } else if (p instanceof PreguntaMultipleOpcion) {
+            return veracidadMultipleOpcion(p, respuesta, valorDeVerdad);
+        } else if (p instanceof PreguntaCortaRespuesta) {
+            return veracidadCortaRespuesta(p, respuesta, valorDeVerdad);
+        } else {
+            System.err.print("No se pasó una pregunta valida");
+            System.exit(1000101);
+        }
+        System.err.print("No se pasó una pregunta valida");
+        System.exit(1000101);
+        return false;
+    }
+
+    private boolean veracidadVF(Pregunta p, boolean valorDeVerdad) {
+        return false;
+    }
+
+    private boolean veracidadMultipleOpcion(Pregunta p, String respuesta, boolean valorDeVerdad) {
+        return false;
+    }
+
+    private boolean veracidadCortaRespuesta(Pregunta p, String respuesta, boolean valorDeVerdad) {
+        return false;
+    }
+
 }
