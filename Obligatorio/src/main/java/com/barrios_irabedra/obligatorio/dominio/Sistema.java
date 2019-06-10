@@ -220,6 +220,20 @@ public class Sistema {
 
     }
 
+    private void procesarLineaVF(String unaLinea) {
+        Pregunta p = new PreguntaVF();
+        StringTokenizer tk = new StringTokenizer(unaLinea, "::");
+        String pregunta = tk.nextToken();
+        p.setPregunta(pregunta);
+        String respuesta = tk.nextToken();
+        respuesta = respuesta.trim();
+        tk = new StringTokenizer(respuesta, "{");
+        respuesta = tk.nextToken();
+        respuesta = respuesta.toUpperCase().replace("}", "");
+        guardoRespuestasVF(p, respuesta);
+        this.listaPreguntasVF.add((PreguntaVF) p);
+    }
+
     private void guardoRespuestasVF(Pregunta unaPregunta, String respuesta) {
         if (respuesta.contains("F")) {
             unaPregunta.agregarRespuesta(respuesta, true);
@@ -228,19 +242,6 @@ public class Sistema {
         } else {
             System.err.println("No hay ni Verdadero ni Falso");
         }
-    }
-
-    private void procesarLineaVF(String unaLinea) {
-        Pregunta p = new PreguntaVF();
-        StringTokenizer tk = new StringTokenizer(unaLinea, "::");
-        tk.nextElement(); //no me importa el titulo (primer tok)
-        String segundoToken = tk.nextToken();
-        tk = new StringTokenizer(segundoToken, "{");
-        p.setPregunta(tk.nextToken());
-        segundoToken = tk.nextToken();
-        segundoToken = segundoToken.toUpperCase().replace("}", "");
-        guardoRespuestasVF(p, segundoToken);
-        this.listaPreguntasVF.add((PreguntaVF) p);
     }
 
     private void procesarLineaMultipleOpcion(ArrayList<String> lineasPreguntaMultipleOpcion) {
