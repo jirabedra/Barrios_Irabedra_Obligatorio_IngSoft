@@ -206,7 +206,7 @@ public class Sistema {
         StringTokenizer tk = new StringTokenizer(unaLinea, "{");
         p.setPregunta(tk.nextToken());
         String segundoToken = tk.nextToken();
-        segundoToken.replaceAll("}", "");
+        segundoToken = segundoToken.replaceAll("}", "");
         guardoRespuestasCortas(p, segundoToken);
         this.listaPreguntasCortaRespuesta.add((PreguntaCortaRespuesta) p);
     }
@@ -237,9 +237,9 @@ public class Sistema {
 
     private void guardoRespuestasVF(Pregunta unaPregunta, String respuesta, String valorVerdad) {
         if (valorVerdad.contains("F")) {
-            unaPregunta.agregarRespuesta(respuesta, true);
-        } else if (valorVerdad.contains("T") || respuesta.contains("V")) {
             unaPregunta.agregarRespuesta(respuesta, false);
+        } else if (valorVerdad.contains("T") || respuesta.contains("V")) {
+            unaPregunta.agregarRespuesta(respuesta, true);
         } else {
             System.err.println("No hay ni Verdadero ni Falso");
         }
