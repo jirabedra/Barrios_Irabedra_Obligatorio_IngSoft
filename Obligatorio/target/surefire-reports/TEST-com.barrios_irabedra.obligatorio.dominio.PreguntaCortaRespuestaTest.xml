@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<<<<<<< HEAD
 <testsuite name="com.barrios_irabedra.obligatorio.dominio.PreguntaCortaRespuestaTest" time="0.021" tests="1" errors="0" skipped="0" failures="0">
+=======
+<testsuite name="com.barrios_irabedra.obligatorio.dominio.PreguntaCortaRespuestaTest" time="0.004" tests="1" errors="0" skipped="0" failures="0">
+>>>>>>> f52dfe74363ff72b2d117967c72afa7de9c89457
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk1.8.0_111\jre\bin"/>
@@ -34,8 +38,13 @@
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="runfx.args" value="-jar &quot;${project.build.directory}/${project.build.finalName}.jar&quot; "/>
     <property name="os.version" value="10.0"/>
+<<<<<<< HEAD
     <property name="user.home" value="C:\Users\Usuario"/>
     <property name="user.timezone" value="America/Montevideo"/>
+=======
+    <property name="user.home" value="C:\Users\usuario"/>
+    <property name="user.timezone" value="GMT-03:00"/>
+>>>>>>> f52dfe74363ff72b2d117967c72afa7de9c89457
     <property name="java.awt.printerjob" value="sun.awt.windows.WPrinterJob"/>
     <property name="java.specification.version" value="1.8"/>
     <property name="file.encoding" value="UTF-8"/>
@@ -61,5 +70,9 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
+<<<<<<< HEAD
   <testcase name="testToString" classname="com.barrios_irabedra.obligatorio.dominio.PreguntaCortaRespuestaTest" time="0.021"/>
+=======
+  <testcase name="testToString" classname="com.barrios_irabedra.obligatorio.dominio.PreguntaCortaRespuestaTest" time="0.004"/>
+>>>>>>> f52dfe74363ff72b2d117967c72afa7de9c89457
 </testsuite>

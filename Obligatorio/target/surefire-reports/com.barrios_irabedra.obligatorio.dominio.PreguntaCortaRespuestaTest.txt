@@ -1,4 +1,8 @@
 -------------------------------------------------------------------------------
 Test set: com.barrios_irabedra.obligatorio.dominio.PreguntaCortaRespuestaTest
 -------------------------------------------------------------------------------
+<<<<<<< HEAD
 Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.294 sec - in com.barrios_irabedra.obligatorio.dominio.PreguntaCortaRespuestaTest
+=======
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.087 sec - in com.barrios_irabedra.obligatorio.dominio.PreguntaCortaRespuestaTest
+>>>>>>> f52dfe74363ff72b2d117967c72afa7de9c89457
