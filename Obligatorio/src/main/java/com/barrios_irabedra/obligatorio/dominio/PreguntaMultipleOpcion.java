@@ -27,6 +27,7 @@ public class PreguntaMultipleOpcion extends Pregunta {
     
     @Override
     public String toString() {
-        return super.toString();
+        return this.getPregunta() + ". \n" + "Tienes " + this.getTiempo() + " segundos para responder. \n"
+                + "Y sus respuestas eran " + this.getRespuestas();
     }
 }

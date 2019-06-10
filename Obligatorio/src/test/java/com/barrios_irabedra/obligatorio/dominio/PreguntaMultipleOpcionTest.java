@@ -5,6 +5,7 @@
  */
 package com.barrios_irabedra.obligatorio.dominio;
 
+import java.util.HashMap;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -54,36 +55,40 @@ public class PreguntaMultipleOpcionTest {
         String unComentario = "De hecho, el caballo blanco de San Martín era blanco.";
         PreguntaMultipleOpcion instance = new PreguntaMultipleOpcion();
         instance.agregarComentarioRespuesta(unaRespuesta, unComentario);
-        assertTrue(instance.getComentario(unaRespuesta).equals(unComentario));
+        assertEquals(instance.getComentario(unaRespuesta),unComentario);
     }
 
     /**
      * Test of getComentario method, of class PreguntaMultipleOpcion.
      */
-    /*@Test
+    @Test
     public void testGetComentario() {
         System.out.println("getComentario");
-        String unaRespuesta = "";
+        String unaRespuesta = "Blanco";
         PreguntaMultipleOpcion instance = new PreguntaMultipleOpcion();
-        String expResult = "";
+        String expResult = "De hecho, el caballo blanco de San Martín era blanco.";
+        instance.agregarComentarioRespuesta(unaRespuesta, expResult);
         String result = instance.getComentario(unaRespuesta);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }*/
-
+    }
     /**
      * Test of toString method, of class PreguntaMultipleOpcion.
      */
-    /*@Test
+    @Test
     public void testToString() {
         System.out.println("toString");
-        PreguntaMultipleOpcion instance = new PreguntaMultipleOpcion();
-        String expResult = "";
+        HashMap<String, Boolean> map = new HashMap<>();
+        map.put("Blanco", Boolean.TRUE);
+        map.put("Negro", Boolean.FALSE);
+        map.put("Marroncito", Boolean.FALSE);
+        map.put("Barcino", Boolean.FALSE);
+        PreguntaMultipleOpcion instance = new PreguntaMultipleOpcion("¿De qué "
+                + "color era el caballo blanco de San Martín?", 30, map);
+        String expResult = "¿De qué color era el caballo blanco de San Martín?. \n"
+                + "Tienes 30 segundos para responder. \nY sus respuestas eran "
+                + "{Negro=false, Blanco=true, Marroncito=false, Barcino=false}";
         String result = instance.toString();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }*/
+    }
     
 }
