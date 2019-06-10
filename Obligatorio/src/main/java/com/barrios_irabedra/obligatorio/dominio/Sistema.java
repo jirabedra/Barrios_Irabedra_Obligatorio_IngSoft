@@ -223,21 +223,22 @@ public class Sistema {
     private void procesarLineaVF(String unaLinea) {
         Pregunta p = new PreguntaVF();
         StringTokenizer tk = new StringTokenizer(unaLinea, "::");
-        String pregunta = tk.nextToken();
+        String pregunta = tk.nextToken().trim();
         p.setPregunta(pregunta);
         String respuesta = tk.nextToken();
         respuesta = respuesta.trim();
         tk = new StringTokenizer(respuesta, "{");
-        respuesta = tk.nextToken();
-        respuesta = respuesta.toUpperCase().replace("}", "");
-        guardoRespuestasVF(p, respuesta);
+        respuesta = tk.nextToken().trim();
+        String valorVerdad = tk.nextToken();
+        valorVerdad = valorVerdad.toUpperCase();
+        guardoRespuestasVF(p, respuesta, valorVerdad);
         this.listaPreguntasVF.add((PreguntaVF) p);
     }
 
-    private void guardoRespuestasVF(Pregunta unaPregunta, String respuesta) {
-        if (respuesta.contains("F")) {
+    private void guardoRespuestasVF(Pregunta unaPregunta, String respuesta, String valorVerdad) {
+        if (valorVerdad.contains("F")) {
             unaPregunta.agregarRespuesta(respuesta, true);
-        } else if (respuesta.contains("T") || respuesta.contains("V")) {
+        } else if (valorVerdad.contains("T") || respuesta.contains("V")) {
             unaPregunta.agregarRespuesta(respuesta, false);
         } else {
             System.err.println("No hay ni Verdadero ni Falso");
