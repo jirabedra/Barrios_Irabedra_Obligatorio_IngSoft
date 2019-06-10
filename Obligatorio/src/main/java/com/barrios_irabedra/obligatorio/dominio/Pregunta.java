@@ -35,6 +35,10 @@ public abstract class Pregunta {
         return this.respuestas.toString();
     }
     
+    public HashMap<String, Boolean> getMapaRespuestas(){
+        return this.respuestas;
+    }
+    
     //Constructor con params
     public Pregunta(String nombre, int tiempo, HashMap<String, Boolean> respuestas) {
         this.pregunta = nombre;

@@ -299,11 +299,11 @@ public class Sistema {
 
     public boolean veracidadRespuesta(Pregunta p, String respuesta, boolean valorDeVerdad) {
         if (p instanceof PreguntaVF) {
-            return veracidadVF(p, valorDeVerdad);
+            return veracidadVF((PreguntaVF) p, respuesta, valorDeVerdad);
         } else if (p instanceof PreguntaMultipleOpcion) {
-            return veracidadMultipleOpcion(p, respuesta, valorDeVerdad);
+            return veracidadMultipleOpcion((PreguntaMultipleOpcion) p, respuesta, valorDeVerdad);
         } else if (p instanceof PreguntaCortaRespuesta) {
-            return veracidadCortaRespuesta(p, respuesta, valorDeVerdad);
+            return veracidadCortaRespuesta((PreguntaCortaRespuesta) p, respuesta, valorDeVerdad);
         } else {
             System.err.print("No se pasó una pregunta valida");
             System.exit(1000101);
@@ -313,15 +313,18 @@ public class Sistema {
         return false;
     }
 
-    private boolean veracidadVF(Pregunta p, boolean valorDeVerdad) {
+    private boolean veracidadVF(PreguntaVF p, String respuesta, boolean valorDeVerdad) {
+        
         return false;
     }
 
-    private boolean veracidadMultipleOpcion(Pregunta p, String respuesta, boolean valorDeVerdad) {
+    private boolean veracidadMultipleOpcion(PreguntaMultipleOpcion p, String respuesta, boolean valorDeVerdad) {
+
         return false;
     }
 
-    private boolean veracidadCortaRespuesta(Pregunta p, String respuesta, boolean valorDeVerdad) {
+    private boolean veracidadCortaRespuesta(PreguntaCortaRespuesta p, String respuesta, boolean valorDeVerdad) {
+
         return false;
     }
 
