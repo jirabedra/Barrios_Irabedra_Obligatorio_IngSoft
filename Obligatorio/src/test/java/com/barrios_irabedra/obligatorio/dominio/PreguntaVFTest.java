@@ -17,47 +17,47 @@ import static org.junit.Assert.*;
  *
  * @author Usuario
  */
-public class PreguntaCortaRespuestaTest {
+public class PreguntaVFTest {
     
-    public PreguntaCortaRespuestaTest() {
-        assertNotNull(new PreguntaCortaRespuesta());
+    public PreguntaVFTest() {
+        assertNotNull(new PreguntaVF());
     }
     
     @BeforeClass
     public static void setUpClass() {
         System.out.println("Invocado antes de comenzar las pruebas en Pregunta"
-                + "CortaRespuesta.");
+                + "VF.");
     }
     
     @AfterClass
     public static void tearDownClass() {
         System.out.println("Invocado al finalizar todas las pruebas en Pregunta"
-                + "CortaRespuesta.");
+                + "VF.");
     }
     
     @Before
     public void setUp() {
-        System.out.println("Invocado al comenzar una prueba.");
+         System.out.println("Invocado al comenzar una prueba.");
     }
     
     @After
     public void tearDown() {
-        System.out.println("Invocado al finalizar una prueba.");
+         System.out.println("Invocado al finalizar una prueba.");
     }
 
     /**
-     * Test of toString method, of class PreguntaCortaRespuesta.
+     * Test of toString method, of class PreguntaVF.
      */
-    @org.junit.Test
+    @Test
     public void testToString() {
         System.out.println("toString");
         HashMap<String, Boolean> map = new HashMap<>();
-        map.put("Blanco", Boolean.TRUE);
-        PreguntaCortaRespuesta instance = new PreguntaCortaRespuesta("¿De qué "
-                + "color era el caballo blanco de San Martín?", 30, map);
-        String expResult = "¿De qué color era el caballo blanco de San Martín?. \n"
-                + "Tienes 30 segundos para responder. \nY sus respuesta correcta era "
-                + "{Blanco=true}";
+        map.put("True", Boolean.TRUE);
+        PreguntaVF instance = new PreguntaVF("El caballo"
+                + " blanco de San Martín era blanco", 30, map);
+        String expResult = "El caballo blanco de San Martín era blanco. \n"
+                + "Tienes 30 segundos para responder. \nY su respuesta correcta era "
+                + "{True=true}";
         String result = instance.toString();
         assertEquals(expResult, result);
     }

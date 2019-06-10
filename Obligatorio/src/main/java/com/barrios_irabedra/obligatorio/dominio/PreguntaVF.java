@@ -19,7 +19,8 @@ public class PreguntaVF extends Pregunta{
 
     @Override
     public String toString() {
-        return super.toString();
+         return this.getPregunta() + ". \n" + "Tienes " + this.getTiempo() + " segundos para responder. \n"
+                + "Y su respuesta correcta era " + this.getRespuestas();
     }
     
     

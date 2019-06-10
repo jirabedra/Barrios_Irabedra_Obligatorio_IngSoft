@@ -2,6 +2,7 @@ package com.barrios_irabedra.obligatorio;
 
 import com.barrios_irabedra.obligatorio.dominio.PreguntaCortaRespuesta;
 import com.barrios_irabedra.obligatorio.dominio.PreguntaMultipleOpcion;
+import com.barrios_irabedra.obligatorio.dominio.PreguntaVF;
 import com.barrios_irabedra.obligatorio.dominio.Sistema;
 import java.util.ArrayList;
 import java.util.HashMap;

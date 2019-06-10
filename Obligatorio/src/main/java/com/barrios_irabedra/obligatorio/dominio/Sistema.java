@@ -237,9 +237,9 @@ public class Sistema {
 
     private void guardoRespuestasVF(Pregunta unaPregunta, String respuesta, String valorVerdad) {
         if (valorVerdad.contains("F")) {
-            unaPregunta.agregarRespuesta(respuesta, true);
-        } else if (valorVerdad.contains("T") || respuesta.contains("V")) {
             unaPregunta.agregarRespuesta(respuesta, false);
+        } else if (valorVerdad.contains("T") || respuesta.contains("V")) {
+            unaPregunta.agregarRespuesta(respuesta, true);
         } else {
             System.err.println("No hay ni Verdadero ni Falso");
         }
