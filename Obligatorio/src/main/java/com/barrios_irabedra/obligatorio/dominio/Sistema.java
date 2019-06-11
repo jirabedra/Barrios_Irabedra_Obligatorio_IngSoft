@@ -23,7 +23,7 @@ public class Sistema {
     private List<PreguntaVF> listaPreguntasVF;
     private static Sistema instanciaSistema;
 
-    private Sistema() {
+    public Sistema() {
         this.listaPreguntasCortaRespuesta = new ArrayList<>();
         this.listaPreguntasMultipleOpcion = new ArrayList<>();
         this.listaPreguntasVF = new ArrayList<>();
