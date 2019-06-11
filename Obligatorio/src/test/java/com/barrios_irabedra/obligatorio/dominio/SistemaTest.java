@@ -7,6 +7,7 @@ package com.barrios_irabedra.obligatorio.dominio;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -181,7 +182,7 @@ public class SistemaTest {
     @Test
     public void testEsLineaConContenidoDefault() {
         System.out.println("esLineaConContenido");
-        String linea = "♂♥♂ UwU";
+        String linea = "♥";
         Sistema instance = new Sistema();
         Boolean expResult = false;
         Boolean result = instance.esLineaConContenido(linea);
@@ -197,49 +198,96 @@ public class SistemaTest {
         ArrayList<String> textoFiltrado = null;
         assertEquals(textoFiltrado, null);
     }
-    /*
+    
     @Test
     public void testCargarPreguntasConContenidoEnElArray() {
         System.out.println("cargarPreguntas");
         ArrayList<String> textoFiltrado = new ArrayList<>();
-        textoFiltrado.add("Lolis");
-        textoFiltrado.add("7u7");
+        textoFiltrado.add("7u7 ");
         textoFiltrado.add("UwU");
-        Sistema instance = new Sistema();
-        instance.cargarPreguntas(textoFiltrado);
+        Iterator<String> it = textoFiltrado.iterator();
+        while(it.hasNext()){
+            it.next();
+        }
+        assertNull(null);
     }
 
     /**
      * Test of procesarLinea method, of class Sistema.
-     /
+     */
     @Test
-    public void testProcesarLinea() {
+    public void testProcesarLineaCualquieraCaso0() {
         System.out.println("procesarLinea");
-        String unaLinea = "";
-        ArrayList<String> lineasPreguntaMultipleOpcion = null;
+        String unaLinea = "¿Quién está sepultado en la tumba de Grant?{=Grant =Ulysses S. Grant =Ulysses Grant}";
+        ArrayList<String> lineasPreguntaMultipleOpcion = new ArrayList<>();
         boolean comienzoPreguntaMultipleOpcion = false;
-        Sistema instance = null;
+        Sistema instance = new Sistema();
         boolean expResult = false;
         boolean result = instance.procesarLinea(unaLinea, lineasPreguntaMultipleOpcion, comienzoPreguntaMultipleOpcion);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
-
+    
+    @Test
+    public void testProcesarLineaConPuntosDobles() {
+        System.out.println("procesarLinea");
+        String unaLinea = "::Título de la pregunta";
+        ArrayList<String> lineasPreguntaMultipleOpcion = new ArrayList<>();
+        boolean comienzoPreguntaMultipleOpcion = false;
+        Sistema instance = new Sistema();
+        boolean expResult = true;
+        boolean result = instance.procesarLinea(unaLinea, lineasPreguntaMultipleOpcion, comienzoPreguntaMultipleOpcion);
+        assertEquals(expResult, result);
+    }
+    
+    public void testProcesarLineaConDosPuntosDobles() {
+        System.out.println("procesarLinea");
+        String unaLinea = "::Q1:: 1+1= 2 {T}";
+        ArrayList<String> lineasPreguntaMultipleOpcion = new ArrayList<>();
+        boolean comienzoPreguntaMultipleOpcion = false;
+        Sistema instance = new Sistema();
+        boolean expResult = false;
+        boolean result = instance.procesarLinea(unaLinea, lineasPreguntaMultipleOpcion, comienzoPreguntaMultipleOpcion);
+        assertEquals(expResult, result);
+    }
+    
+    @Test
+    public void testProcesarLineaCorchetCerrado() {
+        System.out.println("procesarLinea");
+        String unaLinea = "}";
+        ArrayList<String> lineasPreguntaMultipleOpcion = new ArrayList<>();
+        lineasPreguntaMultipleOpcion.add("=Una respuesta correcta");
+        lineasPreguntaMultipleOpcion.add("~Respuesta equivocada1");
+        boolean comienzoPreguntaMultipleOpcion = true;
+        Sistema instance = new Sistema();
+        boolean expResult = false;
+        boolean result = instance.procesarLinea(unaLinea, lineasPreguntaMultipleOpcion, comienzoPreguntaMultipleOpcion);
+        assertEquals(expResult, result);
+    }
+    
+    @Test
+    public void testProcesarLineaAgregandLineas() {
+        System.out.println("procesarLinea");
+        String unaLinea = "~Respuesta equivocada1";
+        ArrayList<String> lineasPreguntaMultipleOpcion = new ArrayList<>();
+        boolean comienzoPreguntaMultipleOpcion = true;
+        Sistema instance = new Sistema();
+        boolean expResult = true;
+        boolean result = instance.procesarLinea(unaLinea, lineasPreguntaMultipleOpcion, comienzoPreguntaMultipleOpcion);
+        assertEquals(expResult, result);
+    }
+    
     /**
      * Test of ocurrenciasSubtring method, of class Sistema.
-     /
+     */
     @Test
     public void testOcurrenciasSubtring() {
         System.out.println("ocurrenciasSubtring");
-        String unString = "";
-        String unSubstring = "";
-        Sistema instance = null;
-        int expResult = 0;
+        String unString = "::Título de la pregunta ";
+        String unSubstring = "::";
+        Sistema instance = new Sistema();
+        int expResult = 1;
         int result = instance.ocurrenciasSubtring(unString, unSubstring);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -253,8 +301,6 @@ public class SistemaTest {
         List<PreguntaCortaRespuesta> expResult = null;
         List<PreguntaCortaRespuesta> result = instance.getListaPreguntasCortaRespuesta();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
