@@ -67,15 +67,15 @@
   <testcase name="testEsLineaConContenidoDosPuntos" classname="com.barrios_irabedra.obligatorio.dominio.SistemaTest" time="0"/>
   <testcase name="testProcesarLineaAgregandLineas" classname="com.barrios_irabedra.obligatorio.dominio.SistemaTest" time="0"/>
   <testcase name="testProcesarLineaConPuntosDobles" classname="com.barrios_irabedra.obligatorio.dominio.SistemaTest" time="0"/>
-  <testcase name="testProcesarLineaCorchetCerrado" classname="com.barrios_irabedra.obligatorio.dominio.SistemaTest" time="0"/>
+  <testcase name="testProcesarLineaCorchetCerrado" classname="com.barrios_irabedra.obligatorio.dominio.SistemaTest" time="0.001"/>
   <testcase name="testEsLineaConContenidoBarra" classname="com.barrios_irabedra.obligatorio.dominio.SistemaTest" time="0"/>
-  <testcase name="testEsLineaConContenidoIgual" classname="com.barrios_irabedra.obligatorio.dominio.SistemaTest" time="0.001"/>
+  <testcase name="testEsLineaConContenidoIgual" classname="com.barrios_irabedra.obligatorio.dominio.SistemaTest" time="0"/>
   <testcase name="testEsLineaConContenidoVacia" classname="com.barrios_irabedra.obligatorio.dominio.SistemaTest" time="0"/>
   <testcase name="testEsLineaConContenidoVirgulilla" classname="com.barrios_irabedra.obligatorio.dominio.SistemaTest" time="0"/>
   <testcase name="testEsLineaConContenidoDefault" classname="com.barrios_irabedra.obligatorio.dominio.SistemaTest" time="0"/>
   <testcase name="testEsLineaConContenidosSignoDePreguntaInvertido" classname="com.barrios_irabedra.obligatorio.dominio.SistemaTest" time="0"/>
-  <testcase name="testCargarPreguntasConContenidoEnElArray" classname="com.barrios_irabedra.obligatorio.dominio.SistemaTest" time="0"/>
+  <testcase name="testCargarPreguntasConContenidoEnElArray" classname="com.barrios_irabedra.obligatorio.dominio.SistemaTest" time="0.001"/>
   <testcase name="testEsLineaConContenidoNumeral" classname="com.barrios_irabedra.obligatorio.dominio.SistemaTest" time="0"/>
-  <testcase name="testGetInstance" classname="com.barrios_irabedra.obligatorio.dominio.SistemaTest" time="0.001"/>
+  <testcase name="testGetInstance" classname="com.barrios_irabedra.obligatorio.dominio.SistemaTest" time="0"/>
   <testcase name="testOcurrenciasSubtring" classname="com.barrios_irabedra.obligatorio.dominio.SistemaTest" time="0"/>
 </testsuite>

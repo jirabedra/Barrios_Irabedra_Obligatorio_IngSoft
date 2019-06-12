@@ -11,8 +11,11 @@ import java.net.URL;
 import java.nio.file.Files;
 import java.util.*;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.DragEvent;
 import javafx.scene.input.TransferMode;
 import javafx.scene.layout.Pane;
@@ -22,17 +25,23 @@ import javafx.scene.layout.Pane;
  *
  * @author Usuario
  */
-public class VentanaDragAndDropController implements Initializable {
+public class VentanaPrincipalController implements Initializable {
 
     @FXML
     private Pane paneDragAndDrop;
+    @FXML
+    private Button btnComenzar;
+    @FXML
+    private Pane panelJuego;
+    @FXML
+    private Pane panelTextoDragAndDrop;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        panelJuego.setVisible(false);
     }
 
     @FXML
@@ -50,6 +59,14 @@ public class VentanaDragAndDropController implements Initializable {
         System.out.println(Sistema.getInstance().getListaPreguntasCortaRespuesta());
         System.out.println(Sistema.getInstance().getListaPreguntasVF());
         System.out.println(Sistema.getInstance().getListaPreguntasMultipleOpcion());
+    }
+
+    @FXML
+    private void actionBtnComenzar(ActionEvent event) {
+        paneDragAndDrop.setVisible(false);
+        btnComenzar.setVisible(false);
+        panelTextoDragAndDrop.setVisible(false);
+        panelJuego.setVisible(true);
     }
 
     

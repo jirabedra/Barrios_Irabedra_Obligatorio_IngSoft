@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="715.0" prefWidth="1077.0" styleClass="bodybg" stylesheets="@../styles/styleVentanaPrincipal.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.barrios_irabedra.obligatorio.controladores.VentanaPrincipalController">
+   <children>
+      <Pane fx:id="panelJuego" layoutX="42.0" layoutY="43.0" prefHeight="600.0" prefWidth="996.0" styleClass="bodybg" stylesheets="@../styles/stylePanelJuego.css" />
+      <Pane fx:id="paneDragAndDrop" layoutX="340.0" layoutY="143.0" onDragDropped="#handleDrop" onDragOver="#handleDragOver" prefHeight="400.0" prefWidth="400.0" styleClass="bodybg" stylesheets="@../styles/stylesPaneDragAndDrop.css" visible="false" />
+      <Button fx:id="btnComenzar" layoutX="470.0" layoutY="585.0" mnemonicParsing="false" onAction="#actionBtnComenzar" prefHeight="47.0" prefWidth="139.0" styleClass="bodybg" stylesheets="@../styles/stylebtnComenzar.css" text="¡Comenzar!" textFill="#61eaff" visible="false">
+         <font>
+            <Font name="Segoe UI Light" size="20.0" />
+         </font>
+      </Button>
+      <Pane fx:id="panelTextoDragAndDrop" layoutX="340.0" layoutY="62.0" prefHeight="38.0" prefWidth="400.0" styleClass="bodybg" stylesheets="@../styles/stylebtnComenzar.css" visible="false">
+         <children>
+            <Text fill="#61eaff" fontSmoothingType="LCD" layoutX="16.0" layoutY="26.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Arrastrá todos los archivos que quieras" textAlignment="CENTER" wrappingWidth="367.13671875">
+               <font>
+                  <Font name="Segoe UI Light" size="18.0" />
+               </font>
+            </Text>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>
