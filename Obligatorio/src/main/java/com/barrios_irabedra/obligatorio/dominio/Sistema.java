@@ -3,6 +3,7 @@ package com.barrios_irabedra.obligatorio.dominio;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Scanner;
@@ -38,12 +39,14 @@ public class Sistema {
 
     /**
      * Procesa los archivos
+     *
      * @param files son los archivos que se arrastran y dejan en
      * la venta
      */
     public void recibirArchivos(List<File> files) {
         filtroTXT(files);
         cargoArchivos(files);
+        iniciarQuiz();
     }
 
     /**
@@ -299,11 +302,13 @@ public class Sistema {
     }
 
     /**
-     * Devuelve si la respuesta dada por el usuario esta bien o mal
+     * Devuelve si la respuesta dada por el usuario esta bien o
+     * mal
+     *
      * @param p Pregunta en la que se esta evaluando
      * @param respuesta Respuesta dada por el usuario
      * @param valorDeVerdad valor de verdad de la respuesta dada
-     * @return 
+     * @return
      */
     public boolean veracidadRespuesta(Pregunta p, String respuesta, boolean valorDeVerdad) {
         if (p.getMapaRespuestas().get(respuesta) != null) {
@@ -312,6 +317,10 @@ public class Sistema {
             return false;
         }
     }
-    
-    
+
+    public void iniciarQuiz() {
+        HashMap<Pregunta, String> respuestasSeleccionadas = new HashMap<>();
+        
+    }
+
 }
