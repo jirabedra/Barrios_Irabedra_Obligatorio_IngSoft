@@ -22,12 +22,14 @@ public class Sistema {
     private List<PreguntaCortaRespuesta> listaPreguntasCortaRespuesta;
     private List<PreguntaMultipleOpcion> listaPreguntasMultipleOpcion;
     private List<PreguntaVF> listaPreguntasVF;
+    private HashMap<Pregunta, String> respuestasSeleccionadas;
     private static Sistema instanciaSistema;
 
     public Sistema() {
         this.listaPreguntasCortaRespuesta = new ArrayList<>();
         this.listaPreguntasMultipleOpcion = new ArrayList<>();
         this.listaPreguntasVF = new ArrayList<>();
+        this.respuestasSeleccionadas = new HashMap<>();
     }
 
     public static Sistema getInstance() {
@@ -46,7 +48,6 @@ public class Sistema {
     public void recibirArchivos(List<File> files) {
         filtroTXT(files);
         cargoArchivos(files);
-        iniciarQuiz();
     }
 
     /**
@@ -318,9 +319,10 @@ public class Sistema {
         }
     }
 
-    public void iniciarQuiz() {
-        HashMap<Pregunta, String> respuestasSeleccionadas = new HashMap<>();
+    public void procesarRespuestaSeleccionada() {
         
     }
+    
+    
 
 }

@@ -42,6 +42,8 @@ public class VentanaPrincipalController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         panelJuego.setVisible(false);
+        paneDragAndDrop.setVisible(true);
+        btnComenzar.setVisible(true);
     }
 
     @FXML
