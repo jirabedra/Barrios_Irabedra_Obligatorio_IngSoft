@@ -13,6 +13,7 @@ import java.nio.file.Files;
 import java.util.*;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
@@ -43,6 +44,8 @@ public class VentanaPrincipalController implements Initializable {
     private Pane panelTextoDragAndDrop;
     @FXML
     private GridPane gridPaneCaminosPreguntas;
+    @FXML
+    private Button btn70;
 
     /**
      * Initializes the controller class.
@@ -101,9 +104,58 @@ public class VentanaPrincipalController implements Initializable {
     private void asignoPreguntaBoton() {
         int cantP = Sistema.getInstance().cantidadTotalPreguntas();
         ArrayList<Pregunta> listaPreguntas = Sistema.getInstance().getListaTodasLasPreguntas();
-        for (int i = 0; cantP >= 0; i++) {
-            
+        Iterator it = listaPreguntas.iterator();
+        for (int i = 7; i >= 0 && (cantP >= 0) && it.hasNext(); i--) {
+            this.matrizBotones[i][0].setUserData(it.next());
+            this.matrizBotones[i][0].setStyle("-fx-background-color: #000000");
+            cantP--;
+        }
+        for (int i = 1; i < 8 && cantP >= 0 && it.hasNext(); i++) {
+            this.matrizBotones[0][i].setUserData(it.next());
+            this.matrizBotones[0][i].setStyle("-fx-background-color: #000000");
+            cantP--;
+        }
+        for (int i = 1; i < 8 && cantP >= 0 && it.hasNext(); i++) {
+            this.matrizBotones[i][7].setUserData(it.next());
+            this.matrizBotones[i][7].setStyle("-fx-background-color: #000000");
+            cantP--;
+        }
+        for (int i = 6; i < 1 && cantP >= 0 && it.hasNext(); i--) {
+            this.matrizBotones[7][i].setUserData(it.next());
+            this.matrizBotones[7][i].setStyle("-fx-background-color: #000000");
+            cantP--;
+        }
+        for (int i = 6; i < 1 && cantP >= 0 && it.hasNext(); i--) {
+            this.matrizBotones[i][2].setUserData(it.next());
+            this.matrizBotones[i][2].setStyle("-fx-background-color: #000000");
+            cantP--;
+        }
+        for (int i = 3; i < 6 && cantP >= 0 && it.hasNext(); i++) {
+            this.matrizBotones[2][i].setUserData(it.next());
+            this.matrizBotones[2][i].setStyle("-fx-background-color: #000000");
+            cantP--;
+        }
+        for (int i = 3; i < 5 && cantP >= 0 && it.hasNext(); i++) {
+            this.matrizBotones[i][5].setUserData(it.next());
+            this.matrizBotones[i][5].setStyle("-fx-background-color: #000000");
+            cantP--;
+        }
+        if (cantP >= 0 && it.hasNext()) {
+            this.matrizBotones[4][4].setUserData(it.next());
+            this.matrizBotones[4][4].setStyle("-fx-background-color: #000000");
+            cantP--;
         }
 
+        activar(matrizBotones[0][0]);
+    }
+
+    private void activar(Button b) {
+        b.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                System.out.println("Hello World!");
+            }
+
+        });
     }
 }

@@ -3,6 +3,7 @@ com\barrios_irabedra\obligatorio\dominio\PreguntaVF.class
 com\barrios_irabedra\obligatorio\dominio\PreguntaCortaRespuesta.class
 com\barrios_irabedra\obligatorio\controladores\VentanaPrincipalController.class
 com\barrios_irabedra\obligatorio\FXMLController.class
+com\barrios_irabedra\obligatorio\controladores\VentanaPrincipalController$1.class
 com\barrios_irabedra\obligatorio\dominio\PreguntaMultipleOpcion.class
 com\barrios_irabedra\obligatorio\dominio\Sistema.class
 com\barrios_irabedra\obligatorio\MainApp.class

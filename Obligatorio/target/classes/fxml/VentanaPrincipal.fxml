@@ -9,12 +9,12 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="715.0" prefWidth="1077.0" styleClass="bodybg" stylesheets="@../styles/styleVentanaPrincipal.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.barrios_irabedra.obligatorio.controladores.VentanaPrincipalController">
+<AnchorPane id="AnchorPane" prefHeight="800.0" prefWidth="1100.0" styleClass="bodybg" stylesheets="@../styles/styleVentanaPrincipal.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.barrios_irabedra.obligatorio.controladores.VentanaPrincipalController">
    <children>
-      <Pane fx:id="panelJuego" layoutX="42.0" layoutY="43.0" prefHeight="600.0" prefWidth="996.0" styleClass="bodybg" stylesheets="@../styles/stylePanelJuego.css">
+      <Pane fx:id="panelJuego" layoutX="50.0" layoutY="50.0" prefHeight="700.0" prefWidth="1000.0" styleClass="bodybg" stylesheets="@../styles/stylePanelJuego.css">
          <children>
-            <Pane layoutX="858.0" prefHeight="600.0" prefWidth="138.0" style="-fx-background-color: #03787f;" />
-            <GridPane fx:id="gridPaneCaminosPreguntas" layoutX="159.0" layoutY="30.0" prefHeight="540.0" prefWidth="540.0">
+            <Pane layoutX="862.0" prefHeight="700.0" prefWidth="138.0" style="-fx-background-color: #03787f;" />
+            <GridPane fx:id="gridPaneCaminosPreguntas" layoutX="131.0" layoutY="50.0" prefHeight="540.0" prefWidth="540.0">
               <columnConstraints>
                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
