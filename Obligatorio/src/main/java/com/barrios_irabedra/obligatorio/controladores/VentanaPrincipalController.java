@@ -14,10 +14,12 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.DragEvent;
 import javafx.scene.input.TransferMode;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 
 /**
@@ -27,6 +29,7 @@ import javafx.scene.layout.Pane;
  */
 public class VentanaPrincipalController implements Initializable {
 
+    Button[][] matrizBotones = new Button[8][8];
     @FXML
     private Pane paneDragAndDrop;
     @FXML
@@ -35,6 +38,8 @@ public class VentanaPrincipalController implements Initializable {
     private Pane panelJuego;
     @FXML
     private Pane panelTextoDragAndDrop;
+    @FXML
+    private GridPane gridPaneCaminosPreguntas;
 
     /**
      * Initializes the controller class.
@@ -65,16 +70,28 @@ public class VentanaPrincipalController implements Initializable {
 
     @FXML
     private void actionBtnComenzar(ActionEvent event) {
+        crearMatrizBotones();
         paneDragAndDrop.setVisible(false);
         btnComenzar.setVisible(false);
         panelTextoDragAndDrop.setVisible(false);
         panelJuego.setVisible(true);
+
     }
 
-    
+    public void crearMatrizBotones() {
+        int fil;
+        int col;
+        try {
+            for (Node child : this.gridPaneCaminosPreguntas.getChildren()) {
 
-    
+                fil = this.gridPaneCaminosPreguntas.getRowIndex(child);
 
-    
+                col = this.gridPaneCaminosPreguntas.getColumnIndex(child);
+                this.matrizBotones[col][fil] = (Button) child;
+            }
+        }catch(Exception e){
+            
+        }
+    }
 
 }

@@ -14,7 +14,7 @@
       <Pane fx:id="panelJuego" layoutX="42.0" layoutY="43.0" prefHeight="600.0" prefWidth="996.0" styleClass="bodybg" stylesheets="@../styles/stylePanelJuego.css">
          <children>
             <Pane layoutX="858.0" prefHeight="600.0" prefWidth="138.0" style="-fx-background-color: #03787f;" />
-            <GridPane gridLinesVisible="true" layoutX="159.0" layoutY="30.0" prefHeight="540.0" prefWidth="540.0">
+            <GridPane fx:id="gridPaneCaminosPreguntas" gridLinesVisible="true" layoutX="159.0" layoutY="30.0" prefHeight="540.0" prefWidth="540.0">
               <columnConstraints>
                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
