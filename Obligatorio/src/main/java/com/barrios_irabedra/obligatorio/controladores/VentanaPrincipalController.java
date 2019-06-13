@@ -5,6 +5,7 @@
  */
 package com.barrios_irabedra.obligatorio.controladores;
 
+import com.barrios_irabedra.obligatorio.dominio.Pregunta;
 import com.barrios_irabedra.obligatorio.dominio.Sistema;
 import java.io.File;
 import java.net.URL;
@@ -30,6 +31,8 @@ import javafx.scene.layout.Pane;
 public class VentanaPrincipalController implements Initializable {
 
     Button[][] matrizBotones = new Button[8][8];
+    Button b = new Button();
+
     @FXML
     private Pane paneDragAndDrop;
     @FXML
@@ -71,6 +74,7 @@ public class VentanaPrincipalController implements Initializable {
     @FXML
     private void actionBtnComenzar(ActionEvent event) {
         crearMatrizBotones();
+        asignoPreguntaBoton();
         paneDragAndDrop.setVisible(false);
         btnComenzar.setVisible(false);
         panelTextoDragAndDrop.setVisible(false);
@@ -78,20 +82,28 @@ public class VentanaPrincipalController implements Initializable {
 
     }
 
-    public void crearMatrizBotones() {
-        int fil;
-        int col;
-        try {
-            for (Node child : this.gridPaneCaminosPreguntas.getChildren()) {
-
-                fil = this.gridPaneCaminosPreguntas.getRowIndex(child);
-
-                col = this.gridPaneCaminosPreguntas.getColumnIndex(child);
-                this.matrizBotones[col][fil] = (Button) child;
+    private void crearMatrizBotones() {
+        Integer fil;
+        Integer col;
+        for (Node child : this.gridPaneCaminosPreguntas.getChildren()) {
+            fil = this.gridPaneCaminosPreguntas.getRowIndex(child);
+            col = this.gridPaneCaminosPreguntas.getColumnIndex(child);
+            int f = fil == null ? 0 : fil;
+            int c = col == null ? 0 : col;
+            if (fil != null && col != null) {
+                if (f == fil && c == col) {
+                    this.matrizBotones[fil - 1][col - 1] = (Button) child;
+                }
             }
-        }catch(Exception e){
-            
         }
     }
 
+    private void asignoPreguntaBoton() {
+        int cantP = Sistema.getInstance().cantidadTotalPreguntas();
+        ArrayList<Pregunta> listaPreguntas = Sistema.getInstance().getListaTodasLasPreguntas();
+        for (int i = 0; cantP >= 0; i++) {
+            
+        }
+
+    }
 }

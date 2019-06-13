@@ -3,6 +3,7 @@ package com.barrios_irabedra.obligatorio.dominio;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -319,10 +320,39 @@ public class Sistema {
         }
     }
 
-    public void procesarRespuestaSeleccionada() {
-        
+    public int cantidadTotalPreguntas() {
+        int suma = this.getListaPreguntasCortaRespuesta().size();
+        suma += this.getListaPreguntasMultipleOpcion().size();
+        suma += this.getListaPreguntasVF().size();
+        return suma;
     }
-    
-    
+
+    public ArrayList<Pregunta> getListaTodasLasPreguntas() {
+        ArrayList<Pregunta> listaDeTodasLasPreguntas = new ArrayList<>();
+        listaDeTodasLasPreguntas = agregarTodasLasPreguntas();
+
+        return listaDeTodasLasPreguntas;
+    }
+
+    private ArrayList<Pregunta> agregarTodasLasPreguntas() {
+        ArrayList<Pregunta> listaDePreguntas = new ArrayList<>();
+        Iterator it = this.getListaPreguntasCortaRespuesta().iterator();
+        while(it.hasNext()){
+           listaDePreguntas.add((Pregunta)it.next());
+        }
+        it = this.getListaPreguntasVF().iterator();
+        while(it.hasNext()){
+           listaDePreguntas.add((Pregunta)it.next());
+        }
+        it = this.getListaPreguntasMultipleOpcion().iterator();
+        while(it.hasNext()){
+           listaDePreguntas.add((Pregunta)it.next());
+        }
+        return listaDePreguntas;
+    }
+
+    public void procesarRespuestaSeleccionada() {
+
+    }
 
 }
