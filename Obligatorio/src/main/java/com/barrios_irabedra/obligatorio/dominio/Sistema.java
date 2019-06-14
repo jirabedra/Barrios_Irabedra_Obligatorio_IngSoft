@@ -8,6 +8,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Scanner;
+import java.util.Set;
 import java.util.StringTokenizer;
 
 /**
@@ -228,22 +229,24 @@ public class Sistema {
     private void procesarLineaVF(String unaLinea) {
         Pregunta p = new PreguntaVF();
         StringTokenizer tk = new StringTokenizer(unaLinea, "::");
-        String pregunta = tk.nextToken().trim();
+        String pregunta = tk.nextToken();
+        pregunta = tk.nextToken();
+        pregunta = pregunta.trim();
+        tk = new StringTokenizer(pregunta, "{");
+        pregunta = tk.nextToken().trim();
         p.setPregunta(pregunta);
-        String respuesta = tk.nextToken();
-        respuesta = respuesta.trim();
-        tk = new StringTokenizer(respuesta, "{");
-        respuesta = tk.nextToken().trim();
         String valorVerdad = tk.nextToken();
         valorVerdad = valorVerdad.toUpperCase();
-        guardoRespuestasVF(p, respuesta, valorVerdad);
+        guardoRespuestasVF(p, pregunta, valorVerdad);
         this.listaPreguntasVF.add((PreguntaVF) p);
     }
 
     private void guardoRespuestasVF(Pregunta unaPregunta, String respuesta, String valorVerdad) {
         if (valorVerdad.contains("F")) {
+            respuesta = "false";
             unaPregunta.agregarRespuesta(respuesta, true);
         } else if (valorVerdad.contains("T") || respuesta.contains("V")) {
+            respuesta = "true";
             unaPregunta.agregarRespuesta(respuesta, false);
         } else {
             System.err.println("No hay ni Verdadero ni Falso");
@@ -303,6 +306,14 @@ public class Sistema {
         return listaPreguntasVF;
     }
 
+    public HashMap<Pregunta, String> getRespuestasSeleccionadas() {
+        return respuestasSeleccionadas;
+    }
+
+    public void agregarRespuestaSeleccionada(Pregunta p, String respuestas) {
+        this.respuestasSeleccionadas.put(p, respuestas);
+    }
+
     /**
      * Devuelve si la respuesta dada por el usuario esta bien o
      * mal
@@ -313,6 +324,7 @@ public class Sistema {
      * @return
      */
     public boolean veracidadRespuesta(Pregunta p, String respuesta, boolean valorDeVerdad) {
+        respuestasSeleccionadas.put(p, respuesta);
         if (p.getMapaRespuestas().get(respuesta) != null) {
             return (p.getMapaRespuestas().get(respuesta) == valorDeVerdad);
         } else {
@@ -337,22 +349,31 @@ public class Sistema {
     private ArrayList<Pregunta> agregarTodasLasPreguntas() {
         ArrayList<Pregunta> listaDePreguntas = new ArrayList<>();
         Iterator it = this.getListaPreguntasCortaRespuesta().iterator();
-        while(it.hasNext()){
-           listaDePreguntas.add((Pregunta)it.next());
+        while (it.hasNext()) {
+            listaDePreguntas.add((Pregunta) it.next());
         }
         it = this.getListaPreguntasVF().iterator();
-        while(it.hasNext()){
-           listaDePreguntas.add((Pregunta)it.next());
+        while (it.hasNext()) {
+            listaDePreguntas.add((Pregunta) it.next());
         }
         it = this.getListaPreguntasMultipleOpcion().iterator();
-        while(it.hasNext()){
-           listaDePreguntas.add((Pregunta)it.next());
+        while (it.hasNext()) {
+            listaDePreguntas.add((Pregunta) it.next());
         }
         return listaDePreguntas;
     }
 
-    public void procesarRespuestaSeleccionada() {
-
+    public boolean procesarRespuestaSeleccionada(Pregunta p, String idBtn) {
+        boolean valorVerdad = false;
+        String respuesta = "";
+        if (p instanceof PreguntaVF) {
+            if (valorVerdad = idBtn.toUpperCase().contains("V")) {
+                respuesta = "true";
+            }else{
+                respuesta = "false";
+            }
+        }
+        return veracidadRespuesta(p, respuesta, valorVerdad);
     }
 
 }

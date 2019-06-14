@@ -5,8 +5,7 @@
  */
 package com.barrios_irabedra.obligatorio.controladores;
 
-import com.barrios_irabedra.obligatorio.dominio.Pregunta;
-import com.barrios_irabedra.obligatorio.dominio.Sistema;
+import com.barrios_irabedra.obligatorio.dominio.*;
 import java.io.File;
 import java.net.URL;
 import java.nio.file.Files;
@@ -23,6 +22,7 @@ import javafx.scene.input.DragEvent;
 import javafx.scene.input.TransferMode;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.text.Text;
 
 /**
  * FXML Controller class
@@ -45,7 +45,13 @@ public class VentanaPrincipalController implements Initializable {
     @FXML
     private GridPane gridPaneCaminosPreguntas;
     @FXML
-    private Button btn70;
+    private Text textPreguntaVF;
+    @FXML
+    private Button btnRespuestaVerdadera;
+    @FXML
+    private Button btnRespuestaFalsa;
+    @FXML
+    private Pane panePreguntaVF;
 
     /**
      * Initializes the controller class.
@@ -80,7 +86,9 @@ public class VentanaPrincipalController implements Initializable {
         asignoPreguntaBoton();
         paneDragAndDrop.setVisible(false);
         btnComenzar.setVisible(false);
+        panePreguntaVF.setVisible(false);
         panelTextoDragAndDrop.setVisible(false);
+        gridPaneCaminosPreguntas.setVisible(true);
         panelJuego.setVisible(true);
 
     }
@@ -103,59 +111,148 @@ public class VentanaPrincipalController implements Initializable {
 
     private void asignoPreguntaBoton() {
         int cantP = Sistema.getInstance().cantidadTotalPreguntas();
+        int contP = cantP;
+        int contador = 0;
         ArrayList<Pregunta> listaPreguntas = Sistema.getInstance().getListaTodasLasPreguntas();
         Iterator it = listaPreguntas.iterator();
         for (int i = 7; i >= 0 && (cantP >= 0) && it.hasNext(); i--) {
             this.matrizBotones[i][0].setUserData(it.next());
-            this.matrizBotones[i][0].setStyle("-fx-background-color: #000000");
+            activar(matrizBotones[i][0]);
+            contador++;
             cantP--;
         }
         for (int i = 1; i < 8 && cantP >= 0 && it.hasNext(); i++) {
             this.matrizBotones[0][i].setUserData(it.next());
-            this.matrizBotones[0][i].setStyle("-fx-background-color: #000000");
+            activar(matrizBotones[0][i]);
+            contador++;
             cantP--;
         }
         for (int i = 1; i < 8 && cantP >= 0 && it.hasNext(); i++) {
             this.matrizBotones[i][7].setUserData(it.next());
-            this.matrizBotones[i][7].setStyle("-fx-background-color: #000000");
+            activar(matrizBotones[i][7]);
+            contador++;
             cantP--;
         }
-        for (int i = 6; i < 1 && cantP >= 0 && it.hasNext(); i--) {
+        for (int i = 6; i > 1 && cantP >= 0 && it.hasNext(); i--) {
             this.matrizBotones[7][i].setUserData(it.next());
-            this.matrizBotones[7][i].setStyle("-fx-background-color: #000000");
+            activar(matrizBotones[7][i]);
+            contador++;
             cantP--;
         }
-        for (int i = 6; i < 1 && cantP >= 0 && it.hasNext(); i--) {
+        for (int i = 6; i > 1 && cantP >= 0 && it.hasNext(); i--) {
             this.matrizBotones[i][2].setUserData(it.next());
-            this.matrizBotones[i][2].setStyle("-fx-background-color: #000000");
+            activar(matrizBotones[i][2]);
+            contador++;
             cantP--;
         }
         for (int i = 3; i < 6 && cantP >= 0 && it.hasNext(); i++) {
             this.matrizBotones[2][i].setUserData(it.next());
-            this.matrizBotones[2][i].setStyle("-fx-background-color: #000000");
+            activar(matrizBotones[2][i]);
+            contador++;
             cantP--;
         }
-        for (int i = 3; i < 5 && cantP >= 0 && it.hasNext(); i++) {
+        for (int i = 3; i < 6 && cantP >= 0 && it.hasNext(); i++) {
             this.matrizBotones[i][5].setUserData(it.next());
-            this.matrizBotones[i][5].setStyle("-fx-background-color: #000000");
+            activar(matrizBotones[i][5]);
+            contador++;
             cantP--;
         }
         if (cantP >= 0 && it.hasNext()) {
-            this.matrizBotones[4][4].setUserData(it.next());
-            this.matrizBotones[4][4].setStyle("-fx-background-color: #000000");
+            this.matrizBotones[5][4].setUserData(it.next());
+            activar(matrizBotones[5][4]);
+            contador++;
             cantP--;
         }
-
-        activar(matrizBotones[0][0]);
+        if (cantP == 0) {
+            desactivarElRestoDeBotones(contador);
+        }
     }
 
-    private void activar(Button b) {
+    private void desactivarElRestoDeBotones(int contador) {
+        for (int i = 7; i >= 0; i--) {
+            if (contador == 0) {
+                matrizBotones[i][0].setStyle("-fx-background-color: #696969");
+                matrizBotones[i][0].setDisable(true);
+            } else {
+                contador--;
+            }
+        }
+        for (int i = 1; i < 8; i++) {
+            if (contador == 0) {
+                matrizBotones[0][i].setStyle("-fx-background-color: #696969");
+                matrizBotones[0][i].setDisable(true);
+            } else {
+                contador--;
+            }
+        }
+        for (int i = 1; i < 8; i++) {
+            if (contador == 0) {
+                matrizBotones[i][7].setStyle("-fx-background-color: #696969");
+                matrizBotones[i][7].setDisable(true);
+            } else {
+                contador--;
+            }
+        }
+        for (int i = 6; i > 1; i--) {
+            if (contador == 0) {
+                matrizBotones[7][i].setStyle("-fx-background-color: #696969");
+                matrizBotones[7][i].setDisable(true);
+            } else {
+                contador--;
+            }
+        }
+        for (int i = 6; i > 1; i--) {
+            if (contador == 0) {
+                matrizBotones[i][2].setStyle("-fx-background-color: #696969");
+                matrizBotones[i][2].setDisable(true);
+            } else {
+                contador--;
+            }
+        }
+        for (int i = 3; i < 6; i++) {
+            if (contador == 0) {
+                matrizBotones[2][i].setStyle("-fx-background-color: #696969");
+                matrizBotones[2][i].setDisable(true);
+            } else {
+                contador--;
+            }
+        }
+        for (int i = 3; i < 6; i++) {
+            if (contador == 0) {
+                matrizBotones[i][5].setStyle("-fx-background-color: #696969");
+                matrizBotones[i][5].setDisable(true);
+            } else {
+                contador--;
+            }
+        }
+        if (contador == 0) {
+            matrizBotones[5][4].setStyle("-fx-background-color: #696969");
+            matrizBotones[5][4].setDisable(true);
+        } else {
+            contador--;
+        }
+    }
+
+    private void activar(final Button b) {
         b.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                System.out.println("Hello World!");
-            }
+                Pregunta p = (Pregunta) b.getUserData();
+                if (p instanceof PreguntaVF) {
+                    gridPaneCaminosPreguntas.setVisible(false);
+                    panePreguntaVF.setVisible(true);
+                    textPreguntaVF.setText(p.getPregunta());
+                    if (Sistema.getInstance().procesarRespuestaSeleccionada(p, b.getId())) {
+                        b.setStyle("-fx-background-color: #01a8e2");
+                    } else {
+                        b.setStyle("-fx-background-color: #000f3f");
+                    }
+                } else if (p instanceof PreguntaCortaRespuesta) {
 
+                } else if (p instanceof PreguntaMultipleOpcion) {
+
+                }
+            }
         });
     }
 }
