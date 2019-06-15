@@ -324,7 +324,11 @@ public class Sistema {
     public boolean veracidadRespuesta(Pregunta p, String respuesta, boolean valorDeVerdad) {
         respuestasSeleccionadas.put(p, respuesta);
         if (p.getMapaRespuestas().get(respuesta) != null) {
-            return (p.getMapaRespuestas().get(respuesta) == valorDeVerdad);
+            if (p instanceof PreguntaVF) {
+                return (p.getMapaRespuestas().get(respuesta) == valorDeVerdad);
+            } else {
+                return p.getMapaRespuestas().get(respuesta);
+            }
         } else {
             return false;
         }
@@ -361,19 +365,21 @@ public class Sistema {
         return listaDePreguntas;
     }
 
-    public boolean procesarRespuestaSeleccionada(Pregunta p, String idBtn) {
+    public boolean procesarRespuestaSeleccionada(Pregunta p, String respuestaSeleccionada) {
         boolean valorVerdad = false;
         String respuesta = "";
         if (p instanceof PreguntaVF) {
-            respuesta = idBtn.toUpperCase();
+            respuesta = respuestaSeleccionada.toUpperCase();
             valorVerdad = respuesta.contains("V");
             if (valorVerdad) {
                 respuesta = "true";
-            }else{
+            } else {
                 respuesta = "false";
             }
+        } else if (p instanceof PreguntaMultipleOpcion) {
+            respuesta = respuestaSeleccionada;
         }
+
         return veracidadRespuesta(p, respuesta, valorVerdad);
     }
-
 }

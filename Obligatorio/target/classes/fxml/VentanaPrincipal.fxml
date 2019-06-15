@@ -104,7 +104,7 @@
                   <Button mnemonicParsing="false" prefHeight="108.0" prefWidth="108.0" GridPane.columnIndex="8" GridPane.rowIndex="8" />
                </children>
             </GridPane>
-            <Pane fx:id="panePreguntaVF" layoutY="-3.0" prefHeight="706.0" prefWidth="858.0">
+            <Pane fx:id="panePreguntaVF" layoutY="-3.0" prefHeight="706.0" prefWidth="858.0" visible="false">
                <children>
                   <Pane layoutX="58.0" layoutY="65.0" prefHeight="60.0" prefWidth="743.0">
                      <children>
@@ -115,8 +115,47 @@
                         </Text>
                      </children>
                   </Pane>
-                  <Button fx:id="btnRespuestaVerdadera" layoutX="244.0" layoutY="444.0" mnemonicParsing="false" onAction="#onActionRespuestaV" prefHeight="69.0" prefWidth="69.0" text="V" />
-                  <Button fx:id="btnRespuestaFalsa" layoutX="519.0" layoutY="437.0" mnemonicParsing="false" onAction="#onActionRespuestaF" prefHeight="69.0" prefWidth="69.0" text="F" />
+                  <Button fx:id="btnRespuestaVerdadera" layoutX="44.0" layoutY="353.0" mnemonicParsing="false" onAction="#onActionRespuestaV" prefHeight="77.0" prefWidth="743.0" styleClass="bodybg" stylesheets="@../styles/styleBtnRespuestas.css" text="Verdadero" textFill="#61eaff">
+                     <font>
+                        <Font name="Segoe UI Light" size="26.0" />
+                     </font></Button>
+                  <Button fx:id="btnRespuestaFalsa" layoutX="44.0" layoutY="515.0" mnemonicParsing="false" onAction="#onActionRespuestaF" prefHeight="77.0" prefWidth="743.0" styleClass="bodybg" stylesheets="@../styles/styleBtnRespuestas.css" text="Falso" textFill="#61eaff">
+                     <font>
+                        <Font name="Segoe UI Light" size="26.0" />
+                     </font></Button>
+               </children>
+            </Pane>
+            <Pane fx:id="panePreguntaMo" layoutX="-2.0" layoutY="-4.0" prefHeight="706.0" prefWidth="858.0">
+               <children>
+                  <Pane layoutX="58.0" layoutY="55.0" prefHeight="47.0" prefWidth="743.0">
+                     <children>
+                        <Text fx:id="textPreguntaMo" fill="#61eaff" layoutX="18.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="706.13671875">
+                           <font>
+                              <Font name="Segoe UI Light" size="24.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </Pane>
+                  <Button fx:id="btnRespuestaA" layoutX="58.0" layoutY="269.0" mnemonicParsing="false" onAction="#onActionbtnRespuestaA" prefHeight="38.0" prefWidth="743.0" styleClass="bodybg" stylesheets="@../styles/styleBtnRespuestas.css" textFill="#61eaff">
+                     <font>
+                        <Font name="Segoe UI Light" size="26.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="btnRespuestaD" layoutX="58.0" layoutY="603.0" mnemonicParsing="false" onAction="#onActionBtnRespuestaD" prefHeight="38.0" prefWidth="743.0" styleClass="bodybg" stylesheets="@../styles/styleBtnRespuestas.css" textFill="#61eaff">
+                     <font>
+                        <Font name="Segoe UI Light" size="26.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="btnRespuestaB" layoutX="58.0" layoutY="379.0" mnemonicParsing="false" onAction="#onActionBtnRespuestaB" prefHeight="38.0" prefWidth="743.0" styleClass="bodybg" stylesheets="@../styles/styleBtnRespuestas.css" textFill="#61eaff">
+                     <font>
+                        <Font size="26.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="btnRespuestaC" layoutX="58.0" layoutY="491.0" mnemonicParsing="false" onAction="#onActionBtnRespuestaC" prefHeight="38.0" prefWidth="743.0" styleClass="bodybg" stylesheets="@../styles/styleBtnRespuestas.css" textFill="#61eaff">
+                     <font>
+                        <Font name="Segoe UI Light" size="26.0" />
+                     </font>
+                  </Button>
                </children>
             </Pane>
          </children></Pane>

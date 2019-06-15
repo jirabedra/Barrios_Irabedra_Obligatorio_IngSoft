@@ -53,6 +53,18 @@ public class VentanaPrincipalController implements Initializable {
     private Button btnRespuestaFalsa;
     @FXML
     private Pane panePreguntaVF;
+    @FXML
+    private Pane panePreguntaMo;
+    @FXML
+    private Text textPreguntaMo;
+    @FXML
+    private Button btnRespuestaA;
+    @FXML
+    private Button btnRespuestaD;
+    @FXML
+    private Button btnRespuestaB;
+    @FXML
+    private Button btnRespuestaC;
 
     /**
      * Initializes the controller class.
@@ -89,9 +101,9 @@ public class VentanaPrincipalController implements Initializable {
         btnComenzar.setVisible(false);
         panePreguntaVF.setVisible(false);
         panelTextoDragAndDrop.setVisible(false);
+        panePreguntaMo.setVisible(false);
         gridPaneCaminosPreguntas.setVisible(true);
         panelJuego.setVisible(true);
-
     }
 
     private void crearMatrizBotones() {
@@ -240,18 +252,29 @@ public class VentanaPrincipalController implements Initializable {
             public void handle(ActionEvent event) {
                 Pregunta p = (Pregunta) b.getUserData();
                 if (p instanceof PreguntaVF) {
-                    inicarPreguntaVF(p);
+                    iniciarPreguntaVF(p);
                     btnPivot = b;
                 } else if (p instanceof PreguntaCortaRespuesta) {
 
                 } else if (p instanceof PreguntaMultipleOpcion) {
-
+                    iniciarPreguntaMo(p);
+                    btnPivot = b;
                 }
             }
         });
     }
 
-    private void inicarPreguntaVF(Pregunta p) {
+    private void iniciarPreguntaMo(Pregunta p) {
+        gridPaneCaminosPreguntas.setVisible(false);
+        panePreguntaMo.setVisible(true);
+        textPreguntaMo.setText(p.getPregunta());
+        btnRespuestaA.setUserData(p);
+        btnRespuestaB.setUserData(p);
+        btnRespuestaC.setUserData(p);
+        btnRespuestaD.setUserData(p);
+    }
+
+    private void iniciarPreguntaVF(Pregunta p) {
         gridPaneCaminosPreguntas.setVisible(false);
         panePreguntaVF.setVisible(true);
         textPreguntaVF.setText(p.getPregunta());
@@ -286,6 +309,71 @@ public class VentanaPrincipalController implements Initializable {
         gridPaneCaminosPreguntas.setVisible(true);
         btnRespuestaVerdadera.getProperties().clear();//Limpia el map generado por el setUserData
         btnRespuestaFalsa.getProperties().clear();
+    }
+
+    @FXML
+    private void onActionbtnRespuestaA(ActionEvent event) {
+        PreguntaMultipleOpcion p = (PreguntaMultipleOpcion) btnPivot.getUserData();
+        String respuestaSeleccionada = (String) p.getMapaRespuestas().keySet().toArray()[3];
+        procesarRespuestaMo(p, respuestaSeleccionada);
+        panePreguntaVF.setVisible(false);
+        panePreguntaMo.setVisible(false);
+        gridPaneCaminosPreguntas.setVisible(true);
+        btnRespuestaA.getProperties().clear();
+        btnRespuestaB.getProperties().clear();
+        btnRespuestaC.getProperties().clear();
+        btnRespuestaD.getProperties().clear();
+    }
+
+    @FXML
+    private void onActionBtnRespuestaB(ActionEvent event) {
+        PreguntaMultipleOpcion p = (PreguntaMultipleOpcion) btnPivot.getUserData();
+        String respuestaSeleccionada = (String) p.getMapaRespuestas().keySet().toArray()[2];
+        procesarRespuestaMo(p, respuestaSeleccionada);
+        panePreguntaVF.setVisible(false);
+        panePreguntaMo.setVisible(false);
+        gridPaneCaminosPreguntas.setVisible(true);
+        btnRespuestaA.getProperties().clear();
+        btnRespuestaB.getProperties().clear();
+        btnRespuestaC.getProperties().clear();
+        btnRespuestaD.getProperties().clear();
+    }
+
+    @FXML
+    private void onActionBtnRespuestaC(ActionEvent event) {
+        PreguntaMultipleOpcion p = (PreguntaMultipleOpcion) btnPivot.getUserData();
+        String respuestaSeleccionada = (String) p.getMapaRespuestas().keySet().toArray()[1];
+        procesarRespuestaMo(p, respuestaSeleccionada);
+        panePreguntaVF.setVisible(false);
+        panePreguntaMo.setVisible(false);
+        gridPaneCaminosPreguntas.setVisible(true);
+        btnRespuestaA.getProperties().clear();
+        btnRespuestaB.getProperties().clear();
+        btnRespuestaC.getProperties().clear();
+        btnRespuestaD.getProperties().clear();
+    }
+
+    @FXML
+    private void onActionBtnRespuestaD(ActionEvent event) {
+        PreguntaMultipleOpcion p = (PreguntaMultipleOpcion) btnPivot.getUserData();
+        String respuestaSeleccionada = (String) p.getMapaRespuestas().keySet().toArray()[0];
+        procesarRespuestaMo(p, respuestaSeleccionada);
+        panePreguntaVF.setVisible(false);
+        panePreguntaMo.setVisible(false);
+        gridPaneCaminosPreguntas.setVisible(true);
+        btnRespuestaA.getProperties().clear();
+        btnRespuestaB.getProperties().clear();
+        btnRespuestaC.getProperties().clear();
+        btnRespuestaD.getProperties().clear();
+    }
+
+    private void procesarRespuestaMo(PreguntaMultipleOpcion p, String respuestaSeleccionada) {
+        if (Sistema.getInstance().procesarRespuestaSeleccionada(p, respuestaSeleccionada)) {
+            btnPivot.setStyle("-fx-background-color: #01a8e2");
+        } else {
+            btnPivot.setStyle("-fx-background-color: #000f3f");
+        }
+        btnPivot.setDisable(true);
     }
 
 }
