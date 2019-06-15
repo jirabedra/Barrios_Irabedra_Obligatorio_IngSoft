@@ -115,8 +115,8 @@
                         </Text>
                      </children>
                   </Pane>
-                  <Button fx:id="btnRespuestaVerdadera" layoutX="244.0" layoutY="444.0" mnemonicParsing="false" prefHeight="69.0" prefWidth="69.0" text="V" />
-                  <Button fx:id="btnRespuestaFalsa" layoutX="519.0" layoutY="437.0" mnemonicParsing="false" prefHeight="69.0" prefWidth="69.0" text="F" />
+                  <Button fx:id="btnRespuestaVerdadera" layoutX="244.0" layoutY="444.0" mnemonicParsing="false" onAction="#onActionRespuestaV" prefHeight="69.0" prefWidth="69.0" text="V" />
+                  <Button fx:id="btnRespuestaFalsa" layoutX="519.0" layoutY="437.0" mnemonicParsing="false" onAction="#onActionRespuestaF" prefHeight="69.0" prefWidth="69.0" text="F" />
                </children>
             </Pane>
          </children></Pane>

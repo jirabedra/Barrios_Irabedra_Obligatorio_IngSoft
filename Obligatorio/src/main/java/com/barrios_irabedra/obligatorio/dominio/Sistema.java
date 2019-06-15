@@ -3,12 +3,10 @@ package com.barrios_irabedra.obligatorio.dominio;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Scanner;
-import java.util.Set;
 import java.util.StringTokenizer;
 
 /**
@@ -244,10 +242,10 @@ public class Sistema {
     private void guardoRespuestasVF(Pregunta unaPregunta, String respuesta, String valorVerdad) {
         if (valorVerdad.contains("F")) {
             respuesta = "false";
-            unaPregunta.agregarRespuesta(respuesta, true);
+            unaPregunta.agregarRespuesta(respuesta, false);
         } else if (valorVerdad.contains("T") || respuesta.contains("V")) {
             respuesta = "true";
-            unaPregunta.agregarRespuesta(respuesta, false);
+            unaPregunta.agregarRespuesta(respuesta, true);
         } else {
             System.err.println("No hay ni Verdadero ni Falso");
         }
@@ -367,7 +365,9 @@ public class Sistema {
         boolean valorVerdad = false;
         String respuesta = "";
         if (p instanceof PreguntaVF) {
-            if (valorVerdad = idBtn.toUpperCase().contains("V")) {
+            respuesta = idBtn.toUpperCase();
+            valorVerdad = respuesta.contains("V");
+            if (valorVerdad) {
                 respuesta = "true";
             }else{
                 respuesta = "false";

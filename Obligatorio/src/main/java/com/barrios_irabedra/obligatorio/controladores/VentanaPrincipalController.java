@@ -31,8 +31,9 @@ import javafx.scene.text.Text;
  */
 public class VentanaPrincipalController implements Initializable {
 
-    Button[][] matrizBotones = new Button[8][8];
-    Button b = new Button();
+    private Button[][] matrizBotones = new Button[8][8];
+    private Button b = new Button();
+    private Button btnPivot = new Button();
 
     @FXML
     private Pane paneDragAndDrop;
@@ -239,14 +240,8 @@ public class VentanaPrincipalController implements Initializable {
             public void handle(ActionEvent event) {
                 Pregunta p = (Pregunta) b.getUserData();
                 if (p instanceof PreguntaVF) {
-                    gridPaneCaminosPreguntas.setVisible(false);
-                    panePreguntaVF.setVisible(true);
-                    textPreguntaVF.setText(p.getPregunta());
-                    if (Sistema.getInstance().procesarRespuestaSeleccionada(p, b.getId())) {
-                        b.setStyle("-fx-background-color: #01a8e2");
-                    } else {
-                        b.setStyle("-fx-background-color: #000f3f");
-                    }
+                    inicarPreguntaVF(p);
+                    btnPivot = b;
                 } else if (p instanceof PreguntaCortaRespuesta) {
 
                 } else if (p instanceof PreguntaMultipleOpcion) {
@@ -255,4 +250,42 @@ public class VentanaPrincipalController implements Initializable {
             }
         });
     }
+
+    private void inicarPreguntaVF(Pregunta p) {
+        gridPaneCaminosPreguntas.setVisible(false);
+        panePreguntaVF.setVisible(true);
+        textPreguntaVF.setText(p.getPregunta());
+        btnRespuestaVerdadera.setUserData(p);
+        btnRespuestaFalsa.setUserData(p);
+    }
+
+    @FXML
+    private void onActionRespuestaV(ActionEvent event) {
+        PreguntaVF p = (PreguntaVF) btnRespuestaVerdadera.getUserData();
+        procesarRespuestaVF(p, "V");
+        panePreguntaVF.setVisible(false);
+        gridPaneCaminosPreguntas.setVisible(true);
+        btnRespuestaVerdadera.getProperties().clear();//Limpia el map generado por el setUserData
+        btnRespuestaFalsa.getProperties().clear();
+    }
+
+    private void procesarRespuestaVF(PreguntaVF p, String respuestaSeleccionada) {
+        if (Sistema.getInstance().procesarRespuestaSeleccionada(p, respuestaSeleccionada)) {
+            btnPivot.setStyle("-fx-background-color: #01a8e2");
+        } else {
+            btnPivot.setStyle("-fx-background-color: #000f3f");
+        }
+        btnPivot.setDisable(true);
+    }
+
+    @FXML
+    private void onActionRespuestaF(ActionEvent event) {
+        PreguntaVF p = (PreguntaVF) btnRespuestaVerdadera.getUserData();
+        procesarRespuestaVF(p, "F");
+        panePreguntaVF.setVisible(false);
+        gridPaneCaminosPreguntas.setVisible(true);
+        btnRespuestaVerdadera.getProperties().clear();//Limpia el map generado por el setUserData
+        btnRespuestaFalsa.getProperties().clear();
+    }
+
 }
