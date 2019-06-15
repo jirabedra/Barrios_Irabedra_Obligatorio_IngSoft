@@ -378,8 +378,23 @@ public class Sistema {
             }
         } else if (p instanceof PreguntaMultipleOpcion) {
             respuesta = respuestaSeleccionada;
+        } else if (p instanceof PreguntaCortaRespuesta) {
+            respuesta = respuestaSeleccionada;
+        } else {
+            System.err.println("Fatal error");
+            assert false;
         }
-
-        return veracidadRespuesta(p, respuesta, valorVerdad);
+        boolean hayRespuestaCorrecta = false;
+        if (p instanceof PreguntaCortaRespuesta) {
+            for (int i = 0; i < p.getMapaRespuestas().size(); i++) {
+                if (p.getMapaRespuestas().get(respuestaSeleccionada) != null) {
+                    valorVerdad = true;
+                }
+            }
+            hayRespuestaCorrecta = veracidadRespuesta(p, respuesta, valorVerdad);
+        } else {
+            hayRespuestaCorrecta = veracidadRespuesta(p, respuesta, valorVerdad);
+        }
+        return hayRespuestaCorrecta;
     }
 }
