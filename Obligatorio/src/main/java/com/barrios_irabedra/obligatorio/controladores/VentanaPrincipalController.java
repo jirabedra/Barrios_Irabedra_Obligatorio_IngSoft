@@ -17,6 +17,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.DragEvent;
@@ -74,6 +75,12 @@ public class VentanaPrincipalController implements Initializable {
     private TextField txtFieldRespuestaCorta;
     @FXML
     private Button btnSubmitRespuestaCorta;
+    @FXML
+    private Label labelTimer;
+    @FXML
+    private Label labelTimerMo;
+    @FXML
+    private Label labelTimerCortaRespuesta;
 
     /**
      * Initializes the controller class.
@@ -83,6 +90,7 @@ public class VentanaPrincipalController implements Initializable {
         panelJuego.setVisible(false);
         paneDragAndDrop.setVisible(true);
         btnComenzar.setVisible(true);
+        panelTextoDragAndDrop.setVisible(true);
     }
 
     @FXML
@@ -104,16 +112,19 @@ public class VentanaPrincipalController implements Initializable {
 
     @FXML
     private void actionBtnComenzar(ActionEvent event) {
-        crearMatrizBotones();
-        asignoPreguntaBoton();
-        paneDragAndDrop.setVisible(false);
-        btnComenzar.setVisible(false);
-        panePreguntaVF.setVisible(false);
-        panelTextoDragAndDrop.setVisible(false);
-        panePreguntaMo.setVisible(false);
-        panePreguntaCortaRespuesta.setVisible(false);
-        gridPaneCaminosPreguntas.setVisible(true);
-        panelJuego.setVisible(true);
+        if (Sistema.getInstance().cantidadTotalPreguntas() > 0) {
+            crearMatrizBotones();
+            asignoPreguntaBoton();
+            panelTextoDragAndDrop.setVisible(false);
+            paneDragAndDrop.setVisible(false);
+            btnComenzar.setVisible(false);
+            panePreguntaVF.setVisible(false);
+            panelTextoDragAndDrop.setVisible(false);
+            panePreguntaMo.setVisible(false);
+            panePreguntaCortaRespuesta.setVisible(false);
+            gridPaneCaminosPreguntas.setVisible(true);
+            panelJuego.setVisible(true);
+        }
     }
 
     private void crearMatrizBotones() {
@@ -281,16 +292,25 @@ public class VentanaPrincipalController implements Initializable {
         panePreguntaCortaRespuesta.setVisible(true);
         textPreguntaCortaRespuesta.setText(p.getPregunta());
         btnSubmitRespuestaCorta.setUserData(p);
+        labelTimerCortaRespuesta.textProperty().bind(p.getSegundosRestantes().asString());
+        p.start();
     }
 
     private void iniciarPreguntaMo(Pregunta p) {
         gridPaneCaminosPreguntas.setVisible(false);
         panePreguntaMo.setVisible(true);
         textPreguntaMo.setText(p.getPregunta());
+        btnRespuestaA.setText((String) p.getMapaRespuestas().keySet().toArray()[3]);
+        btnRespuestaB.setText((String) p.getMapaRespuestas().keySet().toArray()[2]);
+        btnRespuestaC.setText((String) p.getMapaRespuestas().keySet().toArray()[1]);
+        btnRespuestaD.setText((String) p.getMapaRespuestas().keySet().toArray()[0]);
         btnRespuestaA.setUserData(p);
         btnRespuestaB.setUserData(p);
         btnRespuestaC.setUserData(p);
         btnRespuestaD.setUserData(p);
+        labelTimerMo.textProperty().bind(p.getSegundosRestantes().asString());
+        p.start();
+         
     }
 
     private void iniciarPreguntaVF(Pregunta p) {
@@ -299,6 +319,8 @@ public class VentanaPrincipalController implements Initializable {
         textPreguntaVF.setText(p.getPregunta());
         btnRespuestaVerdadera.setUserData(p);
         btnRespuestaFalsa.setUserData(p);
+        labelTimer.textProperty().bind(p.getSegundosRestantes().asString());
+        p.start();
     }
 
     @FXML

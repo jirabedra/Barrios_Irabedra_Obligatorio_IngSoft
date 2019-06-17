@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
@@ -124,6 +125,10 @@
                      <font>
                         <Font name="Segoe UI Light" size="26.0" />
                      </font></Button>
+                  <Label fx:id="labelTimer" layoutX="757.0" layoutY="25.0" prefHeight="53.0" prefWidth="60.0" textFill="#03787f">
+                     <font>
+                        <Font name="Segoe UI Semibold" size="36.0" />
+                     </font></Label>
                </children>
             </Pane>
             <Pane fx:id="panePreguntaMo" layoutX="-2.0" layoutY="-4.0" prefHeight="706.0" prefWidth="858.0" visible="false">
@@ -157,9 +162,14 @@
                         <Font name="Segoe UI Light" size="26.0" />
                      </font>
                   </Button>
+                  <Label fx:id="labelTimerMo" layoutX="771.0" layoutY="14.0" prefHeight="53.0" prefWidth="60.0" textFill="#03787f">
+                     <font>
+                        <Font name="Segoe UI Semibold" size="36.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
-            <Pane fx:id="panePreguntaCortaRespuesta" layoutX="-5.0" layoutY="-4.0" prefHeight="706.0" prefWidth="867.0">
+            <Pane fx:id="panePreguntaCortaRespuesta" layoutX="-5.0" layoutY="-4.0" prefHeight="706.0" prefWidth="867.0" visible="false">
                <children>
                   <Pane layoutX="62.0" layoutY="56.0" prefHeight="47.0" prefWidth="743.0">
                      <children>
@@ -180,6 +190,11 @@
                         <Font name="Segoe UI Semibold" size="13.0" />
                      </font>
                   </Button>
+                  <Label fx:id="labelTimerCortaRespuesta" layoutX="782.0" layoutY="27.0" prefHeight="53.0" prefWidth="60.0" textFill="#03787f">
+                     <font>
+                        <Font name="Segoe UI Semibold" size="36.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
          </children></Pane>
