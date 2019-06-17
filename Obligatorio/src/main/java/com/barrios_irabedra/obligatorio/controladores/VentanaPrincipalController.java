@@ -7,6 +7,8 @@ package com.barrios_irabedra.obligatorio.controladores;
 
 import com.barrios_irabedra.obligatorio.dominio.*;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStream;
 import java.net.URL;
 import java.nio.file.Files;
 import java.util.*;
@@ -19,12 +21,15 @@ import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.DragEvent;
 import javafx.scene.input.TransferMode;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
+import sun.audio.AudioPlayer;
+import sun.audio.AudioStream;
 
 /**
  * FXML Controller class
@@ -32,11 +37,11 @@ import javafx.scene.text.Text;
  * @author Usuario
  */
 public class VentanaPrincipalController implements Initializable {
-
+    
     private Button[][] matrizBotones = new Button[8][8];
     private Button b = new Button();
     private Button btnPivot = new Button();
-
+    
     @FXML
     private Pane paneDragAndDrop;
     @FXML
@@ -81,6 +86,14 @@ public class VentanaPrincipalController implements Initializable {
     private Label labelTimerMo;
     @FXML
     private Label labelTimerCortaRespuesta;
+    @FXML
+    private Pane paneGifCorrecto;
+    @FXML
+    private Pane paneGiftIncorrecto;
+    @FXML
+    private Button btnContinuarEnGifCorrecto;
+    @FXML
+    private Button btnContinuarEnGifInCorrecto;
 
     /**
      * Initializes the controller class.
@@ -92,24 +105,24 @@ public class VentanaPrincipalController implements Initializable {
         btnComenzar.setVisible(true);
         panelTextoDragAndDrop.setVisible(true);
     }
-
+    
     @FXML
     private void handleDragOver(DragEvent event) {
         if (event.getDragboard().hasFiles()) {
             event.acceptTransferModes(TransferMode.ANY);
         }
     }
-
+    
     @FXML
     private void handleDrop(DragEvent event) {
         List<File> files = event.getDragboard().getFiles();
         Sistema.getInstance().recibirArchivos(files);
-
+        
         System.out.println(Sistema.getInstance().getListaPreguntasCortaRespuesta());
         System.out.println(Sistema.getInstance().getListaPreguntasVF());
         System.out.println(Sistema.getInstance().getListaPreguntasMultipleOpcion());
     }
-
+    
     @FXML
     private void actionBtnComenzar(ActionEvent event) {
         if (Sistema.getInstance().cantidadTotalPreguntas() > 0) {
@@ -122,11 +135,13 @@ public class VentanaPrincipalController implements Initializable {
             panelTextoDragAndDrop.setVisible(false);
             panePreguntaMo.setVisible(false);
             panePreguntaCortaRespuesta.setVisible(false);
+            paneGifCorrecto.setVisible(false);
+            paneGiftIncorrecto.setVisible(false);
             gridPaneCaminosPreguntas.setVisible(true);
             panelJuego.setVisible(true);
         }
     }
-
+    
     private void crearMatrizBotones() {
         Integer fil;
         Integer col;
@@ -142,7 +157,7 @@ public class VentanaPrincipalController implements Initializable {
             }
         }
     }
-
+    
     private void asignoPreguntaBoton() {
         int cantP = Sistema.getInstance().cantidadTotalPreguntas();
         int contP = cantP;
@@ -201,7 +216,7 @@ public class VentanaPrincipalController implements Initializable {
             desactivarElRestoDeBotones(contador);
         }
     }
-
+    
     private void desactivarElRestoDeBotones(int contador) {
         for (int i = 7; i >= 0; i--) {
             if (contador == 0) {
@@ -266,7 +281,7 @@ public class VentanaPrincipalController implements Initializable {
             contador--;
         }
     }
-
+    
     private void activar(final Button b) {
         b.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -283,10 +298,10 @@ public class VentanaPrincipalController implements Initializable {
                     btnPivot = b;
                 }
             }
-
+            
         });
     }
-
+    
     private void iniciarPreguntaCortaRespuesta(Pregunta p) {
         gridPaneCaminosPreguntas.setVisible(false);
         panePreguntaCortaRespuesta.setVisible(true);
@@ -295,7 +310,7 @@ public class VentanaPrincipalController implements Initializable {
         labelTimerCortaRespuesta.textProperty().bind(p.getSegundosRestantes().asString());
         p.start();
     }
-
+    
     private void iniciarPreguntaMo(Pregunta p) {
         gridPaneCaminosPreguntas.setVisible(false);
         panePreguntaMo.setVisible(true);
@@ -310,9 +325,9 @@ public class VentanaPrincipalController implements Initializable {
         btnRespuestaD.setUserData(p);
         labelTimerMo.textProperty().bind(p.getSegundosRestantes().asString());
         p.start();
-         
+        
     }
-
+    
     private void iniciarPreguntaVF(Pregunta p) {
         gridPaneCaminosPreguntas.setVisible(false);
         panePreguntaVF.setVisible(true);
@@ -322,116 +337,243 @@ public class VentanaPrincipalController implements Initializable {
         labelTimer.textProperty().bind(p.getSegundosRestantes().asString());
         p.start();
     }
-
+    
     @FXML
     private void onActionRespuestaV(ActionEvent event) {
         PreguntaVF p = (PreguntaVF) btnRespuestaVerdadera.getUserData();
-        procesarRespuestaVF(p, "V");
-        panePreguntaVF.setVisible(false);
-        gridPaneCaminosPreguntas.setVisible(true);
-        btnRespuestaVerdadera.getProperties().clear();//Limpia el map generado por el setUserData
-        btnRespuestaFalsa.getProperties().clear();
-    }
-
-    private void procesarRespuestaVF(PreguntaVF p, String respuestaSeleccionada) {
-        if (Sistema.getInstance().procesarRespuestaSeleccionada(p, respuestaSeleccionada)) {
-            btnPivot.setStyle("-fx-background-color: #01a8e2");
+        int checkTiempo = Integer.parseInt(p.getSegundosRestantes().asString().get());
+        if (checkTiempo > 0) {
+            if (procesarRespuestaVF(p, "V")) {
+                mostrarGifYSonidoCorrecto(p);
+            } else {
+                mostrarGifYSonidoIncorrecto(p);
+            }
         } else {
-            btnPivot.setStyle("-fx-background-color: #000f3f");
+            procesarRespuestaFueraDeTiempo(p, "4c6f6c69");
+            mostrarGifYSonidoIncorrecto(p);
         }
+    }
+    
+    private void procesarRespuestaFueraDeTiempo(Pregunta p, String respuesta) {
+        Sistema.getInstance().procesarRespuestaSeleccionada(p, respuesta);
+        btnPivot.setStyle("-fx-background-color: #000f3f");
         btnPivot.setDisable(true);
     }
-
+    
+    private boolean procesarRespuestaVF(PreguntaVF p, String respuestaSeleccionada) {
+        boolean check;
+        if (Sistema.getInstance().procesarRespuestaSeleccionada(p, respuestaSeleccionada)) {
+            btnPivot.setStyle("-fx-background-color: #01a8e2");
+            check = true;
+        } else {
+            btnPivot.setStyle("-fx-background-color: #000f3f");
+            check = false;
+        }
+        btnPivot.setDisable(true);
+        return check;
+    }
+    
     @FXML
     private void onActionRespuestaF(ActionEvent event) {
         PreguntaVF p = (PreguntaVF) btnRespuestaVerdadera.getUserData();
-        procesarRespuestaVF(p, "F");
-        panePreguntaVF.setVisible(false);
-        gridPaneCaminosPreguntas.setVisible(true);
-        btnRespuestaVerdadera.getProperties().clear();//Limpia el map generado por el setUserData
-        btnRespuestaFalsa.getProperties().clear();
+        int checkTiempo = Integer.parseInt(p.getSegundosRestantes().asString().get());
+        if (checkTiempo > 0) {
+            if (procesarRespuestaVF(p, "F")) {
+                mostrarGifYSonidoCorrecto(p);
+            } else {
+                mostrarGifYSonidoIncorrecto(p);
+            }
+        } else {
+            procesarRespuestaFueraDeTiempo(p, "4c6f6c69");
+            mostrarGifYSonidoIncorrecto(p);
+        }
     }
-
+    
     @FXML
     private void onActionbtnRespuestaA(ActionEvent event) {
         PreguntaMultipleOpcion p = (PreguntaMultipleOpcion) btnPivot.getUserData();
         String respuestaSeleccionada = (String) p.getMapaRespuestas().keySet().toArray()[3];
-        procesarRespuestaMo(p, respuestaSeleccionada);
-        panePreguntaMo.setVisible(false);
-        gridPaneCaminosPreguntas.setVisible(true);
-        btnRespuestaA.getProperties().clear();
-        btnRespuestaB.getProperties().clear();
-        btnRespuestaC.getProperties().clear();
-        btnRespuestaD.getProperties().clear();
+        int checkTiempo = Integer.parseInt(p.getSegundosRestantes().asString().get());
+        if (checkTiempo > 0) {
+            if (procesarRespuestaMo(p, respuestaSeleccionada)) {
+                mostrarGifYSonidoCorrecto(p);
+            } else {
+                mostrarGifYSonidoIncorrecto(p);
+            }
+        } else {
+            procesarRespuestaFueraDeTiempo(p, "4c6f6c69");
+            mostrarGifYSonidoIncorrecto(p);
+        }
     }
-
+    
     @FXML
     private void onActionBtnRespuestaB(ActionEvent event) {
         PreguntaMultipleOpcion p = (PreguntaMultipleOpcion) btnPivot.getUserData();
         String respuestaSeleccionada = (String) p.getMapaRespuestas().keySet().toArray()[2];
-        procesarRespuestaMo(p, respuestaSeleccionada);
-        panePreguntaMo.setVisible(false);
-        gridPaneCaminosPreguntas.setVisible(true);
-        btnRespuestaA.getProperties().clear();
-        btnRespuestaB.getProperties().clear();
-        btnRespuestaC.getProperties().clear();
-        btnRespuestaD.getProperties().clear();
+        int checkTiempo = Integer.parseInt(p.getSegundosRestantes().asString().get());
+        if (checkTiempo > 0) {
+            if (procesarRespuestaMo(p, respuestaSeleccionada)) {
+                mostrarGifYSonidoCorrecto(p);
+            } else {
+                mostrarGifYSonidoIncorrecto(p);
+            }
+        } else {
+            procesarRespuestaFueraDeTiempo(p, "4c6f6c69");
+            mostrarGifYSonidoIncorrecto(p);
+        }
     }
-
+    
     @FXML
     private void onActionBtnRespuestaC(ActionEvent event) {
         PreguntaMultipleOpcion p = (PreguntaMultipleOpcion) btnPivot.getUserData();
         String respuestaSeleccionada = (String) p.getMapaRespuestas().keySet().toArray()[1];
-        procesarRespuestaMo(p, respuestaSeleccionada);
-        panePreguntaMo.setVisible(false);
-        gridPaneCaminosPreguntas.setVisible(true);
-        btnRespuestaA.getProperties().clear();
-        btnRespuestaB.getProperties().clear();
-        btnRespuestaC.getProperties().clear();
-        btnRespuestaD.getProperties().clear();
+        int checkTiempo = Integer.parseInt(p.getSegundosRestantes().asString().get());
+        if (checkTiempo > 0) {
+            if (procesarRespuestaMo(p, respuestaSeleccionada)) {
+                mostrarGifYSonidoCorrecto(p);
+            } else {
+                mostrarGifYSonidoIncorrecto(p);
+            }
+        } else {
+            procesarRespuestaFueraDeTiempo(p, "4c6f6c69");
+            mostrarGifYSonidoIncorrecto(p);
+        }
     }
-
+    
     @FXML
     private void onActionBtnRespuestaD(ActionEvent event) {
         PreguntaMultipleOpcion p = (PreguntaMultipleOpcion) btnPivot.getUserData();
         String respuestaSeleccionada = (String) p.getMapaRespuestas().keySet().toArray()[0];
-        procesarRespuestaMo(p, respuestaSeleccionada);
-        panePreguntaMo.setVisible(false);
-        gridPaneCaminosPreguntas.setVisible(true);
-        btnRespuestaA.getProperties().clear();
-        btnRespuestaB.getProperties().clear();
-        btnRespuestaC.getProperties().clear();
-        btnRespuestaD.getProperties().clear();
+        int checkTiempo = Integer.parseInt(p.getSegundosRestantes().asString().get());
+        if (checkTiempo > 0) {
+            if (procesarRespuestaMo(p, respuestaSeleccionada)) {
+                mostrarGifYSonidoCorrecto(p);
+            } else {
+                mostrarGifYSonidoIncorrecto(p);
+            }
+        } else {
+            procesarRespuestaFueraDeTiempo(p, "4c6f6c69");
+            mostrarGifYSonidoIncorrecto(p);
+        }
     }
-
-    private void procesarRespuestaMo(PreguntaMultipleOpcion p, String respuestaSeleccionada) {
+    
+    private void mostrarGifYSonidoCorrecto(Pregunta p) {
+        if (p instanceof PreguntaVF) {
+            panePreguntaVF.setVisible(false);
+            btnRespuestaVerdadera.getProperties().clear();//Limpia el map generado por el setUserData
+            btnRespuestaFalsa.getProperties().clear();
+        } else if (p instanceof PreguntaMultipleOpcion) {
+            panePreguntaMo.setVisible(false);
+            btnRespuestaA.getProperties().clear();
+            btnRespuestaB.getProperties().clear();
+            btnRespuestaC.getProperties().clear();
+            btnRespuestaD.getProperties().clear();
+        } else if (p instanceof PreguntaCortaRespuesta) {
+            panePreguntaCortaRespuesta.setVisible(false);
+            btnRespuestaA.getProperties().clear();
+        }
+        paneGifCorrecto.setVisible(true);
+        playAudioCorrecto();
+    }
+    
+    private void playAudioCorrecto() {
+        InputStream in;
+        try {
+            in = new FileInputStream(new File("D:\\ORT\\IS\\Obligatorio\\Obligatorio_IngSoft\\Obligatorio\\src\\main\\resources\\styles\\ok.wav"));
+            AudioStream audioOk = new AudioStream(in);
+            AudioPlayer.player.start(audioOk);
+            
+        } catch (Exception e) {
+            
+        }
+    }
+    
+    private void playAudioIncorrecto() {
+        InputStream in;
+        try {
+            in = new FileInputStream(new File("D:\\ORT\\IS\\Obligatorio\\Obligatorio_IngSoft\\Obligatorio\\src\\main\\resources\\styles\\Wrong.wav"));
+            AudioStream audioOk = new AudioStream(in);
+            AudioPlayer.player.start(audioOk);
+            
+        } catch (Exception e) {
+            
+        }
+    }
+    
+    private void mostrarGifYSonidoIncorrecto(Pregunta p) {
+        if (p instanceof PreguntaVF) {
+            panePreguntaVF.setVisible(false);
+            btnRespuestaVerdadera.getProperties().clear();//Limpia el map generado por el setUserData
+            btnRespuestaFalsa.getProperties().clear();
+        } else if (p instanceof PreguntaMultipleOpcion) {
+            panePreguntaMo.setVisible(false);
+            btnRespuestaA.getProperties().clear();
+            btnRespuestaB.getProperties().clear();
+            btnRespuestaC.getProperties().clear();
+            btnRespuestaD.getProperties().clear();
+        } else if (p instanceof PreguntaCortaRespuesta) {
+            panePreguntaCortaRespuesta.setVisible(false);
+            btnRespuestaA.getProperties().clear();
+        }
+        paneGiftIncorrecto.setVisible(true);
+        playAudioIncorrecto();
+    }
+    
+    private boolean procesarRespuestaMo(PreguntaMultipleOpcion p, String respuestaSeleccionada) {
+        boolean check;
         if (Sistema.getInstance().procesarRespuestaSeleccionada(p, respuestaSeleccionada)) {
             btnPivot.setStyle("-fx-background-color: #01a8e2");
+            check = true;
         } else {
             btnPivot.setStyle("-fx-background-color: #000f3f");
+            check = false;
         }
         btnPivot.setDisable(true);
+        return check;
     }
-
+    
     @FXML
     private void onActionBtnSubmit(ActionEvent event) {
         String respuestaSeleccionada = txtFieldRespuestaCorta.getText();
         if (!"".equals(respuestaSeleccionada)) {
             PreguntaCortaRespuesta p = (PreguntaCortaRespuesta) btnPivot.getUserData();
-            procesarRespuestaCortaRespuesta(p, respuestaSeleccionada);
-            panePreguntaCortaRespuesta.setVisible(false);
-            gridPaneCaminosPreguntas.setVisible(true);
-            btnRespuestaA.getProperties().clear();
+            int checkTiempo = Integer.parseInt(p.getSegundosRestantes().asString().get());
+            if (checkTiempo > 0) {
+                if (procesarRespuestaCortaRespuesta(p, respuestaSeleccionada)) {
+                    mostrarGifYSonidoCorrecto(p);
+                } else {
+                    mostrarGifYSonidoIncorrecto(p);
+                }
+            } else {
+                procesarRespuestaFueraDeTiempo(p, "4c6f6c69");
+                mostrarGifYSonidoIncorrecto(p);
+            }
         }
     }
-
-    private void procesarRespuestaCortaRespuesta(PreguntaCortaRespuesta p, String respuestaSeleccionada) {
+    
+    private boolean procesarRespuestaCortaRespuesta(PreguntaCortaRespuesta p, String respuestaSeleccionada) {
+        boolean check;
         if (Sistema.getInstance().procesarRespuestaSeleccionada(p, respuestaSeleccionada)) {
             btnPivot.setStyle("-fx-background-color: #01a8e2");
+            check = true;
         } else {
             btnPivot.setStyle("-fx-background-color: #000f3f");
+            check = false;
         }
         btnPivot.setDisable(true);
+        return check;
     }
-
+    
+    @FXML
+    private void onActionContinuarEnGifCorrecto(ActionEvent event) {
+        paneGifCorrecto.setVisible(false);
+        gridPaneCaminosPreguntas.setVisible(true);
+    }
+    
+    @FXML
+    private void onActionContinuarEnGifInCorrecto(ActionEvent event) {
+        paneGiftIncorrecto.setVisible(false);
+        gridPaneCaminosPreguntas.setVisible(true);
+    }
+    
 }

@@ -3,6 +3,8 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -195,6 +197,32 @@
                         <Font name="Segoe UI Semibold" size="36.0" />
                      </font>
                   </Label>
+               </children>
+            </Pane>
+            <Pane fx:id="paneGifCorrecto" layoutX="8.0" prefHeight="700.0" prefWidth="851.0" visible="false">
+               <children>
+                  <Button fx:id="btnContinuarEnGifCorrecto" layoutX="355.0" layoutY="518.0" mnemonicParsing="false" onAction="#onActionContinuarEnGifCorrecto" prefHeight="94.0" prefWidth="116.0" styleClass="bodybg" stylesheets="@../styles/styleBtnRespuestas.css" text="Continuar" textFill="#61eaff">
+                     <font>
+                        <Font name="Segoe UI Light" size="14.0" />
+                     </font>
+                  </Button>
+                  <ImageView cache="true" fitHeight="344.0" fitWidth="430.0" layoutX="213.0" layoutY="108.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../styles/oie_1722248PRCPm3z1.gif" />
+                     </image>
+                  </ImageView>
+               </children></Pane>
+            <Pane fx:id="paneGiftIncorrecto" layoutX="-5.0" layoutY="-2.0" prefHeight="706.0" prefWidth="867.0">
+               <children>
+                  <ImageView fitHeight="457.0" fitWidth="706.0" layoutX="262.0" layoutY="66.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../styles/oie_17223119zoQD0N4K.gif" />
+                     </image></ImageView>
+                  <Button fx:id="btnContinuarEnGifInCorrecto" layoutX="376.0" layoutY="523.0" mnemonicParsing="false" onAction="#onActionContinuarEnGifInCorrecto" prefHeight="94.0" prefWidth="116.0" styleClass="bodybg" stylesheets="@../styles/styleBtnRespuestas.css" text="Continuar" textFill="#61eaff">
+                     <font>
+                        <Font name="Segoe UI Light" size="14.0" />
+                     </font>
+                  </Button>
                </children>
             </Pane>
          </children></Pane>
