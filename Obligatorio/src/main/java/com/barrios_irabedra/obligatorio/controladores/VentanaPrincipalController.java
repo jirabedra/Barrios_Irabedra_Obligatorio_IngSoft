@@ -479,24 +479,20 @@ public class VentanaPrincipalController implements Initializable {
     private void playAudioCorrecto() {
         InputStream in;
         try {
-            in = new FileInputStream(new File("D:\\ORT\\IS\\Obligatorio\\Obligatorio_IngSoft\\Obligatorio\\src\\main\\resources\\styles\\ok.wav"));
+            in = new FileInputStream(new File("src/main/resources/styles/ok.wav"));
             AudioStream audioOk = new AudioStream(in);
             AudioPlayer.player.start(audioOk);
-            
-        } catch (Exception e) {
-            
+        } catch (Exception e) {  
         }
     }
     
     private void playAudioIncorrecto() {
         InputStream in;
         try {
-            in = new FileInputStream(new File("D:\\ORT\\IS\\Obligatorio\\Obligatorio_IngSoft\\Obligatorio\\src\\main\\resources\\styles\\Wrong.wav"));
+            in = new FileInputStream(new File("src/main/resources/styles/Wrong.wav"));
             AudioStream audioOk = new AudioStream(in);
             AudioPlayer.player.start(audioOk);
-            
         } catch (Exception e) {
-            
         }
     }
     

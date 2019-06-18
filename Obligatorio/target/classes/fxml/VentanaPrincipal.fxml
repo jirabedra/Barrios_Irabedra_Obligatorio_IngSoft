@@ -2,6 +2,7 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Slider?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -17,7 +18,14 @@
    <children>
       <Pane fx:id="panelJuego" layoutX="50.0" layoutY="50.0" prefHeight="700.0" prefWidth="1000.0" styleClass="bodybg" stylesheets="@../styles/stylePanelJuego.css">
          <children>
-            <Pane layoutX="862.0" prefHeight="700.0" prefWidth="138.0" style="-fx-background-color: #03787f;" />
+            <Pane layoutX="862.0" prefHeight="700.0" prefWidth="138.0" style="-fx-background-color: #03787f;">
+               <children>
+                  <Button layoutX="35.0" layoutY="576.0" mnemonicParsing="false" prefHeight="69.0" prefWidth="69.0" />
+                  <Button layoutX="35.0" layoutY="75.0" mnemonicParsing="false" prefHeight="69.0" prefWidth="69.0" styleClass="bodybg" stylesheets="@../styles/styleBtnRespuestas.css" text="Ayuda" />
+                  <Button layoutX="35.0" layoutY="213.0" mnemonicParsing="false" prefHeight="69.0" prefWidth="69.0" styleClass="bodybg" stylesheets="@../styles/styleBtnRespuestas.css" text="Acabar" />
+                  <Slider layoutX="62.0" layoutY="383.0" orientation="VERTICAL" />
+                  <ImageView fitHeight="47.0" fitWidth="47.0" layoutX="46.0" layoutY="327.0" pickOnBounds="true" preserveRatio="true" />
+               </children></Pane>
             <GridPane fx:id="gridPaneCaminosPreguntas" layoutX="131.0" layoutY="50.0" prefHeight="540.0" prefWidth="540.0" visible="false">
               <columnConstraints>
                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -214,9 +222,9 @@
                </children></Pane>
             <Pane fx:id="paneGiftIncorrecto" layoutX="-5.0" layoutY="-2.0" prefHeight="706.0" prefWidth="867.0">
                <children>
-                  <ImageView fitHeight="457.0" fitWidth="706.0" layoutX="262.0" layoutY="66.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="582.0" fitWidth="534.0" layoutX="185.0" layoutY="36.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../styles/oie_17223119zoQD0N4K.gif" />
+                        <Image url="@../styles/SingleArtisticDeermouse-small.gif" />
                      </image></ImageView>
                   <Button fx:id="btnContinuarEnGifInCorrecto" layoutX="376.0" layoutY="523.0" mnemonicParsing="false" onAction="#onActionContinuarEnGifInCorrecto" prefHeight="94.0" prefWidth="116.0" styleClass="bodybg" stylesheets="@../styles/styleBtnRespuestas.css" text="Continuar" textFill="#61eaff">
                      <font>
