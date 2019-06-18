@@ -401,4 +401,18 @@ public class Sistema {
         }
         return hayRespuestaCorrecta;
     }
+
+    private boolean preparativosParaReporte(int cantidadDePreguntasRespondidas) {
+        ArrayList<Pregunta> listaPreguntasRespondidas = new ArrayList<>();
+        for (int i = (cantidadDePreguntasRespondidas - 1); i <= 0; i--) {
+            listaPreguntasRespondidas.add((Pregunta)this.respuestasSeleccionadas.keySet().toArray()[i]);
+        }
+        return crearReporte(listaPreguntasRespondidas);
+    }
+
+    private boolean crearReporte(ArrayList<Pregunta> listaPreguntasRespondidas) {
+        boolean creadoCorrectamente = false;
+
+        return creadoCorrectamente;
+    }
 }

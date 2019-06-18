@@ -20,19 +20,23 @@
    <children>
       <Pane fx:id="panelJuego" layoutX="50.0" layoutY="50.0" prefHeight="700.0" prefWidth="1000.0" styleClass="bodybg" stylesheets="@../styles/stylePanelJuego.css">
          <children>
-            <Pane layoutX="862.0" prefHeight="700.0" prefWidth="138.0" style="-fx-background-color: #03787f;" visible="false">
+            <Pane fx:id="paneOpcionesDerecha" layoutX="862.0" prefHeight="700.0" prefWidth="138.0" style="-fx-background-color: #03787f;">
                <children>
-                  <Button layoutX="35.0" layoutY="576.0" mnemonicParsing="false" prefHeight="69.0" prefWidth="69.0" />
-                  <Button layoutX="35.0" layoutY="75.0" mnemonicParsing="false" prefHeight="69.0" prefWidth="69.0" styleClass="bodybg" stylesheets="@../styles/styleBtnRespuestas.css" text="Ayuda" textFill="#61eaff">
+                  <Button fx:id="btnAyuda" layoutX="35.0" layoutY="75.0" mnemonicParsing="false" onAction="#onActionBotonAyuda" prefHeight="69.0" prefWidth="69.0" styleClass="bodybg" stylesheets="@../styles/styleBtnRespuestas.css" text="Ayuda" textFill="#61eaff">
                      <font>
                         <Font name="Segoe UI Light" size="14.0" />
                      </font></Button>
-                  <Button layoutX="35.0" layoutY="213.0" mnemonicParsing="false" prefHeight="69.0" prefWidth="69.0" styleClass="bodybg" stylesheets="@../styles/styleBtnRespuestas.css" text="Acabar" textFill="#61eaff">
+                  <Button fx:id="btnAcabar" layoutX="35.0" layoutY="213.0" mnemonicParsing="false" onAction="#onActionbtnAcabar" prefHeight="69.0" prefWidth="69.0" styleClass="bodybg" stylesheets="@../styles/styleBtnRespuestas.css" text="Acabar" textFill="#61eaff">
                      <font>
                         <Font name="Segoe UI Light" size="14.0" />
                      </font></Button>
                   <Slider layoutX="62.0" layoutY="383.0" orientation="VERTICAL" />
                   <ImageView fitHeight="47.0" fitWidth="47.0" layoutX="46.0" layoutY="327.0" pickOnBounds="true" preserveRatio="true" />
+                  <Button fx:id="btnGenerarReporte" layoutX="35.0" layoutY="567.0" mnemonicParsing="false" onAction="#onActionBtnGenerarReporte" prefHeight="69.0" prefWidth="69.0" styleClass="bodybg" stylesheets="@../styles/styleBtnRespuestas.css" text="Reporte" textFill="#61eaff">
+                     <font>
+                        <Font name="Segoe UI Light" size="14.0" />
+                     </font>
+                  </Button>
                </children>
                <opaqueInsets>
                   <Insets />
@@ -173,11 +177,6 @@
                         <Font name="Segoe UI Light" size="26.0" />
                      </font>
                   </Button>
-                  <Button fx:id="btnRespuestaB" layoutX="58.0" layoutY="379.0" mnemonicParsing="false" onAction="#onActionBtnRespuestaB" prefHeight="38.0" prefWidth="743.0" styleClass="bodybg" stylesheets="@../styles/styleBtnRespuestas.css" textFill="#61eaff">
-                     <font>
-                        <Font size="26.0" />
-                     </font>
-                  </Button>
                   <Button fx:id="btnRespuestaC" layoutX="58.0" layoutY="491.0" mnemonicParsing="false" onAction="#onActionBtnRespuestaC" prefHeight="38.0" prefWidth="743.0" styleClass="bodybg" stylesheets="@../styles/styleBtnRespuestas.css" textFill="#61eaff">
                      <font>
                         <Font name="Segoe UI Light" size="26.0" />
@@ -188,6 +187,11 @@
                         <Font name="Segoe UI Semibold" size="36.0" />
                      </font>
                   </Label>
+                  <Button fx:id="btnRespuestaB" layoutX="58.0" layoutY="376.0" mnemonicParsing="false" onAction="#onActionBtnRespuestaB" prefHeight="38.0" prefWidth="743.0" styleClass="bodybg" stylesheets="@../styles/styleBtnRespuestas.css" textFill="#61eaff">
+                     <font>
+                        <Font name="Segoe UI Light" size="26.0" />
+                     </font>
+                  </Button>
                </children>
             </Pane>
             <Pane fx:id="panePreguntaCortaRespuesta" layoutX="-5.0" layoutY="-4.0" prefHeight="706.0" prefWidth="867.0" visible="false">
@@ -244,11 +248,45 @@
                   </Button>
                </children>
             </Pane>
-            <Pane fx:id="paneAyuda" layoutX="-2.0" layoutY="-6.0" prefHeight="706.0" prefWidth="1007.0">
+            <Pane fx:id="paneAyuda" layoutX="-2.0" layoutY="-6.0" prefHeight="706.0" prefWidth="1007.0" visible="false">
                <children>
-                  <Pane fx:id="paneAyudaPreguntaMo" layoutX="336.0" prefHeight="706.0" prefWidth="335.0" />
-                  <Line endX="906.0" layoutX="101.0" layoutY="155.0" startX="-100.0" />
-                  <Line endX="135.0" endY="464.0" layoutX="181.0" layoutY="242.0" startX="135.0" startY="-87.5" />
+                  <Line endX="135.0" endY="510.0" layoutX="200.0" layoutY="196.0" startX="135.0" startY="-196.0" />
+                  <Line endX="135.0" endY="549.0" layoutX="538.0" layoutY="157.0" startX="135.0" startY="-157.0" />
+                  <ImageView fitHeight="270.0" fitWidth="557.0" layoutX="2.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../styles/capturaPreguntaMo.jpg" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="264.0" fitWidth="326.0" layoutX="342.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../styles/capturaPreguntaVF.jpg" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="270.0" fitWidth="324.0" layoutX="674.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../styles/capturaPreguntaCR.jpg" />
+                     </image>
+                  </ImageView>
+                  <Text fill="#61eaff" layoutX="2.0" layoutY="312.0" strokeType="OUTSIDE" strokeWidth="0.0" text="En la esquina superior derecha vas a ver un timer.  Tenés el tiempo indicado para seleccionar una de las opciones. Luego de responder, verás si la respuesta fue correcta y en tiempo. De no responder en tiempo será incorrecta. Luego volverás a la ventana anterior y seleccionar otra pregunta." textAlignment="CENTER" wrappingWidth="333.4383949637413">
+                     <font>
+                        <Font name="Segoe UI Light" size="18.0" />
+                     </font>
+                  </Text>
+                  <Text fill="#61eaff" layoutX="342.0" layoutY="312.0" strokeType="OUTSIDE" strokeWidth="0.0" text="En el caso de pregunta verdadero o falso, pasa lo mismo que en múltiple opción." textAlignment="CENTER" wrappingWidth="306.13671875">
+                     <font>
+                        <Font name="Segoe UI Light" size="18.0" />
+                     </font>
+                  </Text>
+                  <Text fill="#61eaff" layoutX="681.0" layoutY="299.0" strokeType="OUTSIDE" strokeWidth="0.0" text="En el caso pregunta corta respuesta, debes escribir tu respuesta y luego hacer click en el botón OK. No te olvides que importan las mayúsculas." textAlignment="CENTER" wrappingWidth="317.1882301568985">
+                     <font>
+                        <Font name="Segoe UI Light" size="18.0" />
+                     </font>
+                  </Text>
+                  <Button fx:id="tbnVolverAlQuizz" layoutX="468.0" layoutY="592.0" mnemonicParsing="false" onAction="#onActionBbnVolverAlQuizz" styleClass="bodybg" stylesheets="@../styles/styleBtnRespuestas.css" text="Volver" textFill="#61eaff">
+                     <font>
+                        <Font name="Segoe UI Light" size="18.0" />
+                     </font>
+                  </Button>
                </children>
             </Pane>
          </children></Pane>
@@ -258,11 +296,16 @@
             <Font name="Segoe UI Light" size="20.0" />
          </font>
       </Button>
-      <Pane fx:id="panelTextoDragAndDrop" layoutX="340.0" layoutY="62.0" prefHeight="38.0" prefWidth="400.0" styleClass="bodybg" stylesheets="@../styles/stylebtnComenzar.css" visible="false">
+      <Pane fx:id="panelTextoDragAndDrop" layoutX="340.0" layoutY="22.0" prefHeight="94.0" prefWidth="400.0" styleClass="bodybg" stylesheets="@../styles/stylebtnComenzar.css" visible="false">
          <children>
-            <Text fill="#61eaff" fontSmoothingType="LCD" layoutX="16.0" layoutY="26.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Arrastrá todos los archivos que quieras" textAlignment="CENTER" wrappingWidth="367.13671875">
+            <Text fill="#61eaff" fontSmoothingType="LCD" layoutX="16.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Arrastrá todos los archivos que quieras" textAlignment="CENTER" wrappingWidth="367.13671875">
                <font>
                   <Font name="Segoe UI Light" size="18.0" />
+               </font>
+            </Text>
+            <Text fill="#61eaff" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Para cargar preguntas, tenés que arrastrar archivos de texto escritos en formato GIFT. " textAlignment="CENTER" wrappingWidth="399.99999552965164">
+               <font>
+                  <Font name="Segoe UI Light" size="14.0" />
                </font>
             </Text>
          </children>

@@ -41,6 +41,7 @@ public class VentanaPrincipalController implements Initializable {
     private Button[][] matrizBotones = new Button[8][8];
     private Button b = new Button();
     private Button btnPivot = new Button();
+    private int panelAntesDeAyuda = 0;
 
     @FXML
     private Pane paneDragAndDrop;
@@ -101,7 +102,15 @@ public class VentanaPrincipalController implements Initializable {
     @FXML
     private Pane paneAyuda;
     @FXML
-    private Pane paneAyudaPreguntaMo;
+    private Pane paneOpcionesDerecha;
+    @FXML
+    private Button btnAyuda;
+    @FXML
+    private Button tbnVolverAlQuizz;
+    @FXML
+    private Button btnAcabar;
+    @FXML
+    private Button btnGenerarReporte;
 
     /**
      * Initializes the controller class.
@@ -152,6 +161,8 @@ public class VentanaPrincipalController implements Initializable {
             paneGifCorrecto.setVisible(false);
             paneGiftIncorrecto.setVisible(false);
             paneTxtCantPreg.setVisible(false);
+            paneAyuda.setVisible(false);
+            paneOpcionesDerecha.setVisible(true);
             gridPaneCaminosPreguntas.setVisible(true);
             panelJuego.setVisible(true);
         }
@@ -319,6 +330,7 @@ public class VentanaPrincipalController implements Initializable {
 
     private void iniciarPreguntaCortaRespuesta(Pregunta p) {
         gridPaneCaminosPreguntas.setVisible(false);
+        btnAcabar.setDisable(true);
         panePreguntaCortaRespuesta.setVisible(true);
         textPreguntaCortaRespuesta.setText(p.getPregunta());
         btnSubmitRespuestaCorta.setUserData(p);
@@ -328,6 +340,7 @@ public class VentanaPrincipalController implements Initializable {
 
     private void iniciarPreguntaMo(Pregunta p) {
         gridPaneCaminosPreguntas.setVisible(false);
+        btnAcabar.setDisable(true);
         panePreguntaMo.setVisible(true);
         textPreguntaMo.setText(p.getPregunta());
         btnRespuestaA.setText((String) p.getMapaRespuestas().keySet().toArray()[3]);
@@ -345,6 +358,7 @@ public class VentanaPrincipalController implements Initializable {
 
     private void iniciarPreguntaVF(Pregunta p) {
         gridPaneCaminosPreguntas.setVisible(false);
+        btnAcabar.setDisable(true);
         panePreguntaVF.setVisible(true);
         textPreguntaVF.setText(p.getPregunta());
         btnRespuestaVerdadera.setUserData(p);
@@ -578,13 +592,74 @@ public class VentanaPrincipalController implements Initializable {
     @FXML
     private void onActionContinuarEnGifCorrecto(ActionEvent event) {
         paneGifCorrecto.setVisible(false);
+        btnAcabar.setDisable(false);
         gridPaneCaminosPreguntas.setVisible(true);
     }
 
     @FXML
     private void onActionContinuarEnGifInCorrecto(ActionEvent event) {
         paneGiftIncorrecto.setVisible(false);
+        btnAcabar.setDisable(false);
         gridPaneCaminosPreguntas.setVisible(true);
+    }
+
+    @FXML
+    private void onActionBotonAyuda(ActionEvent event) {
+        paneOpcionesDerecha.setVisible(false);
+        if (gridPaneCaminosPreguntas.isVisible()) {
+            panelAntesDeAyuda = 0;
+        } else if (panePreguntaCortaRespuesta.isVisible()) {
+            panelAntesDeAyuda = 1;
+        } else if (panePreguntaMo.isVisible()) {
+            panelAntesDeAyuda = 2;
+        } else if (panePreguntaVF.isVisible()) {
+            panelAntesDeAyuda = 3;
+        }
+        switch (panelAntesDeAyuda) {
+            case 0:
+                gridPaneCaminosPreguntas.setVisible(false);
+                break;
+            case 1:
+                panePreguntaCortaRespuesta.setVisible(false);
+                break;
+            case 2:
+                panePreguntaMo.setVisible(false);
+                break;
+            case 3:
+                panePreguntaVF.setVisible(false);
+                break;
+        }
+        paneAyuda.setVisible(true);
+    }
+
+    @FXML
+    private void onActionBbnVolverAlQuizz(ActionEvent event) {
+        paneAyuda.setVisible(false);
+        switch (panelAntesDeAyuda) {
+            case 0:
+                gridPaneCaminosPreguntas.setVisible(true);
+                break;
+            case 1:
+                panePreguntaCortaRespuesta.setVisible(true);
+                break;
+            case 2:
+                panePreguntaMo.setVisible(true);
+                break;
+            case 3:
+                panePreguntaVF.setVisible(true);
+                break;
+        }
+        paneOpcionesDerecha.setVisible(true);
+    }
+
+    @FXML
+    private void onActionbtnAcabar(ActionEvent event) {
+        System.exit(911);
+    }
+
+    @FXML
+    private void onActionBtnGenerarReporte(ActionEvent event) {
+        Sistema.getInstance();
     }
 
 }
