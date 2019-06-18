@@ -16,9 +16,9 @@
 
 <AnchorPane id="AnchorPane" prefHeight="800.0" prefWidth="1100.0" styleClass="bodybg" stylesheets="@../styles/styleVentanaPrincipal.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.barrios_irabedra.obligatorio.controladores.VentanaPrincipalController">
    <children>
-      <Pane fx:id="panelJuego" layoutX="50.0" layoutY="50.0" prefHeight="700.0" prefWidth="1000.0" styleClass="bodybg" stylesheets="@../styles/stylePanelJuego.css">
+      <Pane fx:id="panelJuego" layoutX="50.0" layoutY="50.0" prefHeight="700.0" prefWidth="1000.0" styleClass="bodybg" stylesheets="@../styles/stylePanelJuego.css" visible="false">
          <children>
-            <Pane layoutX="862.0" prefHeight="700.0" prefWidth="138.0" style="-fx-background-color: #03787f;">
+            <Pane layoutX="862.0" prefHeight="700.0" prefWidth="138.0" style="-fx-background-color: #03787f;" visible="false">
                <children>
                   <Button layoutX="35.0" layoutY="576.0" mnemonicParsing="false" prefHeight="69.0" prefWidth="69.0" />
                   <Button layoutX="35.0" layoutY="75.0" mnemonicParsing="false" prefHeight="69.0" prefWidth="69.0" styleClass="bodybg" stylesheets="@../styles/styleBtnRespuestas.css" text="Ayuda" />
@@ -220,7 +220,7 @@
                      </image>
                   </ImageView>
                </children></Pane>
-            <Pane fx:id="paneGiftIncorrecto" layoutX="-5.0" layoutY="-2.0" prefHeight="706.0" prefWidth="867.0">
+            <Pane fx:id="paneGiftIncorrecto" layoutX="-5.0" layoutY="-2.0" prefHeight="706.0" prefWidth="867.0" visible="false">
                <children>
                   <ImageView fitHeight="582.0" fitWidth="534.0" layoutX="185.0" layoutY="36.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -234,15 +234,29 @@
                </children>
             </Pane>
          </children></Pane>
-      <Pane fx:id="paneDragAndDrop" layoutX="340.0" layoutY="143.0" onDragDropped="#handleDrop" onDragOver="#handleDragOver" prefHeight="400.0" prefWidth="400.0" styleClass="bodybg" stylesheets="@../styles/stylesPaneDragAndDrop.css" visible="false" />
-      <Button fx:id="btnComenzar" layoutX="470.0" layoutY="585.0" mnemonicParsing="false" onAction="#actionBtnComenzar" prefHeight="47.0" prefWidth="139.0" styleClass="bodybg" stylesheets="@../styles/stylebtnComenzar.css" text="¡Comenzar!" textFill="#61eaff" visible="false">
+      <Pane fx:id="paneDragAndDrop" layoutX="340.0" layoutY="143.0" onDragDropped="#handleDrop" onDragOver="#handleDragOver" prefHeight="400.0" prefWidth="400.0" styleClass="bodybg" stylesheets="@../styles/stylesPaneDragAndDrop.css" />
+      <Button fx:id="btnComenzar" layoutX="470.0" layoutY="585.0" mnemonicParsing="false" onAction="#actionBtnComenzar" prefHeight="47.0" prefWidth="139.0" styleClass="bodybg" stylesheets="@../styles/stylebtnComenzar.css" text="¡Comenzar!" textFill="#61eaff">
          <font>
             <Font name="Segoe UI Light" size="20.0" />
          </font>
       </Button>
-      <Pane fx:id="panelTextoDragAndDrop" layoutX="340.0" layoutY="62.0" prefHeight="38.0" prefWidth="400.0" styleClass="bodybg" stylesheets="@../styles/stylebtnComenzar.css" visible="false">
+      <Pane fx:id="panelTextoDragAndDrop" layoutX="340.0" layoutY="62.0" prefHeight="38.0" prefWidth="400.0" styleClass="bodybg" stylesheets="@../styles/stylebtnComenzar.css">
          <children>
             <Text fill="#61eaff" fontSmoothingType="LCD" layoutX="16.0" layoutY="26.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Arrastrá todos los archivos que quieras" textAlignment="CENTER" wrappingWidth="367.13671875">
+               <font>
+                  <Font name="Segoe UI Light" size="18.0" />
+               </font>
+            </Text>
+         </children>
+      </Pane>
+      <Pane fx:id="paneTxtCantPreg" layoutX="758.0" layoutY="180.0" prefHeight="287.0" prefWidth="320.0">
+         <children>
+            <Text fx:id="txtPreguntasDropeadas" fill="#61eaff" layoutX="-10.0" layoutY="43.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="334.00000001490116">
+               <font>
+                  <Font name="Segoe UI Light" size="18.0" />
+               </font>
+            </Text>
+            <Text fill="#61eaff" layoutY="119.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Podés cargar hasta 39 preguntas." textAlignment="CENTER" wrappingWidth="319.9999898672104">
                <font>
                   <Font name="Segoe UI Light" size="18.0" />
                </font>

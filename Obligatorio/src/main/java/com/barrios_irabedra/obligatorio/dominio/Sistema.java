@@ -386,7 +386,6 @@ public class Sistema {
                 System.err.println("Fatal error");
                 assert false;
             }
-
             if (p instanceof PreguntaCortaRespuesta) {
                 for (int i = 0; i < p.getMapaRespuestas().size(); i++) {
                     if (p.getMapaRespuestas().get(respuestaSeleccionada) != null) {

@@ -61,7 +61,7 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
-  <testcase name="testToString" classname="com.barrios_irabedra.obligatorio.dominio.PreguntaMultipleOpcionTest" time="0"/>
+  <testcase name="testToString" classname="com.barrios_irabedra.obligatorio.dominio.PreguntaMultipleOpcionTest" time="0.001"/>
   <testcase name="testGetComentario" classname="com.barrios_irabedra.obligatorio.dominio.PreguntaMultipleOpcionTest" time="0"/>
-  <testcase name="testAgregarComentarioRespuesta" classname="com.barrios_irabedra.obligatorio.dominio.PreguntaMultipleOpcionTest" time="0.001"/>
+  <testcase name="testAgregarComentarioRespuesta" classname="com.barrios_irabedra.obligatorio.dominio.PreguntaMultipleOpcionTest" time="0"/>
 </testsuite>

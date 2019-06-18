@@ -37,11 +37,11 @@ import sun.audio.AudioStream;
  * @author Usuario
  */
 public class VentanaPrincipalController implements Initializable {
-    
+
     private Button[][] matrizBotones = new Button[8][8];
     private Button b = new Button();
     private Button btnPivot = new Button();
-    
+
     @FXML
     private Pane paneDragAndDrop;
     @FXML
@@ -94,6 +94,14 @@ public class VentanaPrincipalController implements Initializable {
     private Button btnContinuarEnGifCorrecto;
     @FXML
     private Button btnContinuarEnGifInCorrecto;
+    @FXML
+    private Text txtPreguntasDropeadas;
+    @FXML
+    private Pane paneTxtCantPreg;
+    @FXML
+    private Pane paneAyuda;
+    @FXML
+    private Pane paneAyudaPreguntaMo;
 
     /**
      * Initializes the controller class.
@@ -104,25 +112,31 @@ public class VentanaPrincipalController implements Initializable {
         paneDragAndDrop.setVisible(true);
         btnComenzar.setVisible(true);
         panelTextoDragAndDrop.setVisible(true);
+        paneTxtCantPreg.setVisible(true);
     }
-    
+
     @FXML
     private void handleDragOver(DragEvent event) {
         if (event.getDragboard().hasFiles()) {
             event.acceptTransferModes(TransferMode.ANY);
         }
     }
-    
+
     @FXML
     private void handleDrop(DragEvent event) {
         List<File> files = event.getDragboard().getFiles();
         Sistema.getInstance().recibirArchivos(files);
-        
+        int contPreguntaS = Sistema.getInstance().getListaTodasLasPreguntas().size();
+        if (contPreguntaS < 39) {
+            txtPreguntasDropeadas.setText("Preguntas cargadas: " + contPreguntaS + "/39");
+        } else {
+            txtPreguntasDropeadas.setText("Preguntas cargadas: 39/39");
+        }
         System.out.println(Sistema.getInstance().getListaPreguntasCortaRespuesta());
         System.out.println(Sistema.getInstance().getListaPreguntasVF());
         System.out.println(Sistema.getInstance().getListaPreguntasMultipleOpcion());
     }
-    
+
     @FXML
     private void actionBtnComenzar(ActionEvent event) {
         if (Sistema.getInstance().cantidadTotalPreguntas() > 0) {
@@ -137,11 +151,12 @@ public class VentanaPrincipalController implements Initializable {
             panePreguntaCortaRespuesta.setVisible(false);
             paneGifCorrecto.setVisible(false);
             paneGiftIncorrecto.setVisible(false);
+            paneTxtCantPreg.setVisible(false);
             gridPaneCaminosPreguntas.setVisible(true);
             panelJuego.setVisible(true);
         }
     }
-    
+
     private void crearMatrizBotones() {
         Integer fil;
         Integer col;
@@ -157,7 +172,7 @@ public class VentanaPrincipalController implements Initializable {
             }
         }
     }
-    
+
     private void asignoPreguntaBoton() {
         int cantP = Sistema.getInstance().cantidadTotalPreguntas();
         int contP = cantP;
@@ -216,7 +231,7 @@ public class VentanaPrincipalController implements Initializable {
             desactivarElRestoDeBotones(contador);
         }
     }
-    
+
     private void desactivarElRestoDeBotones(int contador) {
         for (int i = 7; i >= 0; i--) {
             if (contador == 0) {
@@ -281,7 +296,7 @@ public class VentanaPrincipalController implements Initializable {
             contador--;
         }
     }
-    
+
     private void activar(final Button b) {
         b.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -298,10 +313,10 @@ public class VentanaPrincipalController implements Initializable {
                     btnPivot = b;
                 }
             }
-            
+
         });
     }
-    
+
     private void iniciarPreguntaCortaRespuesta(Pregunta p) {
         gridPaneCaminosPreguntas.setVisible(false);
         panePreguntaCortaRespuesta.setVisible(true);
@@ -310,7 +325,7 @@ public class VentanaPrincipalController implements Initializable {
         labelTimerCortaRespuesta.textProperty().bind(p.getSegundosRestantes().asString());
         p.start();
     }
-    
+
     private void iniciarPreguntaMo(Pregunta p) {
         gridPaneCaminosPreguntas.setVisible(false);
         panePreguntaMo.setVisible(true);
@@ -325,9 +340,9 @@ public class VentanaPrincipalController implements Initializable {
         btnRespuestaD.setUserData(p);
         labelTimerMo.textProperty().bind(p.getSegundosRestantes().asString());
         p.start();
-        
+
     }
-    
+
     private void iniciarPreguntaVF(Pregunta p) {
         gridPaneCaminosPreguntas.setVisible(false);
         panePreguntaVF.setVisible(true);
@@ -337,7 +352,7 @@ public class VentanaPrincipalController implements Initializable {
         labelTimer.textProperty().bind(p.getSegundosRestantes().asString());
         p.start();
     }
-    
+
     @FXML
     private void onActionRespuestaV(ActionEvent event) {
         PreguntaVF p = (PreguntaVF) btnRespuestaVerdadera.getUserData();
@@ -353,13 +368,13 @@ public class VentanaPrincipalController implements Initializable {
             mostrarGifYSonidoIncorrecto(p);
         }
     }
-    
+
     private void procesarRespuestaFueraDeTiempo(Pregunta p, String respuesta) {
         Sistema.getInstance().procesarRespuestaSeleccionada(p, respuesta);
         btnPivot.setStyle("-fx-background-color: #000f3f");
         btnPivot.setDisable(true);
     }
-    
+
     private boolean procesarRespuestaVF(PreguntaVF p, String respuestaSeleccionada) {
         boolean check;
         if (Sistema.getInstance().procesarRespuestaSeleccionada(p, respuestaSeleccionada)) {
@@ -372,7 +387,7 @@ public class VentanaPrincipalController implements Initializable {
         btnPivot.setDisable(true);
         return check;
     }
-    
+
     @FXML
     private void onActionRespuestaF(ActionEvent event) {
         PreguntaVF p = (PreguntaVF) btnRespuestaVerdadera.getUserData();
@@ -388,7 +403,7 @@ public class VentanaPrincipalController implements Initializable {
             mostrarGifYSonidoIncorrecto(p);
         }
     }
-    
+
     @FXML
     private void onActionbtnRespuestaA(ActionEvent event) {
         PreguntaMultipleOpcion p = (PreguntaMultipleOpcion) btnPivot.getUserData();
@@ -405,7 +420,7 @@ public class VentanaPrincipalController implements Initializable {
             mostrarGifYSonidoIncorrecto(p);
         }
     }
-    
+
     @FXML
     private void onActionBtnRespuestaB(ActionEvent event) {
         PreguntaMultipleOpcion p = (PreguntaMultipleOpcion) btnPivot.getUserData();
@@ -422,7 +437,7 @@ public class VentanaPrincipalController implements Initializable {
             mostrarGifYSonidoIncorrecto(p);
         }
     }
-    
+
     @FXML
     private void onActionBtnRespuestaC(ActionEvent event) {
         PreguntaMultipleOpcion p = (PreguntaMultipleOpcion) btnPivot.getUserData();
@@ -439,7 +454,7 @@ public class VentanaPrincipalController implements Initializable {
             mostrarGifYSonidoIncorrecto(p);
         }
     }
-    
+
     @FXML
     private void onActionBtnRespuestaD(ActionEvent event) {
         PreguntaMultipleOpcion p = (PreguntaMultipleOpcion) btnPivot.getUserData();
@@ -456,7 +471,7 @@ public class VentanaPrincipalController implements Initializable {
             mostrarGifYSonidoIncorrecto(p);
         }
     }
-    
+
     private void mostrarGifYSonidoCorrecto(Pregunta p) {
         if (p instanceof PreguntaVF) {
             panePreguntaVF.setVisible(false);
@@ -475,17 +490,17 @@ public class VentanaPrincipalController implements Initializable {
         paneGifCorrecto.setVisible(true);
         playAudioCorrecto();
     }
-    
+
     private void playAudioCorrecto() {
         InputStream in;
         try {
             in = new FileInputStream(new File("src/main/resources/styles/ok.wav"));
             AudioStream audioOk = new AudioStream(in);
             AudioPlayer.player.start(audioOk);
-        } catch (Exception e) {  
+        } catch (Exception e) {
         }
     }
-    
+
     private void playAudioIncorrecto() {
         InputStream in;
         try {
@@ -495,7 +510,7 @@ public class VentanaPrincipalController implements Initializable {
         } catch (Exception e) {
         }
     }
-    
+
     private void mostrarGifYSonidoIncorrecto(Pregunta p) {
         if (p instanceof PreguntaVF) {
             panePreguntaVF.setVisible(false);
@@ -514,7 +529,7 @@ public class VentanaPrincipalController implements Initializable {
         paneGiftIncorrecto.setVisible(true);
         playAudioIncorrecto();
     }
-    
+
     private boolean procesarRespuestaMo(PreguntaMultipleOpcion p, String respuestaSeleccionada) {
         boolean check;
         if (Sistema.getInstance().procesarRespuestaSeleccionada(p, respuestaSeleccionada)) {
@@ -527,7 +542,7 @@ public class VentanaPrincipalController implements Initializable {
         btnPivot.setDisable(true);
         return check;
     }
-    
+
     @FXML
     private void onActionBtnSubmit(ActionEvent event) {
         String respuestaSeleccionada = txtFieldRespuestaCorta.getText();
@@ -546,7 +561,7 @@ public class VentanaPrincipalController implements Initializable {
             }
         }
     }
-    
+
     private boolean procesarRespuestaCortaRespuesta(PreguntaCortaRespuesta p, String respuestaSeleccionada) {
         boolean check;
         if (Sistema.getInstance().procesarRespuestaSeleccionada(p, respuestaSeleccionada)) {
@@ -559,17 +574,17 @@ public class VentanaPrincipalController implements Initializable {
         btnPivot.setDisable(true);
         return check;
     }
-    
+
     @FXML
     private void onActionContinuarEnGifCorrecto(ActionEvent event) {
         paneGifCorrecto.setVisible(false);
         gridPaneCaminosPreguntas.setVisible(true);
     }
-    
+
     @FXML
     private void onActionContinuarEnGifInCorrecto(ActionEvent event) {
         paneGiftIncorrecto.setVisible(false);
         gridPaneCaminosPreguntas.setVisible(true);
     }
-    
+
 }
