@@ -410,7 +410,7 @@ public class Sistema {
         boolean creadoCorrectamente = false;
         try {
             Document document = new Document();
-            PdfWriter.getInstance(document, new FileOutputStream("D:/hellotext.pdf"));
+            PdfWriter.getInstance(document, new FileOutputStream("src/main/resources/PDF/reporte.pdf"));
             document.open();
             document.add(new Paragraph(getRespuestasSeleccionadas().toString()));
             document.close();

@@ -141,9 +141,6 @@ public class VentanaPrincipalController implements Initializable {
         } else {
             txtPreguntasDropeadas.setText("Preguntas cargadas: 39/39");
         }
-        System.out.println(Sistema.getInstance().getListaPreguntasCortaRespuesta());
-        System.out.println(Sistema.getInstance().getListaPreguntasVF());
-        System.out.println(Sistema.getInstance().getListaPreguntasMultipleOpcion());
     }
 
     @FXML
@@ -313,6 +310,7 @@ public class VentanaPrincipalController implements Initializable {
             @Override
             public void handle(ActionEvent event) {
                 Pregunta p = (Pregunta) b.getUserData();
+                btnGenerarReporte.setDisable(true);
                 if (p instanceof PreguntaVF) {
                     iniciarPreguntaVF(p);
                     btnPivot = b;
@@ -593,6 +591,7 @@ public class VentanaPrincipalController implements Initializable {
     private void onActionContinuarEnGifCorrecto(ActionEvent event) {
         paneGifCorrecto.setVisible(false);
         btnAcabar.setDisable(false);
+        btnGenerarReporte.setDisable(false);
         gridPaneCaminosPreguntas.setVisible(true);
     }
 
@@ -600,6 +599,7 @@ public class VentanaPrincipalController implements Initializable {
     private void onActionContinuarEnGifInCorrecto(ActionEvent event) {
         paneGiftIncorrecto.setVisible(false);
         btnAcabar.setDisable(false);
+        btnGenerarReporte.setDisable(false);
         gridPaneCaminosPreguntas.setVisible(true);
     }
 
@@ -656,7 +656,7 @@ public class VentanaPrincipalController implements Initializable {
     private void onActionbtnAcabar(ActionEvent event) {
         sonidoExit();
         int n = 9999999;
-        while(n > 0){           
+        while (n > 0) {
             n--;
             System.out.print("");
         }
@@ -672,10 +672,10 @@ public class VentanaPrincipalController implements Initializable {
         } catch (Exception e) {
         }
     }
-    
+
     @FXML
     private void onActionBtnGenerarReporte(ActionEvent event) {
-        if (Sistema.getInstance().getRespuestasSeleccionadas().size() > 1) {
+        if (Sistema.getInstance().getRespuestasSeleccionadas().size() > 0) {
             Sistema.getInstance().crearReporte();
         }
     }
