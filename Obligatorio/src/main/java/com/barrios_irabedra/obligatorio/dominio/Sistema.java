@@ -1,7 +1,11 @@
 package com.barrios_irabedra.obligatorio.dominio;
 
+import com.itextpdf.text.*;
+import com.itextpdf.text.Font.FontFamily;
+import com.itextpdf.text.pdf.PdfWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -402,17 +406,21 @@ public class Sistema {
         return hayRespuestaCorrecta;
     }
 
-    private boolean preparativosParaReporte(int cantidadDePreguntasRespondidas) {
-        ArrayList<Pregunta> listaPreguntasRespondidas = new ArrayList<>();
-        for (int i = (cantidadDePreguntasRespondidas - 1); i <= 0; i--) {
-            listaPreguntasRespondidas.add((Pregunta)this.respuestasSeleccionadas.keySet().toArray()[i]);
+    public boolean crearReporte() {
+        boolean creadoCorrectamente = false;
+        try {
+            Document document = new Document();
+            PdfWriter.getInstance(document, new FileOutputStream("D:/hellotext.pdf"));
+            document.open();
+            document.add(new Paragraph(getRespuestasSeleccionadas().toString()));
+            document.close();
+        } catch (Exception e) {
+            System.out.println(e);
         }
-        return crearReporte(listaPreguntasRespondidas);
+        return creadoCorrectamente;
     }
 
-    private boolean crearReporte(ArrayList<Pregunta> listaPreguntasRespondidas) {
-        boolean creadoCorrectamente = false;
-
-        return creadoCorrectamente;
+    public Iterator<Pregunta> iterator() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

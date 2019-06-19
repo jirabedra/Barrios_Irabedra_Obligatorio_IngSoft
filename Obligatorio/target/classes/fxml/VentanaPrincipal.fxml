@@ -298,12 +298,12 @@
                </image>
             </ImageView>
          </children></Pane>
-      <Button fx:id="btnComenzar" layoutX="470.0" layoutY="585.0" mnemonicParsing="false" onAction="#actionBtnComenzar" prefHeight="47.0" prefWidth="139.0" styleClass="bodybg" stylesheets="@../styles/stylebtnComenzar.css" text="¡Comenzar!" textFill="#61eaff" visible="false">
+      <Button fx:id="btnComenzar" layoutX="470.0" layoutY="585.0" mnemonicParsing="false" onAction="#actionBtnComenzar" prefHeight="47.0" prefWidth="139.0" styleClass="bodybg" stylesheets="@../styles/stylebtnComenzar.css" text="¡Comenzar!" textFill="#61eaff">
          <font>
             <Font name="Segoe UI Light" size="20.0" />
          </font>
       </Button>
-      <Pane fx:id="panelTextoDragAndDrop" layoutX="340.0" layoutY="22.0" prefHeight="94.0" prefWidth="400.0" styleClass="bodybg" stylesheets="@../styles/stylebtnComenzar.css" visible="false">
+      <Pane fx:id="panelTextoDragAndDrop" layoutX="340.0" layoutY="22.0" prefHeight="94.0" prefWidth="400.0" styleClass="bodybg" stylesheets="@../styles/stylebtnComenzar.css">
          <children>
             <Text fill="#61eaff" fontSmoothingType="LCD" layoutX="16.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Arrastrá todos los archivos que quieras" textAlignment="CENTER" wrappingWidth="367.13671875">
                <font>
@@ -317,7 +317,7 @@
             </Text>
          </children>
       </Pane>
-      <Pane fx:id="paneTxtCantPreg" layoutX="758.0" layoutY="180.0" prefHeight="287.0" prefWidth="320.0" visible="false">
+      <Pane fx:id="paneTxtCantPreg" layoutX="758.0" layoutY="180.0" prefHeight="287.0" prefWidth="320.0">
          <children>
             <Text fx:id="txtPreguntasDropeadas" fill="#61eaff" layoutX="-10.0" layoutY="43.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="334.00000001490116">
                <font>
@@ -329,6 +329,15 @@
                   <Font name="Segoe UI Light" size="18.0" />
                </font>
             </Text>
+            <Pane fx:id="txtErrorCargar" layoutX="57.0" layoutY="154.0" prefHeight="39.0" prefWidth="200.0" visible="false">
+               <children>
+                  <Text fill="#61eaff" layoutX="-45.0" layoutY="16.0" strokeType="OUTSIDE" strokeWidth="0.0" text="No se han podido cargar preguntas" textAlignment="CENTER" wrappingWidth="323.9999860525131">
+                     <font>
+                        <Font name="Segoe UI Light" size="18.0" />
+                     </font>
+                  </Text>
+               </children>
+            </Pane>
          </children>
       </Pane>
    </children>

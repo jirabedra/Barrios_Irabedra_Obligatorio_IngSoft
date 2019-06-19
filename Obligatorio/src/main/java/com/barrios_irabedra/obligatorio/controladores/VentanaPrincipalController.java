@@ -654,12 +654,30 @@ public class VentanaPrincipalController implements Initializable {
 
     @FXML
     private void onActionbtnAcabar(ActionEvent event) {
+        sonidoExit();
+        int n = 9999999;
+        while(n > 0){           
+            n--;
+            System.out.print("");
+        }
         System.exit(911);
     }
 
+    private void sonidoExit() {
+        InputStream in;
+        try {
+            in = new FileInputStream(new File("src/main/resources/styles/Exit.wav"));
+            AudioStream audioOk = new AudioStream(in);
+            AudioPlayer.player.start(audioOk);
+        } catch (Exception e) {
+        }
+    }
+    
     @FXML
     private void onActionBtnGenerarReporte(ActionEvent event) {
-        Sistema.getInstance();
+        if (Sistema.getInstance().getRespuestasSeleccionadas().size() > 1) {
+            Sistema.getInstance().crearReporte();
+        }
     }
 
 }
