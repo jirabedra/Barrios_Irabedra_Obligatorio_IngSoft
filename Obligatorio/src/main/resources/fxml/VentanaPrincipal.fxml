@@ -18,7 +18,7 @@
 
 <AnchorPane id="AnchorPane" prefHeight="800.0" prefWidth="1100.0" styleClass="bodybg" stylesheets="@../styles/styleVentanaPrincipal.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.barrios_irabedra.obligatorio.controladores.VentanaPrincipalController">
    <children>
-      <Pane fx:id="panelJuego" layoutX="50.0" layoutY="50.0" prefHeight="700.0" prefWidth="1000.0" styleClass="bodybg" stylesheets="@../styles/stylePanelJuego.css">
+      <Pane fx:id="panelJuego" layoutX="50.0" layoutY="50.0" prefHeight="700.0" prefWidth="1000.0" styleClass="bodybg" stylesheets="@../styles/stylePanelJuego.css" visible="false">
          <children>
             <Pane fx:id="paneOpcionesDerecha" layoutX="862.0" prefHeight="700.0" prefWidth="138.0" style="-fx-background-color: #03787f;">
                <children>
@@ -290,7 +290,14 @@
                </children>
             </Pane>
          </children></Pane>
-      <Pane fx:id="paneDragAndDrop" layoutX="340.0" layoutY="143.0" onDragDropped="#handleDrop" onDragOver="#handleDragOver" prefHeight="400.0" prefWidth="400.0" styleClass="bodybg" stylesheets="@../styles/stylesPaneDragAndDrop.css" visible="false" />
+      <Pane fx:id="paneDragAndDrop" layoutX="340.0" layoutY="143.0" onDragDropped="#handleDrop" onDragOver="#handleDragOver" prefHeight="400.0" prefWidth="400.0" styleClass="bodybg" stylesheets="@../styles/stylesPaneDragAndDrop.css">
+         <children>
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="125.0" layoutY="125.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../styles/mail-1454731_960_720.png" />
+               </image>
+            </ImageView>
+         </children></Pane>
       <Button fx:id="btnComenzar" layoutX="470.0" layoutY="585.0" mnemonicParsing="false" onAction="#actionBtnComenzar" prefHeight="47.0" prefWidth="139.0" styleClass="bodybg" stylesheets="@../styles/stylebtnComenzar.css" text="¡Comenzar!" textFill="#61eaff" visible="false">
          <font>
             <Font name="Segoe UI Light" size="20.0" />
