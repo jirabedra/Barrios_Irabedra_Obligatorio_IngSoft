@@ -31,6 +31,9 @@ import javafx.scene.input.TransferMode;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
 import sun.audio.AudioPlayer;
 import sun.audio.AudioStream;
 
@@ -170,6 +173,7 @@ public class VentanaPrincipalController implements Initializable {
             paneTituloDelJuego.setVisible(true);
             gridPaneCaminosPreguntas.setVisible(true);
             panelJuego.setVisible(true);
+            playuSonidoMenu();
         }
     }
 
@@ -685,6 +689,20 @@ public class VentanaPrincipalController implements Initializable {
             in = new FileInputStream(new File("src/main/resources/styles/Exit.wav"));
             AudioStream audioOk = new AudioStream(in);
             AudioPlayer.player.start(audioOk);
+        } catch (Exception e) {
+        }
+    }
+
+    private void playuSonidoMenu() {
+
+        try {
+            File musicPath = new File("src/main/resources/styles/sonidoEspiral.wav");
+            AudioInputStream audioInput = AudioSystem.getAudioInputStream(musicPath);
+            Clip clip = AudioSystem.getClip();
+            clip.open(audioInput);
+            clip.start();
+            clip.loop(Clip.LOOP_CONTINUOUSLY);
+
         } catch (Exception e) {
         }
     }
