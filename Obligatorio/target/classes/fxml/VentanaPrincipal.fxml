@@ -18,7 +18,7 @@
 
 <AnchorPane id="AnchorPane" prefHeight="800.0" prefWidth="1100.0" styleClass="bodybg" stylesheets="@../styles/styleVentanaPrincipal.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.barrios_irabedra.obligatorio.controladores.VentanaPrincipalController">
    <children>
-      <Pane fx:id="panelJuego" layoutX="50.0" layoutY="50.0" prefHeight="700.0" prefWidth="1000.0" styleClass="bodybg" stylesheets="@../styles/stylePanelJuego.css" visible="false">
+      <Pane fx:id="panelJuego" layoutX="50.0" layoutY="50.0" prefHeight="700.0" prefWidth="1000.0" styleClass="bodybg" stylesheets="@../styles/stylePanelJuego.css">
          <children>
             <Pane fx:id="paneOpcionesDerecha" layoutX="862.0" prefHeight="700.0" prefWidth="138.0" style="-fx-background-color: #03787f;">
                <children>
@@ -41,7 +41,7 @@
                <opaqueInsets>
                   <Insets />
                </opaqueInsets></Pane>
-            <GridPane fx:id="gridPaneCaminosPreguntas" layoutX="131.0" layoutY="50.0" prefHeight="540.0" prefWidth="540.0" visible="false">
+            <GridPane fx:id="gridPaneCaminosPreguntas" layoutX="131.0" layoutY="50.0" prefHeight="540.0" prefWidth="540.0">
               <columnConstraints>
                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -113,7 +113,10 @@
                   <Button mnemonicParsing="false" prefHeight="108.0" prefWidth="108.0" GridPane.columnIndex="6" GridPane.rowIndex="6" />
                   <Button mnemonicParsing="false" prefHeight="108.0" prefWidth="108.0" text="Button" visible="false" GridPane.columnIndex="7" GridPane.rowIndex="6" />
                   <Button mnemonicParsing="false" prefHeight="108.0" prefWidth="108.0" GridPane.columnIndex="8" GridPane.rowIndex="6" />
-                  <Button mnemonicParsing="false" prefHeight="108.0" prefWidth="108.0" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                  <Button mnemonicParsing="false" prefHeight="108.0" prefWidth="108.0" textFill="#61eaff" GridPane.columnIndex="1" GridPane.rowIndex="7">
+                     <font>
+                        <Font size="18.0" />
+                     </font></Button>
                   <Button mnemonicParsing="false" prefHeight="108.0" prefWidth="108.0" text="Button" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="7" />
                   <Button mnemonicParsing="false" prefHeight="108.0" prefWidth="108.0" GridPane.columnIndex="3" GridPane.rowIndex="7" />
                   <Button mnemonicParsing="false" prefHeight="108.0" prefWidth="108.0" text="Button" visible="false" GridPane.columnIndex="4" GridPane.rowIndex="7" />
@@ -121,7 +124,10 @@
                   <Button mnemonicParsing="false" prefHeight="108.0" prefWidth="108.0" text="Button" visible="false" GridPane.columnIndex="6" GridPane.rowIndex="7" />
                   <Button mnemonicParsing="false" prefHeight="108.0" prefWidth="108.0" text="Button" visible="false" GridPane.columnIndex="7" GridPane.rowIndex="7" />
                   <Button mnemonicParsing="false" prefHeight="108.0" prefWidth="108.0" GridPane.columnIndex="8" GridPane.rowIndex="7" />
-                  <Button mnemonicParsing="false" prefHeight="108.0" prefWidth="108.0" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+                  <Button mnemonicParsing="false" prefHeight="108.0" prefWidth="108.0" textFill="#61eaff" GridPane.columnIndex="1" GridPane.rowIndex="8">
+                     <font>
+                        <Font size="18.0" />
+                     </font></Button>
                   <Button mnemonicParsing="false" prefHeight="108.0" prefWidth="108.0" text="Button" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="8" />
                   <Button mnemonicParsing="false" prefHeight="108.0" prefWidth="108.0" GridPane.columnIndex="3" GridPane.rowIndex="8" />
                   <Button mnemonicParsing="false" prefHeight="108.0" prefWidth="108.0" GridPane.columnIndex="4" GridPane.rowIndex="8" />
@@ -290,7 +296,7 @@
                </children>
             </Pane>
          </children></Pane>
-      <Pane fx:id="paneDragAndDrop" layoutX="340.0" layoutY="143.0" onDragDropped="#handleDrop" onDragOver="#handleDragOver" prefHeight="400.0" prefWidth="400.0" styleClass="bodybg" stylesheets="@../styles/stylesPaneDragAndDrop.css">
+      <Pane fx:id="paneDragAndDrop" layoutX="340.0" layoutY="143.0" onDragDropped="#handleDrop" onDragOver="#handleDragOver" prefHeight="400.0" prefWidth="400.0" styleClass="bodybg" stylesheets="@../styles/stylesPaneDragAndDrop.css" visible="false">
          <children>
             <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="125.0" layoutY="125.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -298,12 +304,12 @@
                </image>
             </ImageView>
          </children></Pane>
-      <Button fx:id="btnComenzar" layoutX="470.0" layoutY="585.0" mnemonicParsing="false" onAction="#actionBtnComenzar" prefHeight="47.0" prefWidth="139.0" styleClass="bodybg" stylesheets="@../styles/stylebtnComenzar.css" text="¡Comenzar!" textFill="#61eaff">
+      <Button fx:id="btnComenzar" layoutX="470.0" layoutY="585.0" mnemonicParsing="false" onAction="#actionBtnComenzar" prefHeight="47.0" prefWidth="139.0" styleClass="bodybg" stylesheets="@../styles/stylebtnComenzar.css" text="¡Comenzar!" textFill="#61eaff" visible="false">
          <font>
             <Font name="Segoe UI Light" size="20.0" />
          </font>
       </Button>
-      <Pane fx:id="panelTextoDragAndDrop" layoutX="340.0" layoutY="22.0" prefHeight="94.0" prefWidth="400.0" styleClass="bodybg" stylesheets="@../styles/stylebtnComenzar.css">
+      <Pane fx:id="panelTextoDragAndDrop" layoutX="340.0" layoutY="22.0" prefHeight="94.0" prefWidth="400.0" styleClass="bodybg" stylesheets="@../styles/stylebtnComenzar.css" visible="false">
          <children>
             <Text fill="#61eaff" fontSmoothingType="LCD" layoutX="16.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Arrastrá todos los archivos que quieras" textAlignment="CENTER" wrappingWidth="367.13671875">
                <font>
@@ -317,7 +323,7 @@
             </Text>
          </children>
       </Pane>
-      <Pane fx:id="paneTxtCantPreg" layoutX="758.0" layoutY="180.0" prefHeight="287.0" prefWidth="320.0">
+      <Pane fx:id="paneTxtCantPreg" layoutX="758.0" layoutY="180.0" prefHeight="287.0" prefWidth="320.0" visible="false">
          <children>
             <Text fx:id="txtPreguntasDropeadas" fill="#61eaff" layoutX="-10.0" layoutY="43.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="334.00000001490116">
                <font>

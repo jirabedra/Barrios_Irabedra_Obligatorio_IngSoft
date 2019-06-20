@@ -13,6 +13,9 @@ import java.net.URL;
 import java.nio.file.Files;
 import java.util.*;
 import java.util.ResourceBundle;
+import java.util.concurrent.TimeUnit;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -505,6 +508,7 @@ public class VentanaPrincipalController implements Initializable {
 
     private void playAudioCorrecto() {
         InputStream in;
+        btnPivot.setText("✓");
         try {
             in = new FileInputStream(new File("src/main/resources/styles/ok.wav"));
             AudioStream audioOk = new AudioStream(in);
@@ -515,6 +519,7 @@ public class VentanaPrincipalController implements Initializable {
 
     private void playAudioIncorrecto() {
         InputStream in;
+        btnPivot.setText("X");
         try {
             in = new FileInputStream(new File("src/main/resources/styles/Wrong.wav"));
             AudioStream audioOk = new AudioStream(in);
@@ -655,10 +660,9 @@ public class VentanaPrincipalController implements Initializable {
     @FXML
     private void onActionbtnAcabar(ActionEvent event) {
         sonidoExit();
-        int n = 9999999;
-        while (n > 0) {
-            n--;
-            System.out.print("");
+        try {
+            TimeUnit.SECONDS.sleep(4);
+        } catch (InterruptedException ex) {
         }
         System.exit(911);
     }
