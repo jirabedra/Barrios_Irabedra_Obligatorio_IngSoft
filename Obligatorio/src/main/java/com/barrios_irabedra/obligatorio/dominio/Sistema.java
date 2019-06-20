@@ -93,7 +93,6 @@ public class Sistema {
         while (it.hasNext()) {
             cargarPreguntas(filtrarArchivo(it.next()));
         }
-
     }
 
     /**
