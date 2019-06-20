@@ -48,13 +48,16 @@ public class SistemaTest {
 
     /**
      * Test of getInstanciaSistema method, of class Sistema.
-     ////////////////////////////////////////////////////////////
+     */
     @Test
     public void testGetInstanciaSistema() {
         System.out.println("getInstanciaSistema");
         Sistema result = new Sistema();
-        result = Sistema.getInstanciaSistema();
-        assertNotNull(result);
+        if (Sistema.getInstanciaSistema() == null) {
+            assertNotNull(result);
+        }else{
+            assertNull(result);
+        }
     }
 
     /**
@@ -69,36 +72,30 @@ public class SistemaTest {
 
     /**
      * Test of recibirArchivos method, of class Sistema.
-     /////////////////////////////////////////////////
-    @Test
-    public void testRecibirArchivos() {
-        System.out.println("recibirArchivos");
-        List<File> files = null;
-        Sistema instance = null;
-        instance.recibirArchivos(files);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
+     * /////////////////////////////////////////////////
+     *
+     * @Test public void testRecibirArchivos() {
+     * System.out.println("recibirArchivos"); List<File> files =
+     * null; Sistema instance = null;
+     * instance.recibirArchivos(files); // TODO review the
+     * generated test code and remove the default call to fail.
+     * fail("The test case is a prototype."); }
+     *
+     * /**
      * Test of filtrarArchivo method, of class Sistema.
-     ////////////////////////////////////////////////////////
-    @Test
-    public void testFiltrarArchivo() {
-        System.out.println("filtrarArchivo");
-        File unArchivo = null;
-        Sistema instance = null;
-        ArrayList<String> expResult = null;
-        ArrayList<String> result = instance.filtrarArchivo(unArchivo);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
+     * ////////////////////////////////////////////////////////
+     * @Test public void testFiltrarArchivo() {
+     * System.out.println("filtrarArchivo"); File unArchivo =
+     * null; Sistema instance = null; ArrayList<String>
+     * expResult = null; ArrayList<String> result =
+     * instance.filtrarArchivo(unArchivo);
+     * assertEquals(expResult, result); // TODO review the
+     * generated test code and remove the default call to fail.
+     * fail("The test case is a prototype."); }
+     *
+     * /**
      * Test of esLineaConContenido method, of class Sistema.
      */
-    
     @Test
     public void testEsLineaConContenidoVacia() {
         System.out.println("esLineaConContenido");
@@ -108,7 +105,7 @@ public class SistemaTest {
         Boolean result = instance.esLineaConContenido(linea);
         assertEquals(expResult, result);
     }
-    
+
     @Test
     public void testEsLineaConContenidoBarra() {
         System.out.println("esLineaConContenido");
@@ -118,7 +115,7 @@ public class SistemaTest {
         Boolean result = instance.esLineaConContenido(linea);
         assertEquals(expResult, result);
     }
-    
+
     @Test
     public void testEsLineaConContenidoDosPuntos() {
         System.out.println("esLineaConContenido");
@@ -128,7 +125,7 @@ public class SistemaTest {
         Boolean result = instance.esLineaConContenido(linea);
         assertEquals(expResult, result);
     }
-    
+
     @Test
     public void testEsLineaConContenidoIgual() {
         System.out.println("esLineaConContenido");
@@ -138,7 +135,7 @@ public class SistemaTest {
         Boolean result = instance.esLineaConContenido(linea);
         assertEquals(expResult, result);
     }
-    
+
     @Test
     public void testEsLineaConContenidoVirgulilla() {
         System.out.println("esLineaConContenido");
@@ -148,7 +145,7 @@ public class SistemaTest {
         Boolean result = instance.esLineaConContenido(linea);
         assertEquals(expResult, result);
     }
-    
+
     @Test
     public void testEsLineaConContenidoNumeral() {
         System.out.println("esLineaConContenido");
@@ -158,7 +155,7 @@ public class SistemaTest {
         Boolean result = instance.esLineaConContenido(linea);
         assertEquals(expResult, result);
     }
-    
+
     @Test
     public void testEsLineaConContenidosSignoDePreguntaInvertido() {
         System.out.println("esLineaConContenido");
@@ -168,7 +165,7 @@ public class SistemaTest {
         Boolean result = instance.esLineaConContenido(linea);
         assertEquals(expResult, result);
     }
-    
+
     @Test
     public void testEsLineaConContenidoCorcheteCerrado() {
         System.out.println("esLineaConContenido");
@@ -178,7 +175,7 @@ public class SistemaTest {
         Boolean result = instance.esLineaConContenido(linea);
         assertEquals(expResult, result);
     }
-    
+
     @Test
     public void testEsLineaConContenidoDefault() {
         System.out.println("esLineaConContenido");
@@ -188,7 +185,7 @@ public class SistemaTest {
         Boolean result = instance.esLineaConContenido(linea);
         assertEquals(expResult, result);
     }
-    
+
     /**
      * Test of cargarPreguntas method, of class Sistema.
      */
@@ -198,7 +195,7 @@ public class SistemaTest {
         ArrayList<String> textoFiltrado = null;
         assertEquals(textoFiltrado, null);
     }
-    
+
     @Test
     public void testCargarPreguntasConContenidoEnElArray() {
         System.out.println("cargarPreguntas");
@@ -206,7 +203,7 @@ public class SistemaTest {
         textoFiltrado.add("7u7 ");
         textoFiltrado.add("UwU");
         Iterator<String> it = textoFiltrado.iterator();
-        while(it.hasNext()){
+        while (it.hasNext()) {
             it.next();
         }
         assertNull(null);
@@ -226,7 +223,7 @@ public class SistemaTest {
         boolean result = instance.procesarLinea(unaLinea, lineasPreguntaMultipleOpcion, comienzoPreguntaMultipleOpcion);
         assertEquals(expResult, result);
     }
-    
+
     @Test
     public void testProcesarLineaConPuntosDobles() {
         System.out.println("procesarLinea");
@@ -238,7 +235,7 @@ public class SistemaTest {
         boolean result = instance.procesarLinea(unaLinea, lineasPreguntaMultipleOpcion, comienzoPreguntaMultipleOpcion);
         assertEquals(expResult, result);
     }
-    
+
     public void testProcesarLineaConDosPuntosDobles() {
         System.out.println("procesarLinea");
         String unaLinea = "::Q1:: 1+1= 2 {T}";
@@ -249,7 +246,7 @@ public class SistemaTest {
         boolean result = instance.procesarLinea(unaLinea, lineasPreguntaMultipleOpcion, comienzoPreguntaMultipleOpcion);
         assertEquals(expResult, result);
     }
-    
+
     @Test
     public void testProcesarLineaCorchetCerrado() {
         System.out.println("procesarLinea");
@@ -263,7 +260,7 @@ public class SistemaTest {
         boolean result = instance.procesarLinea(unaLinea, lineasPreguntaMultipleOpcion, comienzoPreguntaMultipleOpcion);
         assertEquals(expResult, result);
     }
-    
+
     @Test
     public void testProcesarLineaAgregandLineas() {
         System.out.println("procesarLinea");
@@ -275,7 +272,7 @@ public class SistemaTest {
         boolean result = instance.procesarLinea(unaLinea, lineasPreguntaMultipleOpcion, comienzoPreguntaMultipleOpcion);
         assertEquals(expResult, result);
     }
-    
+
     /**
      * Test of ocurrenciasSubtring method, of class Sistema.
      */
@@ -292,62 +289,48 @@ public class SistemaTest {
 
     /**
      * Test of getListaPreguntasCortaRespuesta method, of class
-     * Sistema.
-     /
-    @Test
-    public void testGetListaPreguntasCortaRespuesta() {
-        System.out.println("getListaPreguntasCortaRespuesta");
-        Sistema instance = null;
-        List<PreguntaCortaRespuesta> expResult = null;
-        List<PreguntaCortaRespuesta> result = instance.getListaPreguntasCortaRespuesta();
-        assertEquals(expResult, result);
-    }
-
-    /**
+     * Sistema. /
+     *
+     * @Test public void testGetListaPreguntasCortaRespuesta() {
+     * System.out.println("getListaPreguntasCortaRespuesta");
+     * Sistema instance = null; List<PreguntaCortaRespuesta>
+     * expResult = null; List<PreguntaCortaRespuesta> result =
+     * instance.getListaPreguntasCortaRespuesta();
+     * assertEquals(expResult, result); }
+     *
+     * /**
      * Test of getListaPreguntasMultipleOpcion method, of class
-     * Sistema.
-     /
-    @Test
-    public void testGetListaPreguntasMultipleOpcion() {
-        System.out.println("getListaPreguntasMultipleOpcion");
-        Sistema instance = null;
-        List<PreguntaMultipleOpcion> expResult = null;
-        List<PreguntaMultipleOpcion> result = instance.getListaPreguntasMultipleOpcion();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of getListaPreguntasVF method, of class Sistema.
-     /
-    @Test
-    public void testGetListaPreguntasVF() {
-        System.out.println("getListaPreguntasVF");
-        Sistema instance = null;
-        List<PreguntaVF> expResult = null;
-        List<PreguntaVF> result = instance.getListaPreguntasVF();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of veracidadRespuesta method, of class Sistema.
-     /
-    @Test
-    public void testVeracidadRespuesta() {
-        System.out.println("veracidadRespuesta");
-        Pregunta p = null;
-        String respuesta = "";
-        boolean valorDeVerdad = false;
-        Sistema instance = null;
-        boolean expResult = false;
-        boolean result = instance.veracidadRespuesta(p, respuesta, valorDeVerdad);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-    * */
-
+     * Sistema. /
+     * @Test public void testGetListaPreguntasMultipleOpcion() {
+     * System.out.println("getListaPreguntasMultipleOpcion");
+     * Sistema instance = null; List<PreguntaMultipleOpcion>
+     * expResult = null; List<PreguntaMultipleOpcion> result =
+     * instance.getListaPreguntasMultipleOpcion();
+     * assertEquals(expResult, result); // TODO review the
+     * generated test code and remove the default call to fail.
+     * fail("The test case is a prototype."); }
+     *
+     * /**
+     * Test of getListaPreguntasVF method, of class Sistema. /
+     * @Test public void testGetListaPreguntasVF() {
+     * System.out.println("getListaPreguntasVF"); Sistema
+     * instance = null; List<PreguntaVF> expResult = null;
+     * List<PreguntaVF> result = instance.getListaPreguntasVF();
+     * assertEquals(expResult, result); // TODO review the
+     * generated test code and remove the default call to fail.
+     * fail("The test case is a prototype."); }
+     *
+     * /**
+     * Test of veracidadRespuesta method, of class Sistema. /
+     * @Test public void testVeracidadRespuesta() {
+     * System.out.println("veracidadRespuesta"); Pregunta p =
+     * null; String respuesta = ""; boolean valorDeVerdad =
+     * false; Sistema instance = null; boolean expResult =
+     * false; boolean result = instance.veracidadRespuesta(p,
+     * respuesta, valorDeVerdad); assertEquals(expResult,
+     * result); // TODO review the generated test code and
+     * remove the default call to fail. fail("The test case is a
+     * prototype."); }
+     *
+     */
 }
