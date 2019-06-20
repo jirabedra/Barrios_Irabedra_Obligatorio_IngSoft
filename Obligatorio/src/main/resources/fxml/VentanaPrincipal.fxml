@@ -73,12 +73,30 @@
                      <font>
                         <Font size="18.0" />
                      </font></Button>
-                  <Button mnemonicParsing="false" prefHeight="108.0" prefWidth="108.0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-                  <Button mnemonicParsing="false" prefHeight="108.0" prefWidth="108.0" GridPane.columnIndex="4" GridPane.rowIndex="1" />
-                  <Button mnemonicParsing="false" prefHeight="108.0" prefWidth="108.0" GridPane.columnIndex="5" GridPane.rowIndex="1" />
-                  <Button mnemonicParsing="false" prefHeight="108.0" prefWidth="108.0" GridPane.columnIndex="6" GridPane.rowIndex="1" />
-                  <Button mnemonicParsing="false" prefHeight="108.0" prefWidth="108.0" GridPane.columnIndex="7" GridPane.rowIndex="1" />
-                  <Button mnemonicParsing="false" prefHeight="108.0" prefWidth="108.0" GridPane.columnIndex="8" GridPane.rowIndex="1" />
+                  <Button mnemonicParsing="false" prefHeight="108.0" prefWidth="108.0" textFill="#61eaff" GridPane.columnIndex="3" GridPane.rowIndex="1">
+                     <font>
+                        <Font size="18.0" />
+                     </font></Button>
+                  <Button mnemonicParsing="false" prefHeight="108.0" prefWidth="108.0" textFill="#61eaff" GridPane.columnIndex="4" GridPane.rowIndex="1">
+                     <font>
+                        <Font size="18.0" />
+                     </font></Button>
+                  <Button mnemonicParsing="false" prefHeight="108.0" prefWidth="108.0" textFill="#61eaff" GridPane.columnIndex="5" GridPane.rowIndex="1">
+                     <font>
+                        <Font size="18.0" />
+                     </font></Button>
+                  <Button mnemonicParsing="false" prefHeight="108.0" prefWidth="108.0" textFill="#61eaff" GridPane.columnIndex="6" GridPane.rowIndex="1">
+                     <font>
+                        <Font size="18.0" />
+                     </font></Button>
+                  <Button mnemonicParsing="false" prefHeight="108.0" prefWidth="108.0" textFill="#61eaff" GridPane.columnIndex="7" GridPane.rowIndex="1">
+                     <font>
+                        <Font size="18.0" />
+                     </font></Button>
+                  <Button mnemonicParsing="false" prefHeight="108.0" prefWidth="108.0" textFill="#61eaff" GridPane.columnIndex="8" GridPane.rowIndex="1">
+                     <font>
+                        <Font size="18.0" />
+                     </font></Button>
                   <Button mnemonicParsing="false" prefHeight="108.0" prefWidth="108.0" textFill="#61eaff" GridPane.columnIndex="1" GridPane.rowIndex="2">
                      <font>
                         <Font size="18.0" />
@@ -89,73 +107,145 @@
                   <Button mnemonicParsing="false" prefHeight="108.0" prefWidth="108.0" text="Button" visible="false" GridPane.columnIndex="5" GridPane.rowIndex="2" />
                   <Button mnemonicParsing="false" prefHeight="108.0" prefWidth="108.0" text="Button" visible="false" GridPane.columnIndex="6" GridPane.rowIndex="2" />
                   <Button mnemonicParsing="false" prefHeight="108.0" prefWidth="108.0" text="Button" visible="false" GridPane.columnIndex="7" GridPane.rowIndex="2" />
-                  <Button mnemonicParsing="false" prefHeight="108.0" prefWidth="108.0" GridPane.columnIndex="8" GridPane.rowIndex="2" />
+                  <Button mnemonicParsing="false" prefHeight="108.0" prefWidth="108.0" textFill="#61eaff" GridPane.columnIndex="8" GridPane.rowIndex="2">
+                     <font>
+                        <Font size="18.0" />
+                     </font></Button>
                   <Button mnemonicParsing="false" prefHeight="108.0" prefWidth="108.0" textFill="#61eaff" GridPane.columnIndex="1" GridPane.rowIndex="3">
                      <font>
                         <Font size="18.0" />
                      </font></Button>
                   <Button mnemonicParsing="false" prefHeight="108.0" prefWidth="108.0" text="Button" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="3" />
-                  <Button mnemonicParsing="false" prefHeight="108.0" prefWidth="108.0" GridPane.columnIndex="3" GridPane.rowIndex="3" />
-                  <Button mnemonicParsing="false" prefHeight="108.0" prefWidth="108.0" GridPane.columnIndex="4" GridPane.rowIndex="3" />
-                  <Button mnemonicParsing="false" prefHeight="108.0" prefWidth="108.0" GridPane.columnIndex="5" GridPane.rowIndex="3" />
-                  <Button mnemonicParsing="false" prefHeight="108.0" prefWidth="108.0" GridPane.columnIndex="6" GridPane.rowIndex="3" />
+                  <Button mnemonicParsing="false" prefHeight="108.0" prefWidth="108.0" textFill="#61eaff" GridPane.columnIndex="3" GridPane.rowIndex="3">
+                     <font>
+                        <Font size="18.0" />
+                     </font></Button>
+                  <Button mnemonicParsing="false" prefHeight="108.0" prefWidth="108.0" textFill="#61eaff" GridPane.columnIndex="4" GridPane.rowIndex="3">
+                     <font>
+                        <Font size="18.0" />
+                     </font></Button>
+                  <Button mnemonicParsing="false" prefHeight="108.0" prefWidth="108.0" textFill="#61eaff" GridPane.columnIndex="5" GridPane.rowIndex="3">
+                     <font>
+                        <Font size="18.0" />
+                     </font></Button>
+                  <Button mnemonicParsing="false" prefHeight="108.0" prefWidth="108.0" textFill="#61eaff" GridPane.columnIndex="6" GridPane.rowIndex="3">
+                     <font>
+                        <Font size="18.0" />
+                     </font></Button>
                   <Button mnemonicParsing="false" prefHeight="108.0" prefWidth="108.0" text="Button" visible="false" GridPane.columnIndex="7" GridPane.rowIndex="3" />
-                  <Button mnemonicParsing="false" prefHeight="108.0" prefWidth="108.0" GridPane.columnIndex="8" GridPane.rowIndex="3" />
+                  <Button mnemonicParsing="false" prefHeight="108.0" prefWidth="108.0" textFill="#61eaff" GridPane.columnIndex="8" GridPane.rowIndex="3">
+                     <font>
+                        <Font size="18.0" />
+                     </font></Button>
                   <Button mnemonicParsing="false" prefHeight="108.0" prefWidth="108.0" textFill="#61eaff" GridPane.columnIndex="1" GridPane.rowIndex="4">
                      <font>
                         <Font size="18.0" />
                      </font></Button>
                   <Button mnemonicParsing="false" prefHeight="108.0" prefWidth="108.0" text="Button" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="4" />
-                  <Button mnemonicParsing="false" prefHeight="108.0" prefWidth="108.0" GridPane.columnIndex="3" GridPane.rowIndex="4" />
+                  <Button mnemonicParsing="false" prefHeight="108.0" prefWidth="108.0" textFill="#61eaff" GridPane.columnIndex="3" GridPane.rowIndex="4">
+                     <font>
+                        <Font size="18.0" />
+                     </font></Button>
                   <Button mnemonicParsing="false" prefHeight="108.0" prefWidth="108.0" text="Button" visible="false" GridPane.columnIndex="4" GridPane.rowIndex="4" />
                   <Button mnemonicParsing="false" prefHeight="108.0" prefWidth="108.0" text="Button" visible="false" GridPane.columnIndex="5" GridPane.rowIndex="4" />
-                  <Button mnemonicParsing="false" prefHeight="108.0" prefWidth="108.0" GridPane.columnIndex="6" GridPane.rowIndex="4" />
+                  <Button mnemonicParsing="false" prefHeight="108.0" prefWidth="108.0" textFill="#61eaff" GridPane.columnIndex="6" GridPane.rowIndex="4">
+                     <font>
+                        <Font size="18.0" />
+                     </font></Button>
                   <Button mnemonicParsing="false" prefHeight="108.0" prefWidth="108.0" text="Button" visible="false" GridPane.columnIndex="7" GridPane.rowIndex="4" />
-                  <Button mnemonicParsing="false" prefHeight="108.0" prefWidth="108.0" GridPane.columnIndex="8" GridPane.rowIndex="4" />
+                  <Button mnemonicParsing="false" prefHeight="108.0" prefWidth="108.0" textFill="#61eaff" GridPane.columnIndex="8" GridPane.rowIndex="4">
+                     <font>
+                        <Font size="18.0" />
+                     </font></Button>
                   <Button mnemonicParsing="false" prefHeight="108.0" prefWidth="108.0" textFill="#61eaff" GridPane.columnIndex="1" GridPane.rowIndex="5">
                      <font>
                         <Font size="18.0" />
                      </font></Button>
                   <Button mnemonicParsing="false" prefHeight="108.0" prefWidth="108.0" text="Button" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="5" />
-                  <Button mnemonicParsing="false" prefHeight="108.0" prefWidth="108.0" GridPane.columnIndex="3" GridPane.rowIndex="5" />
+                  <Button mnemonicParsing="false" prefHeight="108.0" prefWidth="108.0" textFill="#61eaff" GridPane.columnIndex="3" GridPane.rowIndex="5">
+                     <font>
+                        <Font size="18.0" />
+                     </font></Button>
                   <Button mnemonicParsing="false" prefHeight="108.0" prefWidth="108.0" text="Button" visible="false" GridPane.columnIndex="4" GridPane.rowIndex="5" />
                   <Button mnemonicParsing="false" prefHeight="108.0" prefWidth="108.0" text="Button" visible="false" GridPane.columnIndex="5" GridPane.rowIndex="5" />
-                  <Button mnemonicParsing="false" prefHeight="108.0" prefWidth="108.0" GridPane.columnIndex="6" GridPane.rowIndex="5" />
+                  <Button mnemonicParsing="false" prefHeight="108.0" prefWidth="108.0" textFill="#61eaff" GridPane.columnIndex="6" GridPane.rowIndex="5">
+                     <font>
+                        <Font size="18.0" />
+                     </font></Button>
                   <Button mnemonicParsing="false" prefHeight="108.0" prefWidth="108.0" text="Button" visible="false" GridPane.columnIndex="7" GridPane.rowIndex="5" />
-                  <Button mnemonicParsing="false" prefHeight="108.0" prefWidth="108.0" GridPane.columnIndex="8" GridPane.rowIndex="5" />
+                  <Button mnemonicParsing="false" prefHeight="108.0" prefWidth="108.0" textFill="#61eaff" GridPane.columnIndex="8" GridPane.rowIndex="5">
+                     <font>
+                        <Font size="18.0" />
+                     </font></Button>
                   <Button mnemonicParsing="false" prefHeight="108.0" prefWidth="108.0" textFill="#61eaff" GridPane.columnIndex="1" GridPane.rowIndex="6">
                      <font>
                         <Font size="18.0" />
                      </font></Button>
                   <Button mnemonicParsing="false" prefHeight="108.0" prefWidth="108.0" text="Button" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="6" />
-                  <Button mnemonicParsing="false" prefHeight="108.0" prefWidth="108.0" GridPane.columnIndex="3" GridPane.rowIndex="6" />
+                  <Button mnemonicParsing="false" prefHeight="108.0" prefWidth="108.0" textFill="#61eaff" GridPane.columnIndex="3" GridPane.rowIndex="6">
+                     <font>
+                        <Font size="18.0" />
+                     </font></Button>
                   <Button mnemonicParsing="false" prefHeight="108.0" prefWidth="108.0" text="Button" visible="false" GridPane.columnIndex="4" GridPane.rowIndex="6" />
-                  <Button mnemonicParsing="false" prefHeight="108.0" prefWidth="108.0" GridPane.columnIndex="5" GridPane.rowIndex="6" />
-                  <Button mnemonicParsing="false" prefHeight="108.0" prefWidth="108.0" GridPane.columnIndex="6" GridPane.rowIndex="6" />
+                  <Button mnemonicParsing="false" prefHeight="108.0" prefWidth="108.0" textFill="#61eaff" GridPane.columnIndex="5" GridPane.rowIndex="6">
+                     <font>
+                        <Font size="18.0" />
+                     </font></Button>
+                  <Button mnemonicParsing="false" prefHeight="108.0" prefWidth="108.0" textFill="#61eaff" GridPane.columnIndex="6" GridPane.rowIndex="6">
+                     <font>
+                        <Font size="18.0" />
+                     </font></Button>
                   <Button mnemonicParsing="false" prefHeight="108.0" prefWidth="108.0" text="Button" visible="false" GridPane.columnIndex="7" GridPane.rowIndex="6" />
-                  <Button mnemonicParsing="false" prefHeight="108.0" prefWidth="108.0" GridPane.columnIndex="8" GridPane.rowIndex="6" />
+                  <Button mnemonicParsing="false" prefHeight="108.0" prefWidth="108.0" textFill="#61eaff" GridPane.columnIndex="8" GridPane.rowIndex="6">
+                     <font>
+                        <Font size="18.0" />
+                     </font></Button>
                   <Button mnemonicParsing="false" prefHeight="108.0" prefWidth="108.0" textFill="#61eaff" GridPane.columnIndex="1" GridPane.rowIndex="7">
                      <font>
                         <Font size="18.0" />
                      </font></Button>
                   <Button mnemonicParsing="false" prefHeight="108.0" prefWidth="108.0" text="Button" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="7" />
-                  <Button mnemonicParsing="false" prefHeight="108.0" prefWidth="108.0" GridPane.columnIndex="3" GridPane.rowIndex="7" />
+                  <Button mnemonicParsing="false" prefHeight="108.0" prefWidth="108.0" textFill="#61eaff" GridPane.columnIndex="3" GridPane.rowIndex="7">
+                     <font>
+                        <Font size="18.0" />
+                     </font></Button>
                   <Button mnemonicParsing="false" prefHeight="108.0" prefWidth="108.0" text="Button" visible="false" GridPane.columnIndex="4" GridPane.rowIndex="7" />
                   <Button mnemonicParsing="false" prefHeight="108.0" prefWidth="108.0" text="Button" visible="false" GridPane.columnIndex="5" GridPane.rowIndex="7" />
                   <Button mnemonicParsing="false" prefHeight="108.0" prefWidth="108.0" text="Button" visible="false" GridPane.columnIndex="6" GridPane.rowIndex="7" />
                   <Button mnemonicParsing="false" prefHeight="108.0" prefWidth="108.0" text="Button" visible="false" GridPane.columnIndex="7" GridPane.rowIndex="7" />
-                  <Button mnemonicParsing="false" prefHeight="108.0" prefWidth="108.0" GridPane.columnIndex="8" GridPane.rowIndex="7" />
+                  <Button mnemonicParsing="false" prefHeight="108.0" prefWidth="108.0" textFill="#61eaff" GridPane.columnIndex="8" GridPane.rowIndex="7">
+                     <font>
+                        <Font size="18.0" />
+                     </font></Button>
                   <Button mnemonicParsing="false" prefHeight="108.0" prefWidth="108.0" textFill="#61eaff" GridPane.columnIndex="1" GridPane.rowIndex="8">
                      <font>
                         <Font size="18.0" />
                      </font></Button>
                   <Button mnemonicParsing="false" prefHeight="108.0" prefWidth="108.0" text="Button" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="8" />
-                  <Button mnemonicParsing="false" prefHeight="108.0" prefWidth="108.0" GridPane.columnIndex="3" GridPane.rowIndex="8" />
-                  <Button mnemonicParsing="false" prefHeight="108.0" prefWidth="108.0" GridPane.columnIndex="4" GridPane.rowIndex="8" />
-                  <Button mnemonicParsing="false" prefHeight="108.0" prefWidth="108.0" GridPane.columnIndex="5" GridPane.rowIndex="8" />
-                  <Button mnemonicParsing="false" prefHeight="108.0" prefWidth="108.0" GridPane.columnIndex="6" GridPane.rowIndex="8" />
-                  <Button mnemonicParsing="false" prefHeight="108.0" prefWidth="108.0" GridPane.columnIndex="7" GridPane.rowIndex="8" />
-                  <Button mnemonicParsing="false" prefHeight="108.0" prefWidth="108.0" GridPane.columnIndex="8" GridPane.rowIndex="8" />
+                  <Button mnemonicParsing="false" prefHeight="108.0" prefWidth="108.0" textFill="#61eaff" GridPane.columnIndex="3" GridPane.rowIndex="8">
+                     <font>
+                        <Font size="18.0" />
+                     </font></Button>
+                  <Button mnemonicParsing="false" prefHeight="108.0" prefWidth="108.0" textFill="#61eaff" GridPane.columnIndex="4" GridPane.rowIndex="8">
+                     <font>
+                        <Font size="18.0" />
+                     </font></Button>
+                  <Button mnemonicParsing="false" prefHeight="108.0" prefWidth="108.0" textFill="#61eaff" GridPane.columnIndex="5" GridPane.rowIndex="8">
+                     <font>
+                        <Font size="18.0" />
+                     </font></Button>
+                  <Button mnemonicParsing="false" prefHeight="108.0" prefWidth="108.0" textFill="#61eaff" GridPane.columnIndex="6" GridPane.rowIndex="8">
+                     <font>
+                        <Font size="18.0" />
+                     </font></Button>
+                  <Button mnemonicParsing="false" prefHeight="108.0" prefWidth="108.0" textFill="#61eaff" GridPane.columnIndex="7" GridPane.rowIndex="8">
+                     <font>
+                        <Font size="18.0" />
+                     </font></Button>
+                  <Button mnemonicParsing="false" prefHeight="108.0" prefWidth="108.0" textFill="#61eaff" GridPane.columnIndex="8" GridPane.rowIndex="8">
+                     <font>
+                        <Font size="18.0" />
+                     </font></Button>
                </children>
             </GridPane>
             <Pane fx:id="panePreguntaVF" layoutY="-3.0" prefHeight="706.0" prefWidth="858.0" visible="false">
