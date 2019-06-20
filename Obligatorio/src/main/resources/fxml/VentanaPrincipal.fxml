@@ -406,6 +406,20 @@
                   </Button>
                </children>
             </Pane>
+            <Pane fx:id="paneTituloDelJuego" layoutX="186.0" layoutY="14.0" prefHeight="60.0" prefWidth="485.0">
+               <children>
+                  <Text fill="#61eaff" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="LA ESPIRAL" textAlignment="CENTER" wrappingWidth="484.9999964237213">
+                     <font>
+                        <Font name="Segoe UI Light" size="24.0" />
+                     </font>
+                  </Text>
+                  <Text fill="#61eaff" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" text="¡Has sido encerrado en la espiral! Responde a las preguntas de todos los botones para salir." textAlignment="CENTER" wrappingWidth="484.9999964237213">
+                     <font>
+                        <Font name="Segoe UI Light" size="15.0" />
+                     </font>
+                  </Text>
+               </children>
+            </Pane>
          </children></Pane>
       <Pane fx:id="paneDragAndDrop" layoutX="340.0" layoutY="143.0" onDragDropped="#handleDrop" onDragOver="#handleDragOver" prefHeight="400.0" prefWidth="400.0" styleClass="bodybg" stylesheets="@../styles/stylesPaneDragAndDrop.css" visible="false">
          <children>

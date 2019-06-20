@@ -114,6 +114,10 @@ public class VentanaPrincipalController implements Initializable {
     private Button btnAcabar;
     @FXML
     private Button btnGenerarReporte;
+    @FXML
+    private Pane paneTituloDelJuego;
+    @FXML
+    private Pane txtErrorCargar;
 
     /**
      * Initializes the controller class.
@@ -163,6 +167,7 @@ public class VentanaPrincipalController implements Initializable {
             paneTxtCantPreg.setVisible(false);
             paneAyuda.setVisible(false);
             paneOpcionesDerecha.setVisible(true);
+            paneTituloDelJuego.setVisible(true);
             gridPaneCaminosPreguntas.setVisible(true);
             panelJuego.setVisible(true);
         }
@@ -331,6 +336,7 @@ public class VentanaPrincipalController implements Initializable {
 
     private void iniciarPreguntaCortaRespuesta(Pregunta p) {
         gridPaneCaminosPreguntas.setVisible(false);
+        paneTituloDelJuego.setVisible(false);
         btnAcabar.setDisable(true);
         panePreguntaCortaRespuesta.setVisible(true);
         textPreguntaCortaRespuesta.setText(p.getPregunta());
@@ -341,6 +347,7 @@ public class VentanaPrincipalController implements Initializable {
 
     private void iniciarPreguntaMo(Pregunta p) {
         gridPaneCaminosPreguntas.setVisible(false);
+        paneTituloDelJuego.setVisible(false);
         btnAcabar.setDisable(true);
         panePreguntaMo.setVisible(true);
         textPreguntaMo.setText(p.getPregunta());
@@ -359,6 +366,7 @@ public class VentanaPrincipalController implements Initializable {
 
     private void iniciarPreguntaVF(Pregunta p) {
         gridPaneCaminosPreguntas.setVisible(false);
+        paneTituloDelJuego.setVisible(false);
         btnAcabar.setDisable(true);
         panePreguntaVF.setVisible(true);
         textPreguntaVF.setText(p.getPregunta());
@@ -598,6 +606,7 @@ public class VentanaPrincipalController implements Initializable {
         btnAcabar.setDisable(false);
         btnGenerarReporte.setDisable(false);
         gridPaneCaminosPreguntas.setVisible(true);
+        paneTituloDelJuego.setVisible(true);
     }
 
     @FXML
@@ -606,6 +615,7 @@ public class VentanaPrincipalController implements Initializable {
         btnAcabar.setDisable(false);
         btnGenerarReporte.setDisable(false);
         gridPaneCaminosPreguntas.setVisible(true);
+        paneTituloDelJuego.setVisible(true);
     }
 
     @FXML
@@ -623,6 +633,7 @@ public class VentanaPrincipalController implements Initializable {
         switch (panelAntesDeAyuda) {
             case 0:
                 gridPaneCaminosPreguntas.setVisible(false);
+                paneTituloDelJuego.setVisible(false);
                 break;
             case 1:
                 panePreguntaCortaRespuesta.setVisible(false);
@@ -643,6 +654,7 @@ public class VentanaPrincipalController implements Initializable {
         switch (panelAntesDeAyuda) {
             case 0:
                 gridPaneCaminosPreguntas.setVisible(true);
+                paneTituloDelJuego.setVisible(true);
                 break;
             case 1:
                 panePreguntaCortaRespuesta.setVisible(true);
