@@ -23,8 +23,10 @@ public class Sistema {
         return instanciaSistema;
     }
 
-    private List<PreguntaCortaRespuesta> listaPreguntasCortaRespuesta;
-    private List<PreguntaMultipleOpcion> listaPreguntasMultipleOpcion;
+    private List<PreguntaCortaRespuesta> 
+            listaPreguntasCortaRespuesta;
+    private List<PreguntaMultipleOpcion> 
+            listaPreguntasMultipleOpcion;
     private List<PreguntaVF> listaPreguntasVF;
     private HashMap<Pregunta, String> respuestasSeleccionadas;
     private static Sistema instanciaSistema;
@@ -113,7 +115,8 @@ public class Sistema {
                 }
             }
         } catch (FileNotFoundException ex) {
-            System.err.print("No se ha encontrado archivo con nombre: " + unArchivo.getName());
+            System.err.print("No se ha encontrado archivo con "
+                    + "nombre: " + unArchivo.getName());
             ex.printStackTrace();
         }
         return ret;
@@ -158,17 +161,24 @@ public class Sistema {
      * @param textoFiltrado es el array con las pregunts ya
      * filtradas
      */
-    public void cargarPreguntas(ArrayList<String> textoFiltrado) {
+    public void cargarPreguntas(ArrayList<String> 
+            textoFiltrado) {
         Iterator<String> it = textoFiltrado.iterator();
         boolean comienzoPreguntaMultipleOpcion = false;
-        ArrayList<String> lineasPreguntaMultipleOpcion = new ArrayList<>();
+        ArrayList<String> lineasPreguntaMultipleOpcion 
+                = new ArrayList<>();
         while (it.hasNext()) {
-            comienzoPreguntaMultipleOpcion = procesarLinea(it.next(), lineasPreguntaMultipleOpcion, comienzoPreguntaMultipleOpcion);
+            comienzoPreguntaMultipleOpcion 
+                    = procesarLinea(it.next(), 
+                            lineasPreguntaMultipleOpcion, 
+                            comienzoPreguntaMultipleOpcion);
         }
 
     }
 
-    public boolean procesarLinea(String unaLinea, ArrayList<String> lineasPreguntaMultipleOpcion, boolean comienzoPreguntaMultipleOpcion) {
+    public boolean procesarLinea(String unaLinea, 
+            ArrayList<String> lineasPreguntaMultipleOpcion, 
+            boolean comienzoPreguntaMultipleOpcion) {
         if (!comienzoPreguntaMultipleOpcion) {
             switch (ocurrenciasSubtring(unaLinea, "::")) {
                 case 0:
@@ -187,7 +197,8 @@ public class Sistema {
 
         if (unaLinea.equals("}")) {
             comienzoPreguntaMultipleOpcion = false;
-            procesarLineaMultipleOpcion(lineasPreguntaMultipleOpcion);
+            procesarLineaMultipleOpcion(
+                    lineasPreguntaMultipleOpcion);
             lineasPreguntaMultipleOpcion.clear();
         }
 
@@ -198,7 +209,8 @@ public class Sistema {
         return comienzoPreguntaMultipleOpcion;
     }
 
-    public int ocurrenciasSubtring(String unString, String unSubstring) {
+    public int ocurrenciasSubtring(String unString, 
+            String unSubstring) {
         int contador = 0;
         String copia = unString;
         while (copia.contains(unSubstring)) {
@@ -215,11 +227,14 @@ public class Sistema {
         String segundoToken = tk.nextToken();
         segundoToken = segundoToken.replaceAll("}", "");
         guardoRespuestasCortas(p, segundoToken);
-        this.listaPreguntasCortaRespuesta.add((PreguntaCortaRespuesta) p);
+        this.listaPreguntasCortaRespuesta.add(
+                (PreguntaCortaRespuesta) p);
     }
 
-    private void guardoRespuestasCortas(Pregunta unaPregunta, String respuestasTotales) {
-        StringTokenizer tk = new StringTokenizer(respuestasTotales, "=");
+    private void guardoRespuestasCortas(Pregunta unaPregunta, 
+            String respuestasTotales) {
+        StringTokenizer tk 
+                = new StringTokenizer(respuestasTotales, "=");
         while (tk.hasMoreTokens()) {
             String respuesta = tk.nextToken().trim();
             unaPregunta.agregarRespuesta(respuesta, true);
@@ -229,7 +244,8 @@ public class Sistema {
 
     private void procesarLineaVF(String unaLinea) {
         Pregunta p = new PreguntaVF();
-        StringTokenizer tk = new StringTokenizer(unaLinea, "::");
+        StringTokenizer tk = new StringTokenizer(unaLinea, 
+                "::");
         String pregunta = tk.nextToken();
         pregunta = tk.nextToken();
         pregunta = pregunta.trim();
@@ -242,11 +258,13 @@ public class Sistema {
         this.listaPreguntasVF.add((PreguntaVF) p);
     }
 
-    private void guardoRespuestasVF(Pregunta unaPregunta, String respuesta, String valorVerdad) {
+    private void guardoRespuestasVF(Pregunta unaPregunta, 
+            String respuesta, String valorVerdad) {
         if (valorVerdad.contains("F")) {
             respuesta = "false";
             unaPregunta.agregarRespuesta(respuesta, false);
-        } else if (valorVerdad.contains("T") || respuesta.contains("V")) {
+        } else if (valorVerdad.contains("T") 
+                || respuesta.contains("V")) {
             respuesta = "true";
             unaPregunta.agregarRespuesta(respuesta, true);
         } else {
@@ -254,10 +272,13 @@ public class Sistema {
         }
     }
 
-    private void procesarLineaMultipleOpcion(ArrayList<String> lineasPreguntaMultipleOpcion) {
+    private void procesarLineaMultipleOpcion(
+            ArrayList<String> lineasPreguntaMultipleOpcion) {
         PreguntaMultipleOpcion p = new PreguntaMultipleOpcion();
-        Iterator<String> it = lineasPreguntaMultipleOpcion.iterator();
-        String pregunta = it.next();//La primera linea es la pregunta.
+        Iterator<String> it 
+                = lineasPreguntaMultipleOpcion.iterator();
+        String pregunta 
+                = it.next();//La primera linea es la pregunta.
         pregunta = limpiarTokenPregunta(pregunta);
         p.setPregunta(pregunta);
         String respuesta = "";
@@ -275,7 +296,8 @@ public class Sistema {
                     break;
                 case '#':
                     respuesta = respuesta.replaceFirst("#", "");
-                    p.agregarComentarioRespuesta(respuestaAnterior, respuesta);
+                    p.agregarComentarioRespuesta(
+                            respuestaAnterior, respuesta);
                     break;
                 default:
                     System.err.println("Algo salio muy mal");
@@ -295,11 +317,13 @@ public class Sistema {
         return pregunta;
     }
 
-    public List<PreguntaCortaRespuesta> getListaPreguntasCortaRespuesta() {
+    public List<PreguntaCortaRespuesta> 
+        getListaPreguntasCortaRespuesta() {
         return listaPreguntasCortaRespuesta;
     }
 
-    public List<PreguntaMultipleOpcion> getListaPreguntasMultipleOpcion() {
+    public List<PreguntaMultipleOpcion> 
+        getListaPreguntasMultipleOpcion() {
         return listaPreguntasMultipleOpcion;
     }
 
@@ -307,11 +331,13 @@ public class Sistema {
         return listaPreguntasVF;
     }
 
-    public HashMap<Pregunta, String> getRespuestasSeleccionadas() {
+    public HashMap<Pregunta, String> 
+        getRespuestasSeleccionadas() {
         return respuestasSeleccionadas;
     }
 
-    public void agregarRespuestaSeleccionada(Pregunta p, String respuestas) {
+    public void agregarRespuestaSeleccionada(Pregunta p, 
+            String respuestas) {
         this.respuestasSeleccionadas.put(p, respuestas);
     }
 
@@ -324,11 +350,13 @@ public class Sistema {
      * @param valorDeVerdad valor de verdad de la respuesta dada
      * @return
      */
-    public boolean veracidadRespuesta(Pregunta p, String respuesta, boolean valorDeVerdad) {
+    public boolean veracidadRespuesta(Pregunta p, 
+            String respuesta, boolean valorDeVerdad) {
         respuestasSeleccionadas.put(p, respuesta);
         if (p.getMapaRespuestas().get(respuesta) != null) {
             if (p instanceof PreguntaVF) {
-                return (p.getMapaRespuestas().get(respuesta) == valorDeVerdad);
+                return (p.getMapaRespuestas().get(respuesta) 
+                        == valorDeVerdad);
             } else {
                 return p.getMapaRespuestas().get(respuesta);
             }
@@ -345,7 +373,8 @@ public class Sistema {
     }
 
     public ArrayList<Pregunta> getListaTodasLasPreguntas() {
-        ArrayList<Pregunta> listaDeTodasLasPreguntas = new ArrayList<>();
+        ArrayList<Pregunta> listaDeTodasLasPreguntas 
+                = new ArrayList<>();
         listaDeTodasLasPreguntas = agregarTodasLasPreguntas();
 
         return listaDeTodasLasPreguntas;
@@ -353,7 +382,8 @@ public class Sistema {
 
     private ArrayList<Pregunta> agregarTodasLasPreguntas() {
         ArrayList<Pregunta> listaDePreguntas = new ArrayList<>();
-        Iterator it = this.getListaPreguntasCortaRespuesta().iterator();
+        Iterator it = this.getListaPreguntasCortaRespuesta().
+                iterator();
         while (it.hasNext()) {
             listaDePreguntas.add((Pregunta) it.next());
         }
@@ -368,7 +398,8 @@ public class Sistema {
         return listaDePreguntas;
     }
 
-    public boolean procesarRespuestaSeleccionada(Pregunta p, String respuestaSeleccionada) {
+    public boolean procesarRespuestaSeleccionada(Pregunta p, 
+            String respuestaSeleccionada) {
         boolean valorVerdad = false;
         String respuesta = "";
         boolean hayRespuestaCorrecta = false;
@@ -390,17 +421,22 @@ public class Sistema {
                 assert false;
             }
             if (p instanceof PreguntaCortaRespuesta) {
-                for (int i = 0; i < p.getMapaRespuestas().size(); i++) {
-                    if (p.getMapaRespuestas().get(respuestaSeleccionada) != null) {
+                for (int i = 0; i 
+                        < p.getMapaRespuestas().size(); i++) {
+                    if (p.getMapaRespuestas().
+                            get(respuestaSeleccionada) != null) {
                         valorVerdad = true;
                     }
                 }
-                hayRespuestaCorrecta = veracidadRespuesta(p, respuesta, valorVerdad);
+                hayRespuestaCorrecta = veracidadRespuesta(p, 
+                        respuesta, valorVerdad);
             } else {
-                hayRespuestaCorrecta = veracidadRespuesta(p, respuesta, valorVerdad);
+                hayRespuestaCorrecta = veracidadRespuesta(p, 
+                        respuesta, valorVerdad);
             }
         } else {
-            hayRespuestaCorrecta = veracidadRespuesta(p, null, true);
+            hayRespuestaCorrecta = veracidadRespuesta(p, null, 
+                    true);
         }
         return hayRespuestaCorrecta;
     }
@@ -409,17 +445,16 @@ public class Sistema {
         boolean creadoCorrectamente = false;
         try {
             Document document = new Document();
-            PdfWriter.getInstance(document, new FileOutputStream("src/main/resources/reporte.pdf"));
+            PdfWriter.getInstance(document, 
+                    new FileOutputStream(
+                            "src/main/resources/reporte.pdf"));
             document.open();
-            document.add(new Paragraph(getRespuestasSeleccionadas().toString()));
+            document.add(new Paragraph(
+                    getRespuestasSeleccionadas().toString()));
             document.close();
         } catch (Exception e) {
             System.out.println(e);
         }
         return creadoCorrectamente;
-    }
-
-    public Iterator<Pregunta> iterator() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

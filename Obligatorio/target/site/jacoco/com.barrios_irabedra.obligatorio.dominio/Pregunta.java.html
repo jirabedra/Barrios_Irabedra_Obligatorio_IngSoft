@@ -36,70 +36,75 @@ public abstract class Pregunta {
 <span class="nc" id="L36">        return segundosRestantes;</span>
     }
 
-    public void setSegundosRestantes(SimpleIntegerProperty segundosRestantes) {
-<span class="nc" id="L40">        this.segundosRestantes = segundosRestantes;</span>
-<span class="nc" id="L41">    }</span>
+    public void setSegundosRestantes(SimpleIntegerProperty 
+            segundosRestantes) {
+<span class="nc" id="L41">        this.segundosRestantes = segundosRestantes;</span>
+<span class="nc" id="L42">    }</span>
 
     public void disminuirTiempoRestante() {
-<span class="nc" id="L44">        Platform.runLater(() -&gt; {</span>
-<span class="nc" id="L45">            this.getSegundosRestantes().set(getSegundosRestantes().subtract(1).get());</span>
-<span class="nc" id="L46">        });</span>
-<span class="nc" id="L47">    }</span>
+<span class="nc" id="L45">        Platform.runLater(() -&gt; {</span>
+<span class="nc" id="L46">            this.getSegundosRestantes().set(</span>
+<span class="nc" id="L47">                    getSegundosRestantes().subtract(1).get());</span>
+<span class="nc" id="L48">        });</span>
+<span class="nc" id="L49">    }</span>
 
-    public void agregarRespuesta(String respuesta, Boolean valorVerdad) {
-<span class="fc" id="L50">        this.respuestas.put(respuesta, valorVerdad);</span>
-<span class="fc" id="L51">    }</span>
+    public void agregarRespuesta(String respuesta, 
+            Boolean valorVerdad) {
+<span class="fc" id="L53">        this.respuestas.put(respuesta, valorVerdad);</span>
+<span class="fc" id="L54">    }</span>
 
     public String getRespuestas() {
-<span class="fc" id="L54">        return this.respuestas.toString();</span>
+<span class="fc" id="L57">        return this.respuestas.toString();</span>
     }
 
     public HashMap&lt;String, Boolean&gt; getMapaRespuestas() {
-<span class="fc" id="L58">        return this.respuestas;</span>
+<span class="fc" id="L61">        return this.respuestas;</span>
     }
 
     //Constructor con params
-<span class="fc" id="L62">    public Pregunta(String nombre, int tiempo, HashMap&lt;String, Boolean&gt; respuestas) {</span>
-<span class="fc" id="L63">        this.pregunta = nombre;</span>
-<span class="fc" id="L64">        this.tiempo = tiempo;</span>
-<span class="fc" id="L65">        this.respuestas = respuestas;</span>
-<span class="fc" id="L66">        this.segundosRestantes = new SimpleIntegerProperty(tiempo);</span>
-<span class="fc" id="L67">        this.timerPregunta = new TimerPregunta();</span>
-<span class="fc" id="L68">    }</span>
+    public Pregunta(String nombre, int tiempo, 
+<span class="fc" id="L66">            HashMap&lt;String, Boolean&gt; respuestas) {</span>
+<span class="fc" id="L67">        this.pregunta = nombre;</span>
+<span class="fc" id="L68">        this.tiempo = tiempo;</span>
+<span class="fc" id="L69">        this.respuestas = respuestas;</span>
+<span class="fc" id="L70">        this.segundosRestantes </span>
+                = new SimpleIntegerProperty(tiempo);
+<span class="fc" id="L72">        this.timerPregunta = new TimerPregunta();</span>
+<span class="fc" id="L73">    }</span>
 
     //Constructor sin params.
-<span class="fc" id="L71">    public Pregunta() {</span>
-<span class="fc" id="L72">        this.tiempo = 30;</span>
-<span class="fc" id="L73">        this.respuestas = new HashMap&lt;&gt;();</span>
-<span class="fc" id="L74">        this.segundosRestantes = new SimpleIntegerProperty(this.tiempo);</span>
-<span class="fc" id="L75">        this.timerPregunta = new TimerPregunta();</span>
-<span class="fc" id="L76">    }</span>
+<span class="fc" id="L76">    public Pregunta() {</span>
+<span class="fc" id="L77">        this.tiempo = 30;</span>
+<span class="fc" id="L78">        this.respuestas = new HashMap&lt;&gt;();</span>
+<span class="fc" id="L79">        this.segundosRestantes = new SimpleIntegerProperty(this.tiempo);</span>
+<span class="fc" id="L80">        this.timerPregunta = new TimerPregunta();</span>
+<span class="fc" id="L81">    }</span>
 
     @Override
     public String toString() {
-<span class="nc" id="L80">        return this.getPregunta() + &quot;. \n&quot; + &quot;Tienes &quot; + this.getTiempo() + &quot; segundos para responder. \n&quot;</span>
-<span class="nc" id="L81">                + &quot;Y sus respuestas eran &quot; + this.getRespuestas();</span>
+<span class="nc" id="L85">        return this.getPregunta() + &quot;. \n&quot; + &quot;Tienes &quot; + this.getTiempo() + &quot; segundos para responder. \n&quot;</span>
+<span class="nc" id="L86">                + &quot;Y sus respuestas eran &quot; + this.getRespuestas();</span>
     }
 
-<span class="fc" id="L84">    private class TimerPregunta extends TimerTask {</span>
+<span class="fc" id="L89">    private class TimerPregunta extends TimerTask {</span>
 
         @Override
         public void run() {
-<span class="nc bnc" id="L88" title="All 2 branches missed.">            if (getSegundosRestantes().get() &gt; 0) {</span>
-<span class="nc" id="L89">                disminuirTiempoRestante();</span>
+<span class="nc bnc" id="L93" title="All 2 branches missed.">            if (getSegundosRestantes().get() &gt; 0) {</span>
+<span class="nc" id="L94">                disminuirTiempoRestante();</span>
             } else {
-<span class="nc" id="L91">                stop();</span>
+<span class="nc" id="L96">                stop();</span>
             }
-<span class="nc" id="L93">        }</span>
+<span class="nc" id="L98">        }</span>
     }
 
     public void stop() {
-<span class="nc" id="L97">        this.timerPregunta.cancel();</span>
-<span class="nc" id="L98">    }</span>
+<span class="nc" id="L102">        this.timerPregunta.cancel();</span>
+<span class="nc" id="L103">    }</span>
 
     public void start() {
-<span class="nc" id="L101">        Timer timer = new Timer();</span>
-<span class="nc" id="L102">        timer.scheduleAtFixedRate(timerPregunta, 0, 1000);</span>
-<span class="nc" id="L103">    }</span>
+<span class="nc" id="L106">        Timer timer = new Timer();</span>
+<span class="nc" id="L107">        timer.scheduleAtFixedRate(timerPregunta, 0, 1000);</span>
+<span class="nc" id="L108">    }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.2.201808211720</span></div></body></html>

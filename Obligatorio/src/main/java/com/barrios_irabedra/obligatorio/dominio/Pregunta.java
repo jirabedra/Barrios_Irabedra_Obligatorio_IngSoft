@@ -36,17 +36,20 @@ public abstract class Pregunta {
         return segundosRestantes;
     }
 
-    public void setSegundosRestantes(SimpleIntegerProperty segundosRestantes) {
+    public void setSegundosRestantes(SimpleIntegerProperty 
+            segundosRestantes) {
         this.segundosRestantes = segundosRestantes;
     }
 
     public void disminuirTiempoRestante() {
         Platform.runLater(() -> {
-            this.getSegundosRestantes().set(getSegundosRestantes().subtract(1).get());
+            this.getSegundosRestantes().set(
+                    getSegundosRestantes().subtract(1).get());
         });
     }
 
-    public void agregarRespuesta(String respuesta, Boolean valorVerdad) {
+    public void agregarRespuesta(String respuesta, 
+            Boolean valorVerdad) {
         this.respuestas.put(respuesta, valorVerdad);
     }
 
@@ -59,11 +62,13 @@ public abstract class Pregunta {
     }
 
     //Constructor con params
-    public Pregunta(String nombre, int tiempo, HashMap<String, Boolean> respuestas) {
+    public Pregunta(String nombre, int tiempo, 
+            HashMap<String, Boolean> respuestas) {
         this.pregunta = nombre;
         this.tiempo = tiempo;
         this.respuestas = respuestas;
-        this.segundosRestantes = new SimpleIntegerProperty(tiempo);
+        this.segundosRestantes 
+                = new SimpleIntegerProperty(tiempo);
         this.timerPregunta = new TimerPregunta();
     }
 

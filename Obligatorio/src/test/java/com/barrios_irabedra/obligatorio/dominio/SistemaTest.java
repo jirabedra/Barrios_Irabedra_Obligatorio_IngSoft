@@ -188,12 +188,17 @@ public class SistemaTest {
     @Test
     public void testProcesarLinea() {
         System.out.println("procesarLinea");
-        String unaLinea = "¿Quién está sepultado en la tumba de Grant?{=Grant =Ulysses S. Grant =Ulysses Grant}";
-        ArrayList<String> lineasPreguntaMultipleOpcion = new ArrayList<>();
+        String unaLinea = "¿Quién está sepultado en la tumba "
+                + "de Grant?{=Grant =Ulysses S. Grant "
+                + "=Ulysses Grant}";
+        ArrayList<String> lineasPreguntaMultipleOpcion 
+                = new ArrayList<>();
         boolean comienzoPreguntaMultipleOpcion = false;
         Sistema instance = new Sistema();
         boolean expResult = false;
-        boolean result = instance.procesarLinea(unaLinea, lineasPreguntaMultipleOpcion, comienzoPreguntaMultipleOpcion);
+        boolean result = instance.procesarLinea(unaLinea, 
+                lineasPreguntaMultipleOpcion, 
+                comienzoPreguntaMultipleOpcion);
         assertEquals(expResult, result);
     }
 
@@ -201,22 +206,28 @@ public class SistemaTest {
     public void testProcesarLineaConPuntosDobles() {
         System.out.println("procesarLinea");
         String unaLinea = "::Título de la pregunta";
-        ArrayList<String> lineasPreguntaMultipleOpcion = new ArrayList<>();
+        ArrayList<String> lineasPreguntaMultipleOpcion
+                = new ArrayList<>();
         boolean comienzoPreguntaMultipleOpcion = false;
         Sistema instance = new Sistema();
         boolean expResult = true;
-        boolean result = instance.procesarLinea(unaLinea, lineasPreguntaMultipleOpcion, comienzoPreguntaMultipleOpcion);
+        boolean result = instance.procesarLinea(unaLinea, 
+                lineasPreguntaMultipleOpcion, 
+                comienzoPreguntaMultipleOpcion);
         assertEquals(expResult, result);
     }
 
     public void testProcesarLineaConDosPuntosDobles() {
         System.out.println("procesarLinea");
         String unaLinea = "::Q1:: 1+1= 2 {T}";
-        ArrayList<String> lineasPreguntaMultipleOpcion = new ArrayList<>();
+        ArrayList<String> lineasPreguntaMultipleOpcion 
+                = new ArrayList<>();
         boolean comienzoPreguntaMultipleOpcion = false;
         Sistema instance = new Sistema();
         boolean expResult = false;
-        boolean result = instance.procesarLinea(unaLinea, lineasPreguntaMultipleOpcion, comienzoPreguntaMultipleOpcion);
+        boolean result = instance.procesarLinea(unaLinea, 
+                lineasPreguntaMultipleOpcion, 
+                comienzoPreguntaMultipleOpcion);
         assertEquals(expResult, result);
     }
 
@@ -224,13 +235,18 @@ public class SistemaTest {
     public void testProcesarLineaCorchetCerrado() {
         System.out.println("procesarLinea");
         String unaLinea = "}";
-        ArrayList<String> lineasPreguntaMultipleOpcion = new ArrayList<>();
-        lineasPreguntaMultipleOpcion.add("=Una respuesta correcta");
-        lineasPreguntaMultipleOpcion.add("~Respuesta equivocada1");
+        ArrayList<String> lineasPreguntaMultipleOpcion 
+                = new ArrayList<>();
+        lineasPreguntaMultipleOpcion.add(
+                "=Una respuesta correcta");
+        lineasPreguntaMultipleOpcion.add(
+                "~Respuesta equivocada1");
         boolean comienzoPreguntaMultipleOpcion = true;
         Sistema instance = new Sistema();
         boolean expResult = false;
-        boolean result = instance.procesarLinea(unaLinea, lineasPreguntaMultipleOpcion, comienzoPreguntaMultipleOpcion);
+        boolean result = instance.procesarLinea(unaLinea, 
+                lineasPreguntaMultipleOpcion, 
+                comienzoPreguntaMultipleOpcion);
         assertEquals(expResult, result);
     }
 
@@ -238,11 +254,14 @@ public class SistemaTest {
     public void testProcesarLineaAgregandLineas() {
         System.out.println("procesarLinea");
         String unaLinea = "~Respuesta equivocada1";
-        ArrayList<String> lineasPreguntaMultipleOpcion = new ArrayList<>();
+        ArrayList<String> lineasPreguntaMultipleOpcion 
+                = new ArrayList<>();
         boolean comienzoPreguntaMultipleOpcion = true;
         Sistema instance = new Sistema();
         boolean expResult = true;
-        boolean result = instance.procesarLinea(unaLinea, lineasPreguntaMultipleOpcion, comienzoPreguntaMultipleOpcion);
+        boolean result = instance.procesarLinea(unaLinea, 
+                lineasPreguntaMultipleOpcion, 
+                comienzoPreguntaMultipleOpcion);
         assertEquals(expResult, result);
     }
 
@@ -256,7 +275,8 @@ public class SistemaTest {
         String unSubstring = "::";
         Sistema instance = new Sistema();
         int expResult = 1;
-        int result = instance.ocurrenciasSubtring(unString, unSubstring);
+        int result = instance.ocurrenciasSubtring(unString, 
+                unSubstring);
         assertEquals(expResult, result);
     }
 
@@ -268,8 +288,10 @@ public class SistemaTest {
     public void testGetListaPreguntasCortaRespuesta() {
         System.out.println("getListaPreguntasCortaRespuesta");
         Sistema instance = new Sistema();
-        List<PreguntaCortaRespuesta> expResult = new ArrayList<>();
-        List<PreguntaCortaRespuesta> result = instance.getListaPreguntasCortaRespuesta();
+        List<PreguntaCortaRespuesta> expResult 
+                = new ArrayList<>();
+        List<PreguntaCortaRespuesta> result 
+                = instance.getListaPreguntasCortaRespuesta();
         assertEquals(expResult, result);
     }
 
@@ -281,8 +303,10 @@ public class SistemaTest {
     public void testGetListaPreguntasMultipleOpcion() {
         System.out.println("getListaPreguntasMultipleOpcion");
         Sistema instance = new Sistema();
-        List<PreguntaMultipleOpcion> expResult = new ArrayList<>();
-        List<PreguntaMultipleOpcion> result = instance.getListaPreguntasMultipleOpcion();
+        List<PreguntaMultipleOpcion> expResult 
+                = new ArrayList<>();
+        List<PreguntaMultipleOpcion> result 
+                = instance.getListaPreguntasMultipleOpcion();
         assertEquals(expResult, result);
     }
 
@@ -307,7 +331,8 @@ public class SistemaTest {
         System.out.println("getRespuestasSeleccionadas");
         Sistema instance = new Sistema();
         HashMap<Pregunta, String> expResult = new HashMap<>();
-        HashMap<Pregunta, String> result = instance.getRespuestasSeleccionadas();
+        HashMap<Pregunta, String> result 
+                = instance.getRespuestasSeleccionadas();
         assertEquals(expResult, result);
     }
 
@@ -322,7 +347,8 @@ public class SistemaTest {
         String respuestas = "";
         Sistema instance = new Sistema();
         instance.agregarRespuestaSeleccionada(p, respuestas);
-        assertEquals(instance.getRespuestasSeleccionadas().size(), 1);
+        assertEquals(
+                instance.getRespuestasSeleccionadas().size(), 1);
     }
 
     /**
@@ -336,7 +362,8 @@ public class SistemaTest {
         boolean valorDeVerdad = false;
         Sistema instance = new Sistema();
         boolean expResult = false;
-        boolean result = instance.veracidadRespuesta(p, respuesta, valorDeVerdad);
+        boolean result = instance.veracidadRespuesta(p, 
+                respuesta, valorDeVerdad);
         assertEquals(expResult, result);
     }
 
@@ -361,7 +388,8 @@ public class SistemaTest {
         System.out.println("getListaTodasLasPreguntas");
         Sistema instance = new Sistema();
         ArrayList<Pregunta> expResult = new ArrayList<>();
-        ArrayList<Pregunta> result = instance.getListaTodasLasPreguntas();
+        ArrayList<Pregunta> result 
+                = instance.getListaTodasLasPreguntas();
         assertEquals(expResult, result);
     }
 
@@ -376,7 +404,8 @@ public class SistemaTest {
         String respuestaSeleccionada = "F";
         Sistema instance = new Sistema();
         boolean expResult = false;
-        boolean result = instance.procesarRespuestaSeleccionada(p, respuestaSeleccionada);
+        boolean result = instance.procesarRespuestaSeleccionada(p, 
+                respuestaSeleccionada);
         assertEquals(expResult, result);
     }
 
