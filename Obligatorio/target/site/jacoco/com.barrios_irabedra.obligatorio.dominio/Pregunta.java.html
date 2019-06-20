@@ -76,35 +76,39 @@ public abstract class Pregunta {
 <span class="fc" id="L76">    public Pregunta() {</span>
 <span class="fc" id="L77">        this.tiempo = 30;</span>
 <span class="fc" id="L78">        this.respuestas = new HashMap&lt;&gt;();</span>
-<span class="fc" id="L79">        this.segundosRestantes = new SimpleIntegerProperty(this.tiempo);</span>
-<span class="fc" id="L80">        this.timerPregunta = new TimerPregunta();</span>
-<span class="fc" id="L81">    }</span>
+<span class="fc" id="L79">        this.segundosRestantes </span>
+                = new SimpleIntegerProperty(this.tiempo);
+<span class="fc" id="L81">        this.timerPregunta = new TimerPregunta();</span>
+<span class="fc" id="L82">    }</span>
 
     @Override
     public String toString() {
-<span class="nc" id="L85">        return this.getPregunta() + &quot;. \n&quot; + &quot;Tienes &quot; + this.getTiempo() + &quot; segundos para responder. \n&quot;</span>
-<span class="nc" id="L86">                + &quot;Y sus respuestas eran &quot; + this.getRespuestas();</span>
+<span class="nc" id="L86">        return this.getPregunta() + &quot;. \n&quot; + &quot;Tienes &quot; + </span>
+<span class="nc" id="L87">                this.getTiempo() </span>
+                + &quot; segundos para responder. \n&quot;
+                + &quot;Y sus respuestas eran &quot; 
+<span class="nc" id="L90">                + this.getRespuestas();</span>
     }
 
-<span class="fc" id="L89">    private class TimerPregunta extends TimerTask {</span>
+<span class="fc" id="L93">    private class TimerPregunta extends TimerTask {</span>
 
         @Override
         public void run() {
-<span class="nc bnc" id="L93" title="All 2 branches missed.">            if (getSegundosRestantes().get() &gt; 0) {</span>
-<span class="nc" id="L94">                disminuirTiempoRestante();</span>
+<span class="nc bnc" id="L97" title="All 2 branches missed.">            if (getSegundosRestantes().get() &gt; 0) {</span>
+<span class="nc" id="L98">                disminuirTiempoRestante();</span>
             } else {
-<span class="nc" id="L96">                stop();</span>
+<span class="nc" id="L100">                stop();</span>
             }
-<span class="nc" id="L98">        }</span>
+<span class="nc" id="L102">        }</span>
     }
 
     public void stop() {
-<span class="nc" id="L102">        this.timerPregunta.cancel();</span>
-<span class="nc" id="L103">    }</span>
+<span class="nc" id="L106">        this.timerPregunta.cancel();</span>
+<span class="nc" id="L107">    }</span>
 
     public void start() {
-<span class="nc" id="L106">        Timer timer = new Timer();</span>
-<span class="nc" id="L107">        timer.scheduleAtFixedRate(timerPregunta, 0, 1000);</span>
-<span class="nc" id="L108">    }</span>
+<span class="nc" id="L110">        Timer timer = new Timer();</span>
+<span class="nc" id="L111">        timer.scheduleAtFixedRate(timerPregunta, 0, 1000);</span>
+<span class="nc" id="L112">    }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.2.201808211720</span></div></body></html>

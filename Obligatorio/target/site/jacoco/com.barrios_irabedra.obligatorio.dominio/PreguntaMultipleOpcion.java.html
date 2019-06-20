@@ -9,26 +9,32 @@ import java.util.*;
 public class PreguntaMultipleOpcion extends Pregunta {
     private HashMap&lt;String, String&gt; comentarioRespuesta;
     
-    public PreguntaMultipleOpcion(String pregunta, int tiempo, HashMap&lt;String, Boolean&gt; respuestas) {
-<span class="fc" id="L13">        super(pregunta, tiempo, respuestas);</span>
-<span class="fc" id="L14">    }</span>
+    public PreguntaMultipleOpcion(String pregunta, 
+            int tiempo, HashMap&lt;String, Boolean&gt; respuestas) {
+<span class="fc" id="L14">        super(pregunta, tiempo, respuestas);</span>
+<span class="fc" id="L15">    }</span>
 
-<span class="fc" id="L16">    public PreguntaMultipleOpcion() {</span>
-<span class="fc" id="L17">        this.comentarioRespuesta = new HashMap&lt;&gt;();</span>
-<span class="fc" id="L18">    }</span>
+<span class="fc" id="L17">    public PreguntaMultipleOpcion() {</span>
+<span class="fc" id="L18">        this.comentarioRespuesta = new HashMap&lt;&gt;();</span>
+<span class="fc" id="L19">    }</span>
 
-    public void agregarComentarioRespuesta(String unaRespuesta, String unComentario){
-<span class="fc" id="L21">        this.comentarioRespuesta.put(unaRespuesta, unComentario);</span>
-<span class="fc" id="L22">    }</span>
+    public void agregarComentarioRespuesta(
+            String unaRespuesta, String unComentario){
+<span class="fc" id="L23">        this.comentarioRespuesta.put(unaRespuesta, </span>
+                unComentario);
+<span class="fc" id="L25">    }</span>
     
     public String getComentario(String unaRespuesta){
-<span class="fc" id="L25">        return this.comentarioRespuesta.get(unaRespuesta);</span>
+<span class="fc" id="L28">        return this.comentarioRespuesta.get(unaRespuesta);</span>
     }
     
     @Override
     public String toString() {
-<span class="fc" id="L30">        return this.getPregunta() + &quot;. \n&quot; + &quot;Tienes &quot; + this.getTiempo() + &quot; segundos para responder. \n&quot;</span>
-<span class="fc" id="L31">                + &quot;Y sus respuestas eran &quot; + this.getRespuestas();</span>
+<span class="fc" id="L33">        return this.getPregunta() + &quot;. \n&quot; + &quot;Tienes &quot; </span>
+<span class="fc" id="L34">                + this.getTiempo() </span>
+                + &quot; segundos para responder. \n&quot;
+                + &quot;Y sus respuestas eran &quot; 
+<span class="fc" id="L37">                + this.getRespuestas();</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.2.201808211720</span></div></body></html>
