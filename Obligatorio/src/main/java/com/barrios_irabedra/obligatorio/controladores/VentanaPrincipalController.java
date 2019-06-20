@@ -145,11 +145,15 @@ public class VentanaPrincipalController implements Initializable {
     private void handleDrop(DragEvent event) {
         List<File> files = event.getDragboard().getFiles();
         Sistema.getInstance().recibirArchivos(files);
-        int contPreguntaS = Sistema.getInstance().getListaTodasLasPreguntas().size();
+        int contPreguntaS = Sistema.getInstance().
+                getListaTodasLasPreguntas().size();
         if (contPreguntaS < 39) {
-            txtPreguntasDropeadas.setText("Preguntas cargadas: " + contPreguntaS + "/39");
+            txtPreguntasDropeadas.setText(
+                    "Preguntas cargadas: " 
+                            + contPreguntaS + "/39");
         } else {
-            txtPreguntasDropeadas.setText("Preguntas cargadas: 39/39");
+            txtPreguntasDropeadas.setText(
+                    "Preguntas cargadas: 39/39");
         }
     }
 
@@ -180,14 +184,18 @@ public class VentanaPrincipalController implements Initializable {
     private void crearMatrizBotones() {
         Integer fil;
         Integer col;
-        for (Node child : this.gridPaneCaminosPreguntas.getChildren()) {
-            fil = this.gridPaneCaminosPreguntas.getRowIndex(child);
-            col = this.gridPaneCaminosPreguntas.getColumnIndex(child);
+        for (Node child : this.
+                gridPaneCaminosPreguntas.getChildren()) {
+            fil = this.gridPaneCaminosPreguntas.
+                    getRowIndex(child);
+            col = this.gridPaneCaminosPreguntas.
+                    getColumnIndex(child);
             int f = fil == null ? 0 : fil;
             int c = col == null ? 0 : col;
             if (fil != null && col != null) {
                 if (f == fil && c == col) {
-                    this.matrizBotones[fil - 1][col - 1] = (Button) child;
+                    this.matrizBotones[fil - 1][col - 1] 
+                            = (Button) child;
                 }
             }
         }
@@ -197,45 +205,53 @@ public class VentanaPrincipalController implements Initializable {
         int cantP = Sistema.getInstance().cantidadTotalPreguntas();
         int contP = cantP;
         int contador = 0;
-        ArrayList<Pregunta> listaPreguntas = Sistema.getInstance().getListaTodasLasPreguntas();
+        ArrayList<Pregunta> listaPreguntas = Sistema.
+                getInstance().getListaTodasLasPreguntas();
         Iterator it = listaPreguntas.iterator();
-        for (int i = 7; i >= 0 && (cantP >= 0) && it.hasNext(); i--) {
+        for (int i = 7; i >= 0 
+                && (cantP >= 0) && it.hasNext(); i--) {
             this.matrizBotones[i][0].setUserData(it.next());
             activar(matrizBotones[i][0]);
             contador++;
             cantP--;
         }
-        for (int i = 1; i < 8 && cantP >= 0 && it.hasNext(); i++) {
+        for (int i = 1; i < 8 
+                && cantP >= 0 && it.hasNext(); i++) {
             this.matrizBotones[0][i].setUserData(it.next());
             activar(matrizBotones[0][i]);
             contador++;
             cantP--;
         }
-        for (int i = 1; i < 8 && cantP >= 0 && it.hasNext(); i++) {
+        for (int i = 1; i < 8 
+                && cantP >= 0 && it.hasNext(); i++) {
             this.matrizBotones[i][7].setUserData(it.next());
             activar(matrizBotones[i][7]);
             contador++;
             cantP--;
         }
-        for (int i = 6; i > 1 && cantP >= 0 && it.hasNext(); i--) {
+        for (int i = 6; i > 1 
+                && cantP >= 0 && it.hasNext(); i--) {
             this.matrizBotones[7][i].setUserData(it.next());
             activar(matrizBotones[7][i]);
             contador++;
             cantP--;
         }
-        for (int i = 6; i > 1 && cantP >= 0 && it.hasNext(); i--) {
+        for (int i = 6; i > 1 
+                && cantP >= 0 && it.hasNext(); i--) {
             this.matrizBotones[i][2].setUserData(it.next());
             activar(matrizBotones[i][2]);
             contador++;
             cantP--;
         }
-        for (int i = 3; i < 6 && cantP >= 0 && it.hasNext(); i++) {
+        for (int i = 3; i < 6 
+                && cantP >= 0 && it.hasNext(); i++) {
             this.matrizBotones[2][i].setUserData(it.next());
             activar(matrizBotones[2][i]);
             contador++;
             cantP--;
         }
-        for (int i = 3; i < 6 && cantP >= 0 && it.hasNext(); i++) {
+        for (int i = 3; i < 6 
+                && cantP >= 0 && it.hasNext(); i++) {
             this.matrizBotones[i][5].setUserData(it.next());
             activar(matrizBotones[i][5]);
             contador++;
@@ -255,7 +271,8 @@ public class VentanaPrincipalController implements Initializable {
     private void desactivarElRestoDeBotones(int contador) {
         for (int i = 7; i >= 0; i--) {
             if (contador == 0) {
-                matrizBotones[i][0].setStyle("-fx-background-color: #696969");
+                matrizBotones[i][0].setStyle(
+                        "-fx-background-color: #696969");
                 matrizBotones[i][0].setDisable(true);
             } else {
                 contador--;
@@ -263,7 +280,8 @@ public class VentanaPrincipalController implements Initializable {
         }
         for (int i = 1; i < 8; i++) {
             if (contador == 0) {
-                matrizBotones[0][i].setStyle("-fx-background-color: #696969");
+                matrizBotones[0][i].setStyle(
+                        "-fx-background-color: #696969");
                 matrizBotones[0][i].setDisable(true);
             } else {
                 contador--;
@@ -271,7 +289,8 @@ public class VentanaPrincipalController implements Initializable {
         }
         for (int i = 1; i < 8; i++) {
             if (contador == 0) {
-                matrizBotones[i][7].setStyle("-fx-background-color: #696969");
+                matrizBotones[i][7].setStyle(
+                        "-fx-background-color: #696969");
                 matrizBotones[i][7].setDisable(true);
             } else {
                 contador--;
@@ -279,7 +298,8 @@ public class VentanaPrincipalController implements Initializable {
         }
         for (int i = 6; i > 1; i--) {
             if (contador == 0) {
-                matrizBotones[7][i].setStyle("-fx-background-color: #696969");
+                matrizBotones[7][i].setStyle(
+                        "-fx-background-color: #696969");
                 matrizBotones[7][i].setDisable(true);
             } else {
                 contador--;
@@ -287,7 +307,8 @@ public class VentanaPrincipalController implements Initializable {
         }
         for (int i = 6; i > 1; i--) {
             if (contador == 0) {
-                matrizBotones[i][2].setStyle("-fx-background-color: #696969");
+                matrizBotones[i][2].setStyle(
+                        "-fx-background-color: #696969");
                 matrizBotones[i][2].setDisable(true);
             } else {
                 contador--;
@@ -295,7 +316,8 @@ public class VentanaPrincipalController implements Initializable {
         }
         for (int i = 3; i < 6; i++) {
             if (contador == 0) {
-                matrizBotones[2][i].setStyle("-fx-background-color: #696969");
+                matrizBotones[2][i].setStyle(
+                        "-fx-background-color: #696969");
                 matrizBotones[2][i].setDisable(true);
             } else {
                 contador--;
@@ -303,14 +325,16 @@ public class VentanaPrincipalController implements Initializable {
         }
         for (int i = 3; i < 6; i++) {
             if (contador == 0) {
-                matrizBotones[i][5].setStyle("-fx-background-color: #696969");
+                matrizBotones[i][5].setStyle(
+                        "-fx-background-color: #696969");
                 matrizBotones[i][5].setDisable(true);
             } else {
                 contador--;
             }
         }
         if (contador == 0) {
-            matrizBotones[5][4].setStyle("-fx-background-color: #696969");
+            matrizBotones[5][4].setStyle(
+                    "-fx-background-color: #696969");
             matrizBotones[5][4].setDisable(true);
         } else {
             contador--;
@@ -345,7 +369,8 @@ public class VentanaPrincipalController implements Initializable {
         panePreguntaCortaRespuesta.setVisible(true);
         textPreguntaCortaRespuesta.setText(p.getPregunta());
         btnSubmitRespuestaCorta.setUserData(p);
-        labelTimerCortaRespuesta.textProperty().bind(p.getSegundosRestantes().asString());
+        labelTimerCortaRespuesta.textProperty().
+                bind(p.getSegundosRestantes().asString());
         p.start();
     }
 
@@ -355,15 +380,20 @@ public class VentanaPrincipalController implements Initializable {
         btnAcabar.setDisable(true);
         panePreguntaMo.setVisible(true);
         textPreguntaMo.setText(p.getPregunta());
-        btnRespuestaA.setText((String) p.getMapaRespuestas().keySet().toArray()[3]);
-        btnRespuestaB.setText((String) p.getMapaRespuestas().keySet().toArray()[2]);
-        btnRespuestaC.setText((String) p.getMapaRespuestas().keySet().toArray()[1]);
-        btnRespuestaD.setText((String) p.getMapaRespuestas().keySet().toArray()[0]);
+        btnRespuestaA.setText((String) p.
+                getMapaRespuestas().keySet().toArray()[3]);
+        btnRespuestaB.setText((String) p.
+                getMapaRespuestas().keySet().toArray()[2]);
+        btnRespuestaC.setText((String) p.
+                getMapaRespuestas().keySet().toArray()[1]);
+        btnRespuestaD.setText((String) p.
+                getMapaRespuestas().keySet().toArray()[0]);
         btnRespuestaA.setUserData(p);
         btnRespuestaB.setUserData(p);
         btnRespuestaC.setUserData(p);
         btnRespuestaD.setUserData(p);
-        labelTimerMo.textProperty().bind(p.getSegundosRestantes().asString());
+        labelTimerMo.textProperty().bind(p.
+                getSegundosRestantes().asString());
         p.start();
 
     }
@@ -376,14 +406,18 @@ public class VentanaPrincipalController implements Initializable {
         textPreguntaVF.setText(p.getPregunta());
         btnRespuestaVerdadera.setUserData(p);
         btnRespuestaFalsa.setUserData(p);
-        labelTimer.textProperty().bind(p.getSegundosRestantes().asString());
+        labelTimer.textProperty().bind(p.
+                getSegundosRestantes().asString());
         p.start();
     }
 
     @FXML
     private void onActionRespuestaV(ActionEvent event) {
-        PreguntaVF p = (PreguntaVF) btnRespuestaVerdadera.getUserData();
-        int checkTiempo = Integer.parseInt(p.getSegundosRestantes().asString().get());
+        PreguntaVF p 
+                = (PreguntaVF) btnRespuestaVerdadera.
+                        getUserData();
+        int checkTiempo = Integer.parseInt(p.
+                getSegundosRestantes().asString().get());
         if (checkTiempo > 0) {
             if (procesarRespuestaVF(p, "V")) {
                 mostrarGifYSonidoCorrecto(p);
@@ -396,15 +430,20 @@ public class VentanaPrincipalController implements Initializable {
         }
     }
 
-    private void procesarRespuestaFueraDeTiempo(Pregunta p, String respuesta) {
-        Sistema.getInstance().procesarRespuestaSeleccionada(p, respuesta);
+    private void procesarRespuestaFueraDeTiempo(Pregunta p, 
+            String respuesta) {
+        Sistema.getInstance().procesarRespuestaSeleccionada(p, 
+                respuesta);
         btnPivot.setStyle("-fx-background-color: #000f3f");
         btnPivot.setDisable(true);
     }
 
-    private boolean procesarRespuestaVF(PreguntaVF p, String respuestaSeleccionada) {
+    private boolean procesarRespuestaVF(PreguntaVF p, 
+            String respuestaSeleccionada) {
         boolean check;
-        if (Sistema.getInstance().procesarRespuestaSeleccionada(p, respuestaSeleccionada)) {
+        if (Sistema.getInstance().
+                procesarRespuestaSeleccionada(p, 
+                        respuestaSeleccionada)) {
             btnPivot.setStyle("-fx-background-color: #01a8e2");
             check = true;
         } else {
@@ -417,8 +456,11 @@ public class VentanaPrincipalController implements Initializable {
 
     @FXML
     private void onActionRespuestaF(ActionEvent event) {
-        PreguntaVF p = (PreguntaVF) btnRespuestaVerdadera.getUserData();
-        int checkTiempo = Integer.parseInt(p.getSegundosRestantes().asString().get());
+        PreguntaVF p 
+                = (PreguntaVF) btnRespuestaVerdadera.
+                        getUserData();
+        int checkTiempo = Integer.parseInt(p.
+                getSegundosRestantes().asString().get());
         if (checkTiempo > 0) {
             if (procesarRespuestaVF(p, "F")) {
                 mostrarGifYSonidoCorrecto(p);
@@ -433,9 +475,13 @@ public class VentanaPrincipalController implements Initializable {
 
     @FXML
     private void onActionbtnRespuestaA(ActionEvent event) {
-        PreguntaMultipleOpcion p = (PreguntaMultipleOpcion) btnPivot.getUserData();
-        String respuestaSeleccionada = (String) p.getMapaRespuestas().keySet().toArray()[3];
-        int checkTiempo = Integer.parseInt(p.getSegundosRestantes().asString().get());
+        PreguntaMultipleOpcion p 
+                = (PreguntaMultipleOpcion) btnPivot.getUserData();
+        String respuestaSeleccionada 
+                = (String) p.getMapaRespuestas().
+                        keySet().toArray()[3];
+        int checkTiempo = Integer.parseInt(p.
+                getSegundosRestantes().asString().get());
         if (checkTiempo > 0) {
             if (procesarRespuestaMo(p, respuestaSeleccionada)) {
                 mostrarGifYSonidoCorrecto(p);
@@ -450,9 +496,14 @@ public class VentanaPrincipalController implements Initializable {
 
     @FXML
     private void onActionBtnRespuestaB(ActionEvent event) {
-        PreguntaMultipleOpcion p = (PreguntaMultipleOpcion) btnPivot.getUserData();
-        String respuestaSeleccionada = (String) p.getMapaRespuestas().keySet().toArray()[2];
-        int checkTiempo = Integer.parseInt(p.getSegundosRestantes().asString().get());
+        PreguntaMultipleOpcion p 
+                = (PreguntaMultipleOpcion) btnPivot.
+                        getUserData();
+        String respuestaSeleccionada 
+                = (String) p.getMapaRespuestas().keySet().
+                        toArray()[2];
+        int checkTiempo = Integer.parseInt(p.
+                getSegundosRestantes().asString().get());
         if (checkTiempo > 0) {
             if (procesarRespuestaMo(p, respuestaSeleccionada)) {
                 mostrarGifYSonidoCorrecto(p);
@@ -467,9 +518,14 @@ public class VentanaPrincipalController implements Initializable {
 
     @FXML
     private void onActionBtnRespuestaC(ActionEvent event) {
-        PreguntaMultipleOpcion p = (PreguntaMultipleOpcion) btnPivot.getUserData();
-        String respuestaSeleccionada = (String) p.getMapaRespuestas().keySet().toArray()[1];
-        int checkTiempo = Integer.parseInt(p.getSegundosRestantes().asString().get());
+        PreguntaMultipleOpcion p 
+                = (PreguntaMultipleOpcion) btnPivot.
+                        getUserData();
+        String respuestaSeleccionada 
+                = (String) p.getMapaRespuestas().keySet().
+                        toArray()[1];
+        int checkTiempo = Integer.parseInt(p.
+                getSegundosRestantes().asString().get());
         if (checkTiempo > 0) {
             if (procesarRespuestaMo(p, respuestaSeleccionada)) {
                 mostrarGifYSonidoCorrecto(p);
@@ -484,9 +540,13 @@ public class VentanaPrincipalController implements Initializable {
 
     @FXML
     private void onActionBtnRespuestaD(ActionEvent event) {
-        PreguntaMultipleOpcion p = (PreguntaMultipleOpcion) btnPivot.getUserData();
-        String respuestaSeleccionada = (String) p.getMapaRespuestas().keySet().toArray()[0];
-        int checkTiempo = Integer.parseInt(p.getSegundosRestantes().asString().get());
+        PreguntaMultipleOpcion p 
+                = (PreguntaMultipleOpcion) btnPivot.getUserData();
+        String respuestaSeleccionada 
+                = (String) p.getMapaRespuestas().keySet().
+                        toArray()[0];
+        int checkTiempo = Integer.parseInt(p.
+                getSegundosRestantes().asString().get());
         if (checkTiempo > 0) {
             if (procesarRespuestaMo(p, respuestaSeleccionada)) {
                 mostrarGifYSonidoCorrecto(p);
@@ -502,7 +562,9 @@ public class VentanaPrincipalController implements Initializable {
     private void mostrarGifYSonidoCorrecto(Pregunta p) {
         if (p instanceof PreguntaVF) {
             panePreguntaVF.setVisible(false);
-            btnRespuestaVerdadera.getProperties().clear();//Limpia el map generado por el setUserData
+            btnRespuestaVerdadera.
+                    getProperties().clear();
+            //Limpia el map generado por el setUserData
             btnRespuestaFalsa.getProperties().clear();
         } else if (p instanceof PreguntaMultipleOpcion) {
             panePreguntaMo.setVisible(false);
@@ -522,7 +584,8 @@ public class VentanaPrincipalController implements Initializable {
         InputStream in;
         btnPivot.setText("✓");
         try {
-            in = new FileInputStream(new File("src/main/resources/styles/ok.wav"));
+            in = new FileInputStream(
+                    new File("src/main/resources/styles/ok.wav"));
             AudioStream audioOk = new AudioStream(in);
             AudioPlayer.player.start(audioOk);
         } catch (Exception e) {
@@ -533,7 +596,8 @@ public class VentanaPrincipalController implements Initializable {
         InputStream in;
         btnPivot.setText("X");
         try {
-            in = new FileInputStream(new File("src/main/resources/styles/Wrong.wav"));
+            in = new FileInputStream(new File(
+                    "src/main/resources/styles/Wrong.wav"));
             AudioStream audioOk = new AudioStream(in);
             AudioPlayer.player.start(audioOk);
         } catch (Exception e) {
@@ -543,7 +607,8 @@ public class VentanaPrincipalController implements Initializable {
     private void mostrarGifYSonidoIncorrecto(Pregunta p) {
         if (p instanceof PreguntaVF) {
             panePreguntaVF.setVisible(false);
-            btnRespuestaVerdadera.getProperties().clear();//Limpia el map generado por el setUserData
+            btnRespuestaVerdadera.getProperties().clear();
+//Limpia el map generado por el setUserData
             btnRespuestaFalsa.getProperties().clear();
         } else if (p instanceof PreguntaMultipleOpcion) {
             panePreguntaMo.setVisible(false);
@@ -559,9 +624,13 @@ public class VentanaPrincipalController implements Initializable {
         playAudioIncorrecto();
     }
 
-    private boolean procesarRespuestaMo(PreguntaMultipleOpcion p, String respuestaSeleccionada) {
+    private boolean procesarRespuestaMo(
+            PreguntaMultipleOpcion p, 
+            String respuestaSeleccionada) {
         boolean check;
-        if (Sistema.getInstance().procesarRespuestaSeleccionada(p, respuestaSeleccionada)) {
+        if (Sistema.getInstance().
+                procesarRespuestaSeleccionada(p, 
+                        respuestaSeleccionada)) {
             btnPivot.setStyle("-fx-background-color: #01a8e2");
             check = true;
         } else {
@@ -574,12 +643,17 @@ public class VentanaPrincipalController implements Initializable {
 
     @FXML
     private void onActionBtnSubmit(ActionEvent event) {
-        String respuestaSeleccionada = txtFieldRespuestaCorta.getText();
+        String respuestaSeleccionada 
+                = txtFieldRespuestaCorta.getText();
         if (!"".equals(respuestaSeleccionada)) {
-            PreguntaCortaRespuesta p = (PreguntaCortaRespuesta) btnPivot.getUserData();
-            int checkTiempo = Integer.parseInt(p.getSegundosRestantes().asString().get());
+            PreguntaCortaRespuesta p 
+                    = (PreguntaCortaRespuesta) btnPivot.
+                            getUserData();
+            int checkTiempo = Integer.parseInt(p.
+                    getSegundosRestantes().asString().get());
             if (checkTiempo > 0) {
-                if (procesarRespuestaCortaRespuesta(p, respuestaSeleccionada)) {
+                if (procesarRespuestaCortaRespuesta(p, 
+                        respuestaSeleccionada)) {
                     mostrarGifYSonidoCorrecto(p);
                 } else {
                     mostrarGifYSonidoIncorrecto(p);
@@ -591,9 +665,13 @@ public class VentanaPrincipalController implements Initializable {
         }
     }
 
-    private boolean procesarRespuestaCortaRespuesta(PreguntaCortaRespuesta p, String respuestaSeleccionada) {
+    private boolean procesarRespuestaCortaRespuesta(
+            PreguntaCortaRespuesta p, 
+            String respuestaSeleccionada) {
         boolean check;
-        if (Sistema.getInstance().procesarRespuestaSeleccionada(p, respuestaSeleccionada)) {
+        if (Sistema.getInstance().
+                procesarRespuestaSeleccionada(p, 
+                        respuestaSeleccionada)) {
             btnPivot.setStyle("-fx-background-color: #01a8e2");
             check = true;
         } else {
@@ -605,7 +683,8 @@ public class VentanaPrincipalController implements Initializable {
     }
 
     @FXML
-    private void onActionContinuarEnGifCorrecto(ActionEvent event) {
+    private void onActionContinuarEnGifCorrecto(
+            ActionEvent event) {
         paneGifCorrecto.setVisible(false);
         btnAcabar.setDisable(false);
         btnGenerarReporte.setDisable(false);
@@ -614,7 +693,8 @@ public class VentanaPrincipalController implements Initializable {
     }
 
     @FXML
-    private void onActionContinuarEnGifInCorrecto(ActionEvent event) {
+    private void onActionContinuarEnGifInCorrecto(
+            ActionEvent event) {
         paneGiftIncorrecto.setVisible(false);
         btnAcabar.setDisable(false);
         btnGenerarReporte.setDisable(false);
@@ -686,7 +766,8 @@ public class VentanaPrincipalController implements Initializable {
     private void sonidoExit() {
         InputStream in;
         try {
-            in = new FileInputStream(new File("src/main/resources/styles/Exit.wav"));
+            in = new FileInputStream(new File(
+                    "src/main/resources/styles/Exit.wav"));
             AudioStream audioOk = new AudioStream(in);
             AudioPlayer.player.start(audioOk);
         } catch (Exception e) {
@@ -696,8 +777,11 @@ public class VentanaPrincipalController implements Initializable {
     private void playuSonidoMenu() {
 
         try {
-            File musicPath = new File("src/main/resources/styles/sonidoEspiral.wav");
-            AudioInputStream audioInput = AudioSystem.getAudioInputStream(musicPath);
+            File musicPath = new File(
+                    "src/main/resources/styles/"
+                            + "sonidoEspiral.wav");
+            AudioInputStream audioInput 
+                    = AudioSystem.getAudioInputStream(musicPath);
             Clip clip = AudioSystem.getClip();
             clip.open(audioInput);
             clip.start();
@@ -709,7 +793,8 @@ public class VentanaPrincipalController implements Initializable {
 
     @FXML
     private void onActionBtnGenerarReporte(ActionEvent event) {
-        if (Sistema.getInstance().getRespuestasSeleccionadas().size() > 0) {
+        if (Sistema.getInstance().
+                getRespuestasSeleccionadas().size() > 0) {
             Sistema.getInstance().crearReporte();
         }
     }

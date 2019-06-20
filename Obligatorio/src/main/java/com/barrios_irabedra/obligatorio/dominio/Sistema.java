@@ -18,7 +18,7 @@ import java.util.StringTokenizer;
  * @author Usuario
  */
 public class Sistema {
-
+    
     public static Sistema getInstanciaSistema() {
         return instanciaSistema;
     }

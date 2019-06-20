@@ -8,7 +8,8 @@ import java.util.HashMap;
  */
 public class PreguntaVF extends Pregunta{
 
-    public PreguntaVF(String pregunta, int tiempo, HashMap<String, Boolean> respuestas) {
+    public PreguntaVF(String pregunta, int tiempo, 
+            HashMap<String, Boolean> respuestas) {
         super(pregunta, tiempo, respuestas);
     }
     
@@ -19,8 +20,11 @@ public class PreguntaVF extends Pregunta{
 
     @Override
     public String toString() {
-         return this.getPregunta() + ". \n" + "Tienes " + this.getTiempo() + " segundos para responder. \n"
-                + "Y su respuesta correcta era " + this.getRespuestas();
+         return this.getPregunta() + ". \n" + "Tienes " 
+                 + this.getTiempo() 
+                 + " segundos para responder. \n"
+                + "Y su respuesta correcta era " 
+                 + this.getRespuestas();
     }
     
     

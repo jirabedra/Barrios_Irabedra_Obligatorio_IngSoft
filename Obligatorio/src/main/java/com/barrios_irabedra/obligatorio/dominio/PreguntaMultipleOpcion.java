@@ -9,7 +9,8 @@ import java.util.*;
 public class PreguntaMultipleOpcion extends Pregunta {
     private HashMap<String, String> comentarioRespuesta;
     
-    public PreguntaMultipleOpcion(String pregunta, int tiempo, HashMap<String, Boolean> respuestas) {
+    public PreguntaMultipleOpcion(String pregunta, 
+            int tiempo, HashMap<String, Boolean> respuestas) {
         super(pregunta, tiempo, respuestas);
     }
 
@@ -17,8 +18,10 @@ public class PreguntaMultipleOpcion extends Pregunta {
         this.comentarioRespuesta = new HashMap<>();
     }
 
-    public void agregarComentarioRespuesta(String unaRespuesta, String unComentario){
-        this.comentarioRespuesta.put(unaRespuesta, unComentario);
+    public void agregarComentarioRespuesta(
+            String unaRespuesta, String unComentario){
+        this.comentarioRespuesta.put(unaRespuesta, 
+                unComentario);
     }
     
     public String getComentario(String unaRespuesta){
@@ -27,7 +30,10 @@ public class PreguntaMultipleOpcion extends Pregunta {
     
     @Override
     public String toString() {
-        return this.getPregunta() + ". \n" + "Tienes " + this.getTiempo() + " segundos para responder. \n"
-                + "Y sus respuestas eran " + this.getRespuestas();
+        return this.getPregunta() + ". \n" + "Tienes " 
+                + this.getTiempo() 
+                + " segundos para responder. \n"
+                + "Y sus respuestas eran " 
+                + this.getRespuestas();
     }
 }

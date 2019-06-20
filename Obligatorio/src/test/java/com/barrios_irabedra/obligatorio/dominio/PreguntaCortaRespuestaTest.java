@@ -25,13 +25,15 @@ public class PreguntaCortaRespuestaTest {
     
     @BeforeClass
     public static void setUpClass() {
-        System.out.println("Invocado antes de comenzar las pruebas en Pregunta"
+        System.out.println("Invocado antes de comenzar las "
+                + "pruebas en Pregunta"
                 + "CortaRespuesta.");
     }
     
     @AfterClass
     public static void tearDownClass() {
-        System.out.println("Invocado al finalizar todas las pruebas en Pregunta"
+        System.out.println("Invocado al finalizar todas las "
+                + "pruebas en Pregunta"
                 + "CortaRespuesta.");
     }
     
@@ -53,10 +55,14 @@ public class PreguntaCortaRespuestaTest {
         System.out.println("toString");
         HashMap<String, Boolean> map = new HashMap<>();
         map.put("Blanco", Boolean.TRUE);
-        PreguntaCortaRespuesta instance = new PreguntaCortaRespuesta("¿De qué "
-                + "color era el caballo blanco de San Martín?", 30, map);
-        String expResult = "¿De qué color era el caballo blanco de San Martín?. \n"
-                + "Tienes 30 segundos para responder. \nY sus respuesta correcta era "
+        PreguntaCortaRespuesta instance
+                = new PreguntaCortaRespuesta("¿De qué "
+                + "color era el caballo blanco de "
+                        + "San Martín?", 30, map);
+        String expResult = "¿De qué color era el caballo "
+                + "blanco de San Martín?. \n"
+                + "Tienes 30 segundos para responder. \nY "
+                + "sus respuesta correcta era "
                 + "{Blanco=true}";
         String result = instance.toString();
         assertEquals(expResult, result);

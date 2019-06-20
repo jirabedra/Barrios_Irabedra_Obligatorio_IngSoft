@@ -76,14 +76,18 @@ public abstract class Pregunta {
     public Pregunta() {
         this.tiempo = 30;
         this.respuestas = new HashMap<>();
-        this.segundosRestantes = new SimpleIntegerProperty(this.tiempo);
+        this.segundosRestantes 
+                = new SimpleIntegerProperty(this.tiempo);
         this.timerPregunta = new TimerPregunta();
     }
 
     @Override
     public String toString() {
-        return this.getPregunta() + ". \n" + "Tienes " + this.getTiempo() + " segundos para responder. \n"
-                + "Y sus respuestas eran " + this.getRespuestas();
+        return this.getPregunta() + ". \n" + "Tienes " + 
+                this.getTiempo() 
+                + " segundos para responder. \n"
+                + "Y sus respuestas eran " 
+                + this.getRespuestas();
     }
 
     private class TimerPregunta extends TimerTask {

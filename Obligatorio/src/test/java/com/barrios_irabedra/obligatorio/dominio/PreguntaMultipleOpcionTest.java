@@ -25,13 +25,15 @@ public class PreguntaMultipleOpcionTest {
     
      @BeforeClass
     public static void setUpClass() {
-        System.out.println("Invocado antes de comenzar las pruebas en Pregunta"
+        System.out.println("Invocado antes de comenzar las"
+                + " pruebas en Pregunta"
                 + "MultipleOpcion.");
     }
     
     @AfterClass
     public static void tearDownClass() {
-        System.out.println("Invocado al finalizar todas las pruebas en Pregunta"
+        System.out.println("Invocado al finalizar todas "
+                + "las pruebas en Pregunta"
                 + "MultipleOpcion.");
     }
     
@@ -46,28 +48,37 @@ public class PreguntaMultipleOpcionTest {
     }
 
     /**
-     * Test of agregarComentarioRespuesta method, of class PreguntaMultipleOpcion.
+     * Test of agregarComentarioRespuesta method, of 
+     * class PreguntaMultipleOpcion.
      */
     @Test
     public void testAgregarComentarioRespuesta() {
         System.out.println("agregarComentarioRespuesta");
         String unaRespuesta = "Blanco";
-        String unComentario = "De hecho, el caballo blanco de San Martín era blanco.";
-        PreguntaMultipleOpcion instance = new PreguntaMultipleOpcion();
-        instance.agregarComentarioRespuesta(unaRespuesta, unComentario);
-        assertEquals(instance.getComentario(unaRespuesta),unComentario);
+        String unComentario = "De hecho, el caballo blanco "
+                + "de San Martín era blanco.";
+        PreguntaMultipleOpcion instance 
+                = new PreguntaMultipleOpcion();
+        instance.agregarComentarioRespuesta(unaRespuesta, 
+                unComentario);
+        assertEquals(instance.getComentario(unaRespuesta),
+                unComentario);
     }
 
     /**
-     * Test of getComentario method, of class PreguntaMultipleOpcion.
+     * Test of getComentario method, of class 
+     * PreguntaMultipleOpcion.
      */
     @Test
     public void testGetComentario() {
         System.out.println("getComentario");
         String unaRespuesta = "Blanco";
-        PreguntaMultipleOpcion instance = new PreguntaMultipleOpcion();
-        String expResult = "De hecho, el caballo blanco de San Martín era blanco.";
-        instance.agregarComentarioRespuesta(unaRespuesta, expResult);
+        PreguntaMultipleOpcion instance 
+                = new PreguntaMultipleOpcion();
+        String expResult = "De hecho, el caballo blanco "
+                + "de San Martín era blanco.";
+        instance.agregarComentarioRespuesta(unaRespuesta, 
+                expResult);
         String result = instance.getComentario(unaRespuesta);
         assertEquals(expResult, result);
     }
@@ -82,11 +93,16 @@ public class PreguntaMultipleOpcionTest {
         map.put("Negro", Boolean.FALSE);
         map.put("Marroncito", Boolean.FALSE);
         map.put("Barcino", Boolean.FALSE);
-        PreguntaMultipleOpcion instance = new PreguntaMultipleOpcion("¿De qué "
-                + "color era el caballo blanco de San Martín?", 30, map);
-        String expResult = "¿De qué color era el caballo blanco de San Martín?. \n"
-                + "Tienes 30 segundos para responder. \nY sus respuestas eran "
-                + "{Negro=false, Blanco=true, Marroncito=false, Barcino=false}";
+        PreguntaMultipleOpcion instance 
+                = new PreguntaMultipleOpcion("¿De qué "
+                + "color era el caballo blanco de San "
+                        + "Martín?", 30, map);
+        String expResult = "¿De qué color era el caballo "
+                + "blanco de San Martín?. \n"
+                + "Tienes 30 segundos para responder. \nY "
+                + "sus respuestas eran "
+                + "{Negro=false, Blanco=true, Marroncito=false,"
+                + " Barcino=false}";
         String result = instance.toString();
         assertEquals(expResult, result);
     }

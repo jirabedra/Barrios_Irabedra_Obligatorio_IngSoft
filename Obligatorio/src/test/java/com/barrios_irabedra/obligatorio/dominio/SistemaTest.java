@@ -130,7 +130,8 @@ public class SistemaTest {
     }
 
     @Test
-    public void testEsLineaConContenidosSignoDePreguntaInvertido() {
+    public void 
+        testEsLineaConContenidosSignoDePreguntaInvertido() {
         System.out.println("esLineaConContenido");
         String linea = "¿";
         Sistema instance = new Sistema();
